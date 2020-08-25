@@ -1,0 +1,68 @@
+.title img {
+  height: 100px;
+  width: auto;
+}
+
+.contenido .categories .house {
+  margin-left: 100px;
+}
+
+.contenido .categories .house img {
+  height: 250px;
+  width: 300px;
+}
+
+.contenido .categories .department {
+  margin-left: 100px;
+}
+
+.contenido .categories .department img {
+  height: 250px;
+  width: 300px;
+}
+
+.contenido .categories .duplex {
+  margin-left: 100px;
+}
+
+.contenido .categories .duplex img {
+  height: 250px;
+  width: 300px;
+}
+
+.contenido .categories .terreno {
+  margin-left: 100px;
+}
+
+.contenido .categories .terreno img {
+  height: 250px;
+  width: 300px;
+}
+
+.contenido .categories .garage {
+  margin-left: 100px;
+}
+
+.contenido .categories .garage img {
+  height: 250px;
+  width: 300px;
+}
+
+.contenido .categories .galpon {
+  margin-left: 100px;
+}
+
+.contenido .categories .galpon img {
+  height: 250px;
+  width: 300px;
+}
+
+.contenido .categories .local {
+  margin-left: 100px;
+}
+
+.contenido .categories .local img {
+  height: 250px;
+  width: 300px;
+}
+/*# sourceMappingURL=master.css.map */
