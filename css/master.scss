@@ -1,79 +1,585 @@
-.title{
-    img{
-        height: 100px;
-        width: auto;
+html {
+	* {
+		box-sizing: border-box;
+		padding: 0;
+        margin: 0;
+        font-family: 'Open Sans', sans-serif;
+	}
+	a:hover {
+		text-decoration: none;
+	}
+}
+
+body {
+    background-color: white;
+}
+
+header {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    width: 100%;
+    background-color: #440206;
+    transition: 0.3s ease-in-out;
+    ul {
+        list-style: none;
+        margin: 0;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        img {
+            width: 75px;
+        }
+        .md-menu {
+            display: none;
+            ul {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                li {
+                    height: 100%;
+                    min-width: 125px;
+                    letter-spacing: 2px;
+                    margin: 3px;
+					display: flex;
+                    transition: 0.3s ease-in-out;
+                    text-transform: uppercase;
+                    a {
+                        margin: auto;
+						color: white;
+                    }
+                    &:hover {
+						background-color: white;
+						a {
+							color: #440206;
+						}
+                    }
+                }
+            }
+		}
+		#burger-icon {
+            width: 26px;
+            height: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            span {
+                position: absolute;
+                width: 100%;
+                height: 3px;
+                background-color: white;
+                transition: 0.3s ease-out;
+                &:nth-child(1) {
+                    top: 0;
+                }
+                &:nth-child(4) {
+                    bottom: 0;
+                }
+            }
+        }
+        .mobile-menu {
+            width: 100%;
+            border-top: 1px solid white;
+            transition: 0.3s ease-in-out;
+            opacity: 0;
+            li {
+                text-transform: uppercase;
+                text-align: left;
+                padding: 5px;
+                font-size: 1.25rem;
+                border-bottom: 1px solid white;
+                transition: 0.3s ease-in-out;
+                a {
+                    color: white;
+                }
+                &:hover {
+                    background-color: white;
+                    a {
+                        color: #440206;
+                    }
+                }
+            }
+        }
     }
 }
-.contenido{
-    .categories{
-        .house{
-            margin-left: 100px;
-            img{
-                height: 250px;
-                width: 300px;
+
+header.scrolled {
+    background-color: white;
+    #burger-icon {
+        span {
+            background-color: #440206;
+        }
+    }
+    .mobile-menu {
+        border-color: #440206;
+        li {
+            border-color: #440206;
+            a {
+                color: #440206;
             }
-            #house-name{
-                //Aca pone el texto bonito y centrado con la imagen 
+            &:hover {
+                background-color: #440206;
+                a {
+                    color: white;
+                }
             }
         }
-        .department{
-            margin-left: 100px;
-            img{
-                height: 250px;
-                width: 300px;
-            }
-            #department-name{
-                //Aca pone el texto bonito y centrado con la imagen 
-            }
-        }
-        .duplex{
-            margin-left: 100px;
-            img{
-                height: 250px;
-                width: 300px;
-            }
-            #duplex-name{
-                //Aca pone el texto bonito y centrado con la imagen 
+    }
+    .md-menu {
+        ul {
+            li {
+                a {
+                    color: #440206;
+                }
+                &:hover {
+                    background-color: #440206;
+                    a {
+                        color: white;
+                    }
+                }
             }
         }
-        .terreno{
-            margin-left: 100px;
-            img{
-                height: 250px;
-                width: 300px;
+    }
+}
+
+.slider {
+    margin-top: 75px;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    position: relative;
+    overflow-x: hidden;
+    z-index: 0;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        top: 0;
+        left: 0;
+        opacity: 0.1;
+        z-index: 1;
+    }
+    .container {
+        z-index: 2;
+        text-align: center;
+        height: fit-content;
+        margin: auto;
+        h1 {
+            text-transform: uppercase;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            font-weight: bolder;
+            color: #440206;
+            margin-bottom: 0.5rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10%;
+            font-weight: bolder;
+            position: relative;
+            color: #440206;
+            /*
+            &::before {
+                content: "";
+                position: absolute;
+                width: 60%;
+                margin: 0 20%;
+                top: -20%;
+                left: 0;
+                height: 160%;
+                background-color: white;
+                border-radius: 2px;
+                opacity: 0.5;
+                z-index: -1;
             }
-            #terreno-name{
-                //Aca pone el texto bonito y centrado con la imagen 
+            */
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            a {
+                font-size: 0.8rem;
+                display: block;
+                min-width: 50px;
+                padding: 10px;
+                margin: 0 5px;
+                background-color: #440206;
+                border-radius: 2px;
+                color: white;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                transition: 0.3s ease-in-out;
+                &:hover {
+                    background-color: white;
+                    color: #440206;
+                }
             }
         }
-        .garage{
-            margin-left: 100px;
-            img{
-                height: 250px;
-                width: 300px;
+    }
+    .slide {
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0;
+        opacity: 0;
+        transition: 0.5s ease-in-out;
+    }
+    .slide:nth-child(1) {
+        background-image: url(../imgs/living-room.jpg);
+        left: 0;
+    }
+    .slide:nth-child(2) {
+        background-image: url(../imgs/cocina-sala-de-estar.jpg);
+        left: 100%;
+    }
+    .slide:nth-child(3) {
+        background-image: url(../imgs/sillon.jpg);
+        left: 100%;
+    }
+}
+
+.banner {
+    background-color: #440206; 
+    padding: 3rem;
+    h4, h2 {
+        text-align: center;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+    h4 {
+        color: #444444;
+        font-style: oblique;
+        margin-bottom: 0;
+        font-weight: 550;
+    }
+    h2 {
+        color: white;
+        font-size: 3rem;
+        font-weight: 200;
+    }
+}
+
+#servicios .container {
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        margin: 5px 0;
+        .grid-item {
+            border: #444444 solid;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            margin: 5px 0;
+            border-radius: 2px;
+            &:first-child, &:nth-child(2) {
+                grid-column: span 2;
+                grid-row: span 1;
             }
-            #garage-name{
-                //Aca pone el texto bonito y centrado con la imagen 
+            &:nth-child(3), &:nth-child(5) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            &:first-child {
+                background-image: url(../imgs/Ventas.jpg);
+            }
+            &:nth-child(2) {
+                background-image: url(../imgs/Alquileres.jpg);
+            }
+            &:nth-child(3) {
+                background-image: url(../imgs/Tasaciones.jpg);
+            }
+            &:nth-child(4) {
+                grid-column: span 2;
+                grid-row: span 1;
+                background-image: url(../imgs/monte.jpg);
+            }
+            &:nth-child(5) {
+                background-image: url(../imgs/Publicar.jpg);
+            }
+            a {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                overflow: hidden;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-content: center;
+                transition: 0.3s ease-in-out;
+                * {
+                    z-index: 2;
+                }
+                &::before, &::after {
+                    content: "";
+                    z-index: 1;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-color: #444444;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0.6;
+                    transition: inherit;
+                }
+                &::after {
+                    content: "";
+                    z-index: 1;
+                    position: absolute;
+                    top: -100%;
+                    left: 0;
+                    background-color: #440206;
+                    opacity: 0.8;
+                    
+                }
+                h3 {
+                    width: 100%;
+                    text-align: center;
+                    color: #440206;
+                    transition: inherit;
+                    font-weight: 550;
+                    font-style: oblique;
+                    margin-bottom: 1.5rem;
+                }
+                i {
+                    font-size: 3rem;
+                    color: #440206;
+                    transition: inherit;
+                }
+                &:hover {
+                    &::before {
+                        top: -100%;
+                    }
+                    &::after {
+                        top: 0;
+                    }
+                    h3 {
+                        color: white;
+                    }
+                    i {
+                        color: white;
+                    }
+                }
             }
         }
-        .galpon{
-            margin-left: 100px;
-            img{
-                height: 250px;
-                width: 300px;
+    }
+}
+
+#destacados {
+    position: relative;
+    z-index: 0;
+    padding: 15px 0;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-color: #444444;
+        opacity: 0.6;
+    }
+    h2 {
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 200;
+        font-size: 2.5rem;
+    }
+    .container {
+        .grid-wrapper {
+            display: grid;
+            position: relative;
+            grid-template-columns: repeat(5, 100%);
+            grid-auto-rows: 1fr;
+            gap: 15px;
+            overflow-x: hidden;
+            &::-webkit-scrollbar {
+                display: none;
             }
-            #galpon-name{
-                //Aca pone el texto bonito y centrado con la imagen 
+            .grid-item {
+                position: relative;
+                left: 0;
+                transition: 0.5s ease-in-out;
+                a {
+                    display: block;
+                    height: 100%;
+                    border-radius: 3px;
+                    img {
+                        width: 100%;
+                        user-select: none;
+                        border-radius: 3px 3px 0 0;
+                    }
+                }
+            }
+            button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                padding: 5px;
+                border: none;
+                background-color: transparent;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: white;
+                    border-radius: inherit;
+                    opacity: 0.3;
+                    transition: 0.2s linear;
+                }
+                i {
+                    color: #440206;
+                    font-size: 2rem;
+                }
+                &#left {
+                    left: 0;
+                    border-radius: 0 10px 10px 0;
+                    i {
+                        transform: translateX(-25%);
+                    }
+                }
+                &#right {
+                    right: 0;
+                    border-radius: 10px 0 0 10px;
+                    i {
+                        transform: translateX(25%);
+                    }
+                }
+                &:focus {
+                    outline: none;
+                }
+                //mientras está siendo clickeado
+                &:active {
+                    border-style: none;
+                    &::before {
+                        transform: scale(1.5);
+                    }
+                }
+                &:hover {
+                    &::before {
+                        opacity: 1;
+                    }
+                }
             }
         }
-        .local{
-            margin-left: 100px;
-            img{
-                height: 250px;
-                width: 300px;
+    }
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    #destacados {
+        .container {
+            .grid-wrapper {
+                grid-template-columns: repeat(5, calc(50% - 7.5px));
             }
-            #local-name{
-                //Aca pone el texto bonito y centrado con la imagen 
+        }
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    header {
+        .container {
+            .md-menu {
+                display: flex;
+            }
+            #burger-icon {
+                display: none;
+            }
+        }
+    }
+    .slider {
+        height: 450px;
+        .container {
+            h1  {
+                font-size: 4rem;
+                letter-spacing: 5px;
+                margin-bottom: 1rem;
+            }
+            h3 {
+                margin-bottom: 10%;
+                font-size: 1.8rem;
+            }
+            div {
+                a {
+                    font-size: 1.1rem;
+                    min-width: 175px;
+                    padding: 15px;
+                    margin: 0 50px;
+                }
+            }
+        }
+    }
+    #servicios .container {
+        .grid-container {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            grid-template-rows: repeat(2, 1fr);
+            padding: 20px 0;
+            margin: 0;
+            .grid-item {
+                margin: 0;
+                a {
+                    i {
+                        font-size: 4rem;
+                    }
+                }
+            }
+            &:first-child, &:nth-child(2) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+            &:nth-child(3), &:nth-child(5) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            &:nth-child(4) {
+                grid-column: span 2;
+            }
+        }
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .slider {
+        height: 550px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .slider {
+        height: 650px;
+    }
+    #destacados {
+        .container {
+            .grid-wrapper {
+                grid-template-columns: repeat(5, calc(100% / 3 - 15px / 3 * 2));
             }
         }
     }
