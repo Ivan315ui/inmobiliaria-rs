@@ -1,3 +1,7 @@
+html {
+  font-size: 16px;
+}
+
 html * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -315,7 +319,7 @@ header.scrolled .md-menu ul li:hover a {
 
 .banner {
   background-color: #440206;
-  padding: 3rem;
+  padding: 2rem;
 }
 
 .banner h4, .banner h2 {
@@ -326,6 +330,7 @@ header.scrolled .md-menu ul li:hover a {
 
 .banner h4 {
   color: #444444;
+  font-size: 1.2rem;
   font-style: oblique;
   margin-bottom: 0;
   font-weight: 550;
@@ -333,7 +338,7 @@ header.scrolled .md-menu ul li:hover a {
 
 .banner h2 {
   color: white;
-  font-size: 3rem;
+  font-size: 1.8rem;
   font-weight: 200;
 }
 
@@ -445,7 +450,6 @@ header.scrolled .md-menu ul li:hover a {
   transition: inherit;
   font-weight: 550;
   font-style: oblique;
-  margin-bottom: 1.5rem;
 }
 
 #servicios .container .grid-container .grid-item a i {
@@ -453,6 +457,7 @@ header.scrolled .md-menu ul li:hover a {
   color: #440206;
   -webkit-transition: inherit;
   transition: inherit;
+  margin-bottom: 1.5rem;
 }
 
 #servicios .container .grid-container .grid-item a:hover::before {
@@ -494,7 +499,7 @@ header.scrolled .md-menu ul li:hover a {
   text-transform: uppercase;
   text-align: center;
   font-weight: 200;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
 }
 
 #destacados .container .grid-wrapper {
@@ -517,6 +522,8 @@ header.scrolled .md-menu ul li:hover a {
   left: 0;
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
+  z-index: 0;
+  overflow: hidden;
 }
 
 #destacados .container .grid-wrapper .grid-item a {
@@ -532,6 +539,105 @@ header.scrolled .md-menu ul li:hover a {
       -ms-user-select: none;
           user-select: none;
   border-radius: 3px 3px 0 0;
+}
+
+#destacados .container .grid-wrapper .grid-item a .desc {
+  background-color: white;
+  padding: 5px;
+  border-radius: 0 0 3px 3px;
+  color: #440206;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#destacados .container .grid-wrapper .grid-item a .desc h5 {
+  width: 100%;
+  font-weight: 550;
+}
+
+#destacados .container .grid-wrapper .grid-item a .desc span {
+  display: block;
+}
+
+#destacados .container .grid-wrapper .grid-item a .desc span:nth-of-type(2) {
+  border-radius: 2px;
+  padding: 3px;
+  background-color: #444444;
+  color: white;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  opacity: 0.8;
+}
+
+#destacados .container .grid-wrapper .grid-item a .desc span:last-of-type {
+  margin-left: auto;
+}
+
+#destacados .container .grid-wrapper .grid-item a h4 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  color: white;
+  text-align: center;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  opacity: 0;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+#destacados .container .grid-wrapper .grid-item a h4 i {
+  font-size: 1.8rem;
+  -webkit-transform: translateY(0.3rem);
+          transform: translateY(0.3rem);
+  -webkit-transition: none;
+  transition: none;
+}
+
+#destacados .container .grid-wrapper .grid-item a::before, #destacados .container .grid-wrapper .grid-item a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  border-radius: 3px;
+}
+
+#destacados .container .grid-wrapper .grid-item a::before {
+  left: -100%;
+  background-color: #444444;
+  z-index: 1;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+#destacados .container .grid-wrapper .grid-item a::after {
+  left: 100%;
+  background-color: #440206;
+  z-index: 2;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+#destacados .container .grid-wrapper .grid-item a:hover h4 {
+  opacity: 1;
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+
+#destacados .container .grid-wrapper .grid-item a:hover::before, #destacados .container .grid-wrapper .grid-item a:hover::after {
+  left: 0;
+  opacity: 0.9;
 }
 
 #destacados .container .grid-wrapper button {
@@ -600,9 +706,23 @@ header.scrolled .md-menu ul li:hover a {
   opacity: 1;
 }
 
-/* Extra small devices (phones, 600px and down) */
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .slider .container h1 {
+    font-size: 3.25rem;
+  }
+  .banner {
+    padding: 3rem;
+  }
+  .banner h4 {
+    font-size: 1.5rem;
+  }
+  .banner h2 {
+    font-size: 3rem;
+  }
+  #destacados h2 {
+    font-size: 2.5rem;
+  }
   #destacados .container .grid-wrapper {
     -ms-grid-columns: (calc(50% - 7.5px))[5];
         grid-template-columns: repeat(5, calc(50% - 7.5px));
