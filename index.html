@@ -11,7 +11,6 @@
 	<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 	<script src="js/master.js" defer></script>
 	<script src="js/slider.js" defer></script>
-	<script src="js/featured.js" defer></script>
 	<script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
 </head>
 
@@ -168,45 +167,120 @@
 					<i class="fas fa-caret-right"></i>
 				</button>
 			</div>
+			<script src="js/featured.js"></script>
 		</div>
 	</section>
+	<div class="form-consulta">
+		<form action=''>
+			<h1>
+				<strong>
+					Consultas
+				</strong>
+			</h1>
+			<input type='text' placeholder='Nombre' class='name'>
+			<br>
+			<input type='text' placeholder='Apellido' class='surname'>
+			<br>
+			<input type='text' placeholder='Email' class='mail'>
+			<br>
+			<input type='text' placeholder='Telefono' class='phone'>
+			<br>
+			<textarea type='text' placeholder='Consulta' class='consult'></textarea>
+			<div class="button">
+				<button type="submit" value="Enviar" class="submit">Enviar</button>
+			</div>
+		</form>
+	</div>
 	<footer>
-		<div class="wrapper">
-			<div class="container">
-				<div class="soporte">
-					<h5>Soporte</h5>
-					<ul>
-						<li><a href="#">Nosotros</a></li>
-						<li><a href="#">Contacto</a></li>
-						<li><a href="">Nuestras marcas</a></li>
-					</ul>
-				</div>
-				<div class="información">
-					<h5>Información</h5>
-					<ul>
-						<li><a href="#">Preguntas frecuentes</a></li>
-						<li><a href="#">Cómo llegar</a></li>
-						<li><a href="#">Garantías</a></li>
-					</ul>
-				</div>
-				<div class="cuenta">
-					<h5>Mi cuenta</h5>
-					<ul>
-						<li><a href="#">Mi cuenta</a></li>
-						<li><a href="#">Carrito</a></li>
-						<li><a href="#">Programación de pedidos</a></li>
-						<li><a href="#">Historial de compras</a></li>
-					</ul>
+		<div class="wrapper-footer">
+			<div class="container-footer">
+				<ul class="icons">
+					<div class="circulo">
+						<!-- Facebook -->
+						<li>
+							<a type="button" class="icon-Facebook" href="#">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+						</li>
+						<!-- Twitter -->
+						<li>
+							<a type="button" class="icon-Twitter" href="#">
+								<i class="fab fa-twitter"></i>
+							</a>
+						</li>
+						<li>
+							<a type="button" class="icon-Instagram" href="#">
+								<i class="fab fa-instagram"></i>
+							</a>
+						</li>
+						<!-- Google +-->
+						<li>
+							<a type="button" class="icon-Google" href="#">
+									<i class="fab fa-google"></i>
+							</a>
+						</li>
+					</div>
+				</ul>
+			</div>
+			<div class="container-footer">
+				<div class='container-info'>
+					<h1 class='title-info'>
+						<strong>
+							INFORMACIÓN DE LA COMPAÑIA
+						</strong>
+					</h1>
+					<br>
+					<p class='info'>
+						Esta inmobiliaria se presenta como una de las mas competentes del mercado, en Bahia Blanca
+						<br>
+						estamos trabajando para ser la empresa N°1 de la region del sur. Esperamos que se sienta
+						<br>
+						comodo en nuestra pagina, sientase libre de explorar nuestro catalogo y consultar en la
+						<br>
+						seccion de consulta. Muchas gracias. 
+					</p>
 				</div>
 			</div>
+			<div class="container-footer">
+				<div class="container-links">
+					<div class="soporte">
+						<h5>Soporte</h5>
+						<ul>
+							<li><a href="#">Nosotros</a></li>
+							<li><a href="#">Contacto</a></li>
+						</ul>
+					</div>
+					<div class="información">
+						<h5>Información</h5>
+						<ul>
+							<li><a href="#">Preguntas frecuentes</a></li>
+							<li><a href="#">Servicios</a></li>
+						</ul>
+					</div>
+					<div class="información">
+						<h5>Contacto</h5>
+						<ul>
+							<li><a href="#">Whatsapp</a></li>
+							<li><a href="#">Mail</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<button id="left-footer">
+				<i class="fas fa-caret-left"></i>
+			</button>
+			<button id="right-footer">
+				<i class="fas fa-caret-right"></i>
+			</button>
 		</div>
 		<div class="wrapper">
-			<div class="container">
-				<small>@ 2020 RS Propiedades</small>
-				<img src="http://www.afip.gob.ar/images/f960/DATAWEB.jpg" alt="data fiscal">
-			</div>
+				<p>
+					<strong>
+						@ 2020 RS Propiedades
+					</strong>
+				</p>
 		</div>
 	</footer>
+	<script src="js/cambio.js"></script>
 </body>
-
 </html>

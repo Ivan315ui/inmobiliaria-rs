@@ -706,6 +706,398 @@ header.scrolled .md-menu ul li:hover a {
   opacity: 1;
 }
 
+.form-consulta {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form-consulta h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #440206;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 2.80rem;
+}
+
+.form-consulta input, .form-consulta textarea {
+  width: 430px;
+  height: 38px;
+  border-radius: 5px;
+  border: 2px solid grey;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 20px;
+  color: #440206;
+}
+
+.form-consulta input:hover, .form-consulta textarea:hover {
+  border: 2px solid #440206;
+}
+
+.form-consulta input:hover::-webkit-input-placeholder, .form-consulta textarea:hover::-webkit-input-placeholder {
+  color: #440206;
+}
+
+.form-consulta input:hover:-ms-input-placeholder, .form-consulta textarea:hover:-ms-input-placeholder {
+  color: #440206;
+}
+
+.form-consulta input:hover::-ms-input-placeholder, .form-consulta textarea:hover::-ms-input-placeholder {
+  color: #440206;
+}
+
+.form-consulta input:hover::placeholder, .form-consulta textarea:hover::placeholder {
+  color: #440206;
+}
+
+.form-consulta input::-webkit-input-placeholder, .form-consulta textarea::-webkit-input-placeholder {
+  color: grey;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form-consulta input:-ms-input-placeholder, .form-consulta textarea:-ms-input-placeholder {
+  color: grey;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form-consulta input::-ms-input-placeholder, .form-consulta textarea::-ms-input-placeholder {
+  color: grey;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form-consulta input::placeholder, .form-consulta textarea::placeholder {
+  color: grey;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form-consulta textarea {
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.form-consulta .button {
+  text-align: center;
+}
+
+.form-consulta .button button {
+  font-size: 1rem;
+  min-width: 50px;
+  padding: 10px;
+  margin: 5px;
+  background-color: #444444;
+  border-radius: 2px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 5px;
+}
+
+.form-consulta .button button:hover {
+  background-color: #440206;
+  color: white;
+}
+
+footer {
+  color: whitesmoke;
+}
+
+footer .wrapper-footer {
+  background-color: #440206;
+}
+
+footer .wrapper-footer {
+  display: -ms-grid;
+  display: grid;
+  position: relative;
+  -ms-grid-columns: (100%)[5];
+      grid-template-columns: repeat(5, 100%);
+  grid-auto-rows: 1fr;
+  gap: 15px;
+  overflow-x: hidden;
+}
+
+footer .wrapper-footer::-webkit-scrollbar {
+  display: none;
+}
+
+footer .wrapper-footer .container-footer {
+  position: relative;
+  left: 0;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+footer .wrapper-footer button {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  padding: 5px;
+  border: none;
+  background-color: #444444;
+}
+
+footer .wrapper-footer button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: inherit;
+  opacity: 0.3;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+footer .wrapper-footer button i {
+  color: #440206;
+  font-size: 3rem;
+}
+
+footer .wrapper-footer button i:hover {
+  color: #444444;
+}
+
+footer .wrapper-footer button#left-footer {
+  left: 0;
+  border-radius: 0 10px 10px 0;
+}
+
+footer .wrapper-footer button#left-footer i {
+  -webkit-transform: translateX(-25%);
+          transform: translateX(-25%);
+}
+
+footer .wrapper-footer button#right-footer {
+  right: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+footer .wrapper-footer button#right-footer i {
+  -webkit-transform: translateX(25%);
+          transform: translateX(25%);
+}
+
+footer .wrapper-footer button:focus {
+  outline: none;
+}
+
+footer .wrapper-footer button:active {
+  border-style: none;
+}
+
+footer .wrapper-footer button:active::before {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+footer .wrapper-footer button:hover::before {
+  opacity: 1;
+}
+
+footer .wrapper-footer .container-footer {
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background-color: #440206;
+  text-align: center;
+}
+
+footer .wrapper-footer .container-footer ul.icons {
+  list-style: none;
+  display: inline;
+  margin: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px;
+}
+
+footer .wrapper-footer .container-footer ul.icons li {
+  display: inline;
+  margin: 0 10px;
+}
+
+footer .wrapper-footer .container-footer .icons a.icon-Facebook:hover {
+  background-color: #3B5998;
+}
+
+footer .wrapper-footer .container-footer .icons a.icon-Twitter:hover {
+  background-color: #33ccff;
+}
+
+footer .wrapper-footer .container-footer .icons a.icon-Instagram:hover {
+  background: #f09433;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+}
+
+footer .wrapper-footer .container-footer .icons a.icon-Google:hover {
+  background-color: #fdfdfd;
+}
+
+footer .wrapper-footer .container-footer .icons li a {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto 0 auto;
+  border-radius: 50%;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+  font-size: 32px;
+}
+
+footer .wrapper-footer .container-footer .icons li i {
+  margin: 0;
+  line-height: 60px;
+  text-align: center;
+}
+
+footer .wrapper-footer .container-footer .icons a.icon-Facebook i, footer .wrapper-footer .container-footer .icons a.icon-Twitter i, footer .wrapper-footer .container-footer .icons a.icon-Instagram, footer .wrapper-footer .container-footer .icons a.icon-Google {
+  color: #fff;
+}
+
+footer .wrapper-footer .container-footer .icons a.icon-Facebook:hover i, footer .wrapper-footer .container-footer .icons a.icon-Twitter:hover i, footer .wrapper-footer .container-footer .icons a.icon-Instagram:hover {
+  color: #fff;
+}
+
+footer .wrapper-footer .container-footer .icons a.icon-Google:hover {
+  color: red;
+}
+
+footer .wrapper-footer .container-footer .circulo li a {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto 0 auto;
+  border-radius: 50%;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+  font-size: 32px;
+}
+
+footer .wrapper-footer .container-footer .circulo li i {
+  margin: 0;
+  line-height: 60px;
+  text-align: center;
+}
+
+footer .wrapper-footer .container-footer .circulo li a:hover i, footer .wrapper-footer .container-footer .triggeredHover {
+  -moz-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -ms--transform: rotate(360deg);
+  transform: rotate(360deg);
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+footer .wrapper-footer .container-footer .circulo i {
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+footer .wrapper-footer .container-footer .flecha {
+  -webkit-box-align: self-end;
+      -ms-flex-align: self-end;
+          align-items: self-end;
+  width: 25px;
+  height: 20px;
+}
+
+footer .wrapper-footer .container-footer button {
+  width: 45px;
+  height: 25px;
+  cursor: pointer;
+  font-size: medium;
+  display: flex-end;
+  padding: 2px;
+  margin: 4px;
+  border: 2px solid #440206;
+  color: #440206;
+  background-color: white;
+  font-weight: 600;
+  position: relative;
+  z-index: 0;
+}
+
+footer .wrapper-footer .container-footer .container-info {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
+  padding: 5px;
+}
+
+footer .wrapper-footer .container-footer .container-info .title-info {
+  font-size: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+footer .wrapper-footer .container-footer .container-info .info {
+  margin-top: -20px;
+  font-size: 20px;
+}
+
+footer .wrapper-footer .container-footer .container-links div {
+  padding: 5px;
+  display: inline-block;
+}
+
+footer .wrapper-footer .container-footer .container-links div h5 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 550;
+  margin-bottom: 5px;
+  color: grey;
+}
+
+footer .wrapper-footer .container-footer .container-links div p, footer .wrapper-footer .container-footer .container-links div li {
+  font-size: 1.5rem;
+  padding-left: 3px;
+  margin-bottom: 2px;
+}
+
+footer .wrapper-footer .container-footer .container-links div ul li {
+  text-align: start;
+  list-style: none;
+}
+
+footer .wrapper-footer .container-footer .container-links div a {
+  color: white;
+}
+
+footer .wrapper-footer .container-footer .container-links div a:hover {
+  color: whitesmoke;
+}
+
+footer .wrapper {
+  background-color: #444444;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 22.5px;
+}
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .slider .container h1 {
