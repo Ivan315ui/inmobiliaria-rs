@@ -1,7 +1,7 @@
-let buttonLeft = document.getElementById('left'), buttonRight = document.getElementById('right');
+let buttonLeft = document.querySelector('.grid-wrapper .left'), buttonRight = document.querySelector('.grid-wrapper .right');
 let items = document.querySelectorAll('.grid-wrapper .grid-item');
 items = [].slice.call(items);
-let itemsMarginLeft = 0, iterations = 0;
+let iterations = 0;
 
 buttonLeft.addEventListener('click', () => {
 	let side = "left";
