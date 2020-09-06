@@ -347,8 +347,8 @@ header.scrolled .md-menu ul li:hover a {
   display: grid;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: (1fr)[5];
-      grid-template-rows: repeat(5, 1fr);
+  -ms-grid-rows: (1fr)[4];
+      grid-template-rows: repeat(4, 1fr);
   margin: 5px 0;
 }
 
@@ -362,22 +362,12 @@ header.scrolled .md-menu ul li:hover a {
   border-radius: 2px;
 }
 
-#servicios .container .grid-container .grid-item:first-child, #servicios .container .grid-container .grid-item:nth-child(2) {
-  grid-column: span 2;
-  grid-row: span 1;
-}
-
-#servicios .container .grid-container .grid-item:nth-child(3), #servicios .container .grid-container .grid-item:nth-child(5) {
-  grid-column: span 1;
-  grid-row: span 1;
-}
-
 #servicios .container .grid-container .grid-item:first-child {
-  background-image: url(../imgs/Ventas.jpg);
+  background-image: url(../imgs/Ventas.jpeg);
 }
 
 #servicios .container .grid-container .grid-item:nth-child(2) {
-  background-image: url(../imgs/Alquileres.jpg);
+  background-image: url(../imgs/Alquiler.jpg);
 }
 
 #servicios .container .grid-container .grid-item:nth-child(3) {
@@ -385,13 +375,7 @@ header.scrolled .md-menu ul li:hover a {
 }
 
 #servicios .container .grid-container .grid-item:nth-child(4) {
-  grid-column: span 2;
-  grid-row: span 1;
   background-image: url(../imgs/monte.jpg);
-}
-
-#servicios .container .grid-container .grid-item:nth-child(5) {
-  background-image: url(../imgs/Publicar.jpg);
 }
 
 #servicios .container .grid-container .grid-item a {
@@ -978,8 +962,8 @@ footer .footer-links div ul a:hover::after {
     margin: 0 50px;
   }
   #servicios .container .grid-container {
-    -ms-grid-columns: (1fr)[4];
-        grid-template-columns: repeat(4, 1fr);
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     -ms-grid-rows: (1fr)[2];
         grid-template-rows: repeat(2, 1fr);
@@ -988,20 +972,15 @@ footer .footer-links div ul a:hover::after {
   }
   #servicios .container .grid-container .grid-item {
     margin: 0;
-  }
-  #servicios .container .grid-container .grid-item a i {
-    font-size: 4rem;
-  }
-  #servicios .container .grid-container:first-child, #servicios .container .grid-container:nth-child(2) {
-    grid-column: span 2;
-    grid-row: span 1;
-  }
-  #servicios .container .grid-container:nth-child(3), #servicios .container .grid-container:nth-child(5) {
     grid-column: span 1;
     grid-row: span 1;
   }
-  #servicios .container .grid-container:nth-child(4) {
-    grid-column: span 2;
+  #servicios .container .grid-container .grid-item:first-child {
+    grid-column: span 3;
+    grid-row: span 1;
+  }
+  #servicios .container .grid-container .grid-item a i {
+    font-size: 4rem;
   }
   #contacto .grid {
     -ms-grid-columns: (1fr)[2];
