@@ -655,6 +655,11 @@ footer {
     .footer-row {
         width: 100%;
         padding: 15px;
+        h4 {
+            text-transform: uppercase;
+            font-weight: 300;
+            margin: 0;
+        }
         &:nth-child(1) {
             background-color: #2f2f2f;
         }
@@ -679,11 +684,6 @@ footer {
         width: fit-content;
         div {
             padding: 5px;
-            h4 {
-                text-transform: uppercase;
-                font-weight: 300;
-                margin: 0;
-            }
             ul {
                 padding: 5px 10px 10px;
                 list-style: none;

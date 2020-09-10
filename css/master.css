@@ -809,6 +809,12 @@ footer .footer-row {
   padding: 15px;
 }
 
+footer .footer-row h4 {
+  text-transform: uppercase;
+  font-weight: 300;
+  margin: 0;
+}
+
 footer .footer-row:nth-child(1) {
   background-color: #2f2f2f;
 }
@@ -844,12 +850,6 @@ footer .footer-links {
 
 footer .footer-links div {
   padding: 5px;
-}
-
-footer .footer-links div h4 {
-  text-transform: uppercase;
-  font-weight: 300;
-  margin: 0;
 }
 
 footer .footer-links div ul {

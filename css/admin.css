@@ -1,0 +1,39 @@
+.main {
+  margin-top: 75px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main aside {
+  padding: 10px 15px;
+  background-color: whitesmoke;
+}
+
+.main aside h6 {
+  color: grey;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+
+.main aside nav ul {
+  list-style: none;
+}
+
+.main aside nav ul li {
+  padding: 5px 0;
+}
+
+.main aside nav ul li a {
+  color: #440206;
+}
+
+.main aside nav ul li a:hover {
+  color: white;
+}
+
+footer h4 {
+  text-align: center;
+}
+/*# sourceMappingURL=admin.css.map */

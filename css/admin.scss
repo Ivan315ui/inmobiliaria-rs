@@ -1,0 +1,39 @@
+.main {
+    margin-top: 75px;
+    display: flex;
+    aside {
+        padding: 10px 15px;
+        background-color: whitesmoke;
+        h6 {
+            color: grey;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 10px 0;
+        }
+        nav {
+            ul {
+                list-style: none;
+                li {
+                    padding: 5px 0;
+                    a {
+                        color: #440206;
+                        &:hover {
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    h4 {
+        text-align: center;
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+    
+}

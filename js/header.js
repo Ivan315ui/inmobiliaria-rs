@@ -5,8 +5,10 @@ const initHeight = list.offsetHeight;
 
 //ocultarlo después de almacenar la altura que debería tener al abrirse
 window.onload = () => {
+    list.style.opacity = 0;
     list.style.height = 0;
     list.style.display = "none";
+    list.style.opacity = 0;
     // también cambiar el alto de los elementos de lista (por alguna razón no se puede por css)
     document.getElementsByClassName('md-menu')[0].style.height = document.getElementsByClassName('container')[0].offsetHeight + "px";
 };
@@ -66,13 +68,3 @@ function displayMobileMenu() {
     }
 }
 
-setInterval(() => {
-    let gridItems = document.getElementsByClassName('grid-item');
-    gridItems = [].slice.call(gridItems);
-    let height = gridItems[2].offsetWidth;
-    if (document.querySelector('html').offsetWidth >= 768) {
-        document.querySelector('div.grid-container').style.gridTemplateRows = `repeat(2, ${height + "px"})`;
-    } else {
-        document.querySelector('div.grid-container').style.gridTemplateRows = `repeat(4, ${height / 2 + "px"})`;
-    }
-}, 500);
