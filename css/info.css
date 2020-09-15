@@ -1,0 +1,172 @@
+body {
+  background-color: white;
+}
+
+header {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+header #burger-icon {
+  display: none;
+}
+
+header .mobile-menu {
+  display: none;
+}
+
+header ul li {
+  padding: 20px;
+}
+
+section .container-links {
+  background-color: #444444;
+  position: relative;
+  margin-top: -30%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section .container-links #myLinks {
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 30%;
+}
+
+section .container-links #myLinks .tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 20px;
+  padding: 10px;
+}
+
+section .container-links #myLinks .tabs .tab {
+  font-size: 1.5rem;
+  text-align: center;
+  background: inherit;
+  cursor: pointer;
+  color: white;
+  position: relative;
+  padding: 10px;
+  padding-bottom: 1px;
+  border-radius: 25px;
+}
+
+section .container-links #myLinks .tabs .tab:nth-child(1) {
+  margin-right: 10px;
+}
+
+section .container-links #myLinks .tabs .tab:nth-child(1):hover {
+  background-color: white;
+  color: #440206;
+}
+
+section .container-links #myLinks .tabs .tab:nth-child(2) {
+  margin-right: 10px;
+}
+
+section .container-links #myLinks .tabs .tab:nth-child(2):hover {
+  background-color: white;
+  color: #440206;
+}
+
+section .container-links #myLinks .tabs .tab:nth-child(3):hover {
+  background-color: white;
+  color: #440206;
+}
+
+.contenido {
+  color: white;
+  height: 20%;
+  position: relative;
+  margin-top: -22.5%;
+  margin-bottom: 10%;
+}
+
+.contenido .container .items {
+  padding: 15px;
+  background-color: #444444;
+  text-align: center;
+  display: none;
+  border-radius: 25px;
+}
+
+.contenido .container .items h3 {
+  margin-bottom: 10px;
+  border-bottom: 2px solid #440206;
+  font-size: 225%;
+}
+
+.contenido .container .items p {
+  margin-left: 5px;
+  padding: 35;
+  font-size: 160%;
+}
+
+.contenido .container .items::before {
+  content: " ";
+}
+
+.contenido .container .items.active {
+  display: inline-block;
+}
+
+.container-equipo {
+  margin-bottom: 50px;
+}
+
+.container-equipo .titulo-equipo {
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #444444;
+}
+
+.container-equipo .imagen-ceo {
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container-equipo .imagen-ceo img {
+  height: 500;
+  width: 500;
+  border-radius: 50%;
+  background-color: gray;
+}
+
+.container-equipo .images-team {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+  position: relative;
+  margin: 0 15%;
+}
+
+.container-equipo .images-team img {
+  border: 2px solid black;
+  width: 400;
+  height: auto;
+  border-radius: 5%;
+}
+/*# sourceMappingURL=info.css.map */
