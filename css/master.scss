@@ -1,5 +1,6 @@
 html {
 	font-size: 16px;
+    scroll-behavior: smooth;
 	* {
 		box-sizing: border-box;
 		padding: 0;
@@ -8,7 +9,7 @@ html {
 	}
 	a:hover {
 		text-decoration: none;
-	}
+    }
 }
 
 body {
@@ -16,7 +17,7 @@ body {
 }
 
 header {
-    position: fixed;
+    position: sticky;
     z-index: 2;
     top: 0;
     width: 100%;
@@ -30,13 +31,13 @@ header {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        align-items: center;
-        height: 100%;
+		align-items: center;
         img {
             width: 75px;
         }
         .md-menu {
             display: none;
+            height: 75px;
             ul {
                 height: 100%;
                 display: flex;
@@ -83,19 +84,35 @@ header {
                     bottom: 0;
                 }
             }
+            &.touched {
+				span {
+					&:nth-child(1), &:nth-child(4) {
+						opacity: 0;
+					}
+					&:nth-child(2) {
+						transform: rotate(45deg);
+					}
+					&:nth-child(3) {
+						transform: rotate(-45deg);
+					}
+				}
+            }
         }
         .mobile-menu {
-            width: 100%;
+			width: 100%;
+			height: 0;
             border-top: 1px solid white;
-            transition: 0.3s ease-in-out;
-            opacity: 0;
+			transition: 0.3s ease-in-out;
+			transform: scaleY(0);
+			transform-origin: top;
+			opacity: 0;
             li {
                 text-transform: uppercase;
                 text-align: left;
                 padding: 5px;
                 font-size: 1.25rem;
                 border-bottom: 1px solid white;
-                transition: 0.3s ease-in-out;
+				transition: 0.3s ease-in-out;
                 a {
                     color: white;
                 }
@@ -105,7 +122,12 @@ header {
                         color: #440206;
                     }
                 }
-            }
+			}
+			&.displayed {
+				transform: scaleY(1);
+				height: 206px;
+				opacity: 1;
+			}
         }
     }
 }
@@ -150,7 +172,6 @@ header.scrolled {
 }
 
 .slider {
-    margin-top: 75px;
     width: 100%;
     height: 300px;
     display: flex;
@@ -278,6 +299,7 @@ header.scrolled {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: repeat(4, 1fr);
+        max-width: 960px;
         margin: 5px 0;
         .grid-item {
             border: #444444 solid;
@@ -668,11 +690,11 @@ footer {
         }
         &:nth-child(3) {
             background-color: #383838;
-            small {
-                display: inline-block;
-                width: 100%;
-                text-align: center;
-            }
+        }
+        small {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
         }
     }
     .footer-links {
@@ -775,7 +797,14 @@ footer {
             }
             #burger-icon {
                 display: none;
-            }
+			}
+			.mobile-menu {
+				&.displayed {
+					height: 0;
+					opacity: 0;
+					transform: scaleY(0);
+				}
+			}
         }
     }
     .slider {
@@ -806,7 +835,7 @@ footer {
             gap: 15px;
             grid-template-rows: repeat(2, 1fr);
             padding: 20px 0;
-            margin: 0;
+            margin: 0 auto;
             .grid-item {
                 margin: 0;
                 grid-column: span 1;
