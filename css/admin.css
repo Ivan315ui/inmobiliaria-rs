@@ -73,6 +73,11 @@ header {
   padding: 0 0 0 25px;
 }
 
+.content form span {
+  color: #212529;
+  font-weight: normal;
+}
+
 .query {
   background-color: whitesmoke;
   padding: 5px;
@@ -94,7 +99,7 @@ form {
   width: 100%;
   margin: 20px auto;
   max-width: 450px;
-  border: 1px solid black;
+  border: 1px solid #212529;
 }
 
 form h5 {
@@ -118,7 +123,7 @@ form h5::before {
   height: 100%;
 }
 
-form div {
+form div:nth-of-type(1) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -135,7 +140,7 @@ form div {
   position: relative;
 }
 
-form div a:not([href]):not([class]) {
+form div:nth-of-type(1) a:not([href]):not([class]) {
   font-size: 1.1rem;
   color: #440206;
   min-width: 100px;
@@ -143,7 +148,7 @@ form div a:not([href]):not([class]) {
   cursor: pointer;
 }
 
-form div .underline {
+form div:nth-of-type(1) .underline {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -155,7 +160,7 @@ form div .underline {
   transition: 0.3s ease-in-out;
 }
 
-form div .underline.toggled {
+form div:nth-of-type(1) .underline.toggled {
   left: 50%;
 }
 
@@ -174,17 +179,16 @@ form label {
       flex-wrap: wrap;
 }
 
-form label input {
+form label input:not([type=file]) {
   height: 2rem;
   padding: 5px;
   border: 1px solid grey;
   border-radius: 2px;
-  width: 100%;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
-form label input:focus {
+form label input:not([type=file]):focus {
   border: 1px solid grey;
   outline: none;
   -webkit-box-shadow: 0px 0px 3px 2px grey;
@@ -209,7 +213,58 @@ form label.confirm input:focus {
           box-shadow: none;
 }
 
+form label span, form label textarea {
+  width: 100%;
+}
+
+form label textarea {
+  height: 120px;
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 2px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+form label textarea:focus {
+  border: 1px solid grey;
+  outline: none;
+  -webkit-box-shadow: 0px 0px 3px 2px grey;
+          box-shadow: 0px 0px 3px 2px grey;
+}
+
+form label select {
+  background-color: whitesmoke;
+  color: #212529;
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 3px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+form label select:active {
+  border: 1px solid grey;
+  outline: none;
+  -webkit-box-shadow: 0px 0px 3px 2px grey;
+          box-shadow: 0px 0px 3px 2px grey;
+}
+
+form label select:focus {
+  outline: none;
+}
+
+form label input[type=file] {
+  max-width: 280px;
+  margin: 5px 0;
+}
+
+form label input[type=file]:focus {
+  outline: none;
+}
+
 form button {
+  color: #212529;
   width: 125px;
   margin: 0 10px 10px calc(100% - 135px);
   border: none;
@@ -267,6 +322,45 @@ form button:hover::before {
 form button:hover::after {
   -webkit-transition-delay: 0.3s;
           transition-delay: 0.3s;
+}
+
+.add, .rem, .mod {
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  height: 0;
+}
+
+.add.toggled, .rem.toggled, .mod.toggled {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+
+.add.toggled {
+  height: 419px;
+}
+
+.rem.toggled {
+  height: 106px;
+}
+
+.mod.toggled {
+  height: 255px;
+}
+
+#manage form .underline {
+  width: calc(100% / 3);
+}
+
+#manage form .underline.toggled {
+  left: calc(100% / 3);
+}
+
+#manage form .underline.toggled.toggled-2 {
+  left: calc(100% / 3 * 2);
 }
 
 @media only screen and (min-width: 768px) {

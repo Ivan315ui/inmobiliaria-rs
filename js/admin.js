@@ -1,8 +1,8 @@
 let loc = location.hash;
 let links = [].slice.call(document.querySelectorAll('aside a'));
 let contents = [].slice.call(document.querySelectorAll('.content'));
-let adminOptions = [].slice.call(document.querySelectorAll("form:nth-of-type(1) div a"));
-let propertyOptions = [].slice.call(document.querySelectorAll("form:nth-of-type(2) div a"));
+let adminOptions = [].slice.call(document.querySelectorAll("#admins form div a"));
+let propertyOptions = [].slice.call(document.querySelectorAll("#manage form div a"));
 let underline = [].slice.call(document.querySelectorAll('div.underline'));
 
 
@@ -43,6 +43,13 @@ adminOptions.forEach(option => {
 	});
 });
 
+propertyOptions.forEach(option => {
+	option.addEventListener('click', () => {
+		changeForm(option);
+	});
+});
+
+
 //verificar cuál es el link que se corresponde con la url actual
 function checkLink(hash) {
 	links.forEach(link => {
@@ -71,25 +78,54 @@ function displaySection(hash="removeAll") {
 }
 
 function changeForm(source) {
-	if (source.text === "Añadir") {
-		if (underline[0].classList.value === 'underline') {
-			underline[0].style.transform = 'scale(1.1)';
-			setTimeout(() => {
-				underline[0].style.transform = 'scale(1)';
-			}, 300);
-		} else {
-			underline[0].classList.remove('toggled');
-			document.querySelector('#confirmar').value = '';
-		}
-	} else if (source.text === 'Eliminar') {
-		if (underline[0].classList.value === 'underline toggled') {
-			underline[0].style.transform = 'scale(1.1)';
-			setTimeout(() => {
-				underline[0].style.transform = 'scale(1)';
-			}, 300);
-		} else {
-			underline[0].classList.add('toggled');
-			document.querySelector('#confirmar').value = 'remove';
+	let formSections = [].slice.call(document.querySelectorAll('#manage form div'));
+	formSections.shift();
+	formSections.shift();
+	if (source.id) {
+		formSections.forEach(section => {
+			if (section.classList.contains(source.id)) {
+				if (section.classList.contains('toggled')) {
+					underline[1].style.transform = 'scale(1.1)';
+					setTimeout(() => {
+						underline[1].style.transform = 'scale(1)';
+					}, 300);
+				} else {
+					if (source.id === 'add') {
+						underline[1].classList.value = 'underline';
+					} else {
+						underline[1].classList.value = 'underline toggled';
+						if (source.id === 'mod') {
+							underline[1].classList.add('toggled-2');
+						}
+					}
+					section.classList.add('toggled');
+				}
+			} else {
+				section.classList.remove('toggled');
+			}
+		});
+		document.querySelector('#confirmarP').value = source.id;
+	} else {
+		if (source.text === "Añadir") {
+			if (underline[0].classList.value === 'underline') {
+				underline[0].style.transform = 'scale(1.1)';
+				setTimeout(() => {
+					underline[0].style.transform = 'scale(1)';
+				}, 300);
+			} else {
+				underline[0].classList.remove('toggled');
+				document.querySelector('#confirmar').value = '';
+			}
+		} else if (source.text === 'Eliminar') {
+			if (underline[0].classList.value === 'underline toggled') {
+				underline[0].style.transform = 'scale(1.1)';
+				setTimeout(() => {
+					underline[0].style.transform = 'scale(1)';
+				}, 300);
+			} else {
+				underline[0].classList.add('toggled');
+				document.querySelector('#confirmar').value = 'remove';
+			}
 		}
 	}
 }
