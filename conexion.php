@@ -4,6 +4,7 @@ $usuario = 'root';
 $contraseña = '';
     try {
         $conexionBD = new PDO($dsn, $usuario, $contraseña);
+        
     } catch (PDOException $e) {
         echo 'Falló la conexión' . $e->getMessage();
     }

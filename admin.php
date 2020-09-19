@@ -189,24 +189,44 @@
 						<h5>Administradores actuales</h5>
 						<!--generar un párrafo por cada resultado de la consulta-->
 					</div>
-					<form action="" method="post" autocomplete="off">
-						<h5>Acciones</h5>
-						<div>
-							<a>Añadir</a><a>Eliminar</a>
-							<div class="underline"></div>
-						</div>
+					<form action="manage-admins.php" method="post" autocomplete="off">
+						<h5>Añadir</h5>
 						<label>
 							Nombre de administrador:
-							<input type="text" name="nombre" id="nombre">
+							<input type="text" name="nombre-añadir" id="nombre">
 						</label>
 						<label>
 							Email:
-							<input type="email" name="mail" id="mail">
+							<input type="email" name="mail-añadir" id="mail">
+						</label>
+						</label>
+						<label>
+							Contraseña:
+							<input type="password" name="contraseña-añadir" id="contraseña">
+						</label>
+						<label class="confirm">
+							<input type="checkbox" name="confirmar-añadir" id="confirmar" value=""> Confirmar acción.
+						</label>
+						<button type="submit" name="añadir">Finalizar</button>
+					</form>
+					<form action="manage-admins.php" method="post" autocomplete="off">
+						<h5>Eliminar</h5>
+						<label>
+							Nombre de administrador:
+							<input type="text" name="nombre-eliminar" id="nombre">
+						</label>
+						<label>
+							Email:
+							<input type="email" name="mail-eliminar" id="mail">
+						</label>
+						<label>
+							Contraseña:
+							<input type="password" name="contraseña-eliminar" id="contraseña">
 						</label>
 						<label class="confirm">
 							<input type="checkbox" name="confirmar" id="confirmar" value=""> Confirmar acción.
 						</label>
-						<button>Finalizar</button>
+						<button type="submit" name="eliminar">Finalizar</button>
 					</form>
 				</section>
 			</div>
