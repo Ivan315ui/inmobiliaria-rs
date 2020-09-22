@@ -13,3 +13,11 @@ function displayMenu() {
         header.style.padding = 0;
     }
 }
+
+window.addEventListener('scroll', ()=> {
+    if (window.pageYOffset > header.offsetHeight) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+})

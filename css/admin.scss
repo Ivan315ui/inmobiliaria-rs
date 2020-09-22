@@ -257,6 +257,13 @@ form {
     }
 }
 
+.contraseña {
+    transition: 0.3s ease-in-out;
+    &.toggled {
+        opacity: 0;
+    }
+}
+
 .add, .rem, .mod {
     transition: 0.5s ease-in-out;
     transform-origin: top;

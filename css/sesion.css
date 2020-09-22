@@ -1,0 +1,29 @@
+.main .col-md-5 h6 {
+  padding: 10px 0;
+}
+
+.main .col-md-5 span {
+  color: #440206;
+}
+
+.main .col-md-7 h5 {
+  padding: 5px;
+  background-color: #440206;
+}
+
+.main .col-md-7 label {
+  padding: 5px;
+}
+
+@media only screen and (min-width: 768px) {
+  .row .col-md-7 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: auto;
+  }
+  .row .col-md-7 form {
+    margin: auto;
+  }
+}
+/*# sourceMappingURL=sesion.css.map */

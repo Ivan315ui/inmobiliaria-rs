@@ -2,10 +2,9 @@
 //verificación de que se haya iniciado sesión
 session_start();
 
-if(!isset($_SESSION['admin'])) {
-	header('Location: session.php');
+if (!isset($_SESSION['admin'])) {
+	header('Location: sesion.php');
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -195,7 +194,7 @@ if(!isset($_SESSION['admin'])) {
 						<h5>Administradores actuales</h5>
 						<!--generar un párrafo por cada resultado de la consulta-->
 					</div>
-					<form action="" method="post" autocomplete="off">
+					<form action="manage-admins.php" method="post" autocomplete="off">
 						<h5>Acciones</h5>
 						<div>
 							<a>Añadir</a><a>Eliminar</a>
@@ -209,8 +208,12 @@ if(!isset($_SESSION['admin'])) {
 							Email:
 							<input type="email" name="mail" id="mail">
 						</label>
+						<label class="contraseña">
+							Contraseña:
+							<input type="text" name="contraseña" id="contraseña">
+						</label>
 						<label class="confirm">
-							<input type="checkbox" name="confirmar" id="confirmar" value=""> Confirmar acción.
+							<input type="checkbox" name="confirmar" id="confirmar" value="añadir"> Confirmar acción.
 						</label>
 						<button>Finalizar</button>
 					</form>
@@ -255,6 +258,7 @@ if(!isset($_SESSION['admin'])) {
 								<select name="categoría" id="categoría">
 									<option value="venta">Venta</option>
 									<option value="alquiler">Alquiler</option>
+									<option value="ambas">Venta/Alquiler</option>
 								</select>
 							</label>
 							<label class="descrip">
@@ -320,32 +324,6 @@ if(!isset($_SESSION['admin'])) {
 		</div>
 	</div>
 	<footer>
-		<!--
-
-			<div class="footer-row">
-				<h4>Manual de administrador</h4>
-				<div class="container footer-links">
-					<div>
-						<ul>
-							<li><a href="#">Documentación</a></li>
-							<li><a href="#">Acciones del panel</a></li>
-						</ul>
-					</div>
-					<div>
-						<ul>
-							<li><a href="#">Nosotros</a></li>
-							<li><a href="#">Contacto</a></li>
-						</ul>
-					</div>
-					<div>
-						<ul>
-							<li><a href="#">Preguntas frecuentes</a></li>
-							<li><a href="#">Servicios</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			-->
 		<div class="footer-row">
 			<small>@ 2020 RS Propiedades</small>
 		</div>

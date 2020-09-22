@@ -1,3 +1,4 @@
+@charset "UTF-8";
 header {
   position: static;
 }
@@ -322,6 +323,15 @@ form button:hover::before {
 form button:hover::after {
   -webkit-transition-delay: 0.3s;
           transition-delay: 0.3s;
+}
+
+.contraseña {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.contraseña.toggled {
+  opacity: 0;
 }
 
 .add, .rem, .mod {

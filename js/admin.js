@@ -114,7 +114,11 @@ function changeForm(source) {
 				}, 300);
 			} else {
 				underline[0].classList.remove('toggled');
-				document.querySelector('#confirmar').value = '';
+				document.querySelector('#confirmar').value = 'añadir';
+				document.querySelector('.contraseña').style.display = 'flex';
+				setTimeout(() => {
+					document.querySelector('.contraseña').classList.remove('toggled');
+				}, 25);
 			}
 		} else if (source.text === 'Eliminar') {
 			if (underline[0].classList.value === 'underline toggled') {
@@ -124,7 +128,11 @@ function changeForm(source) {
 				}, 300);
 			} else {
 				underline[0].classList.add('toggled');
-				document.querySelector('#confirmar').value = 'remove';
+				document.querySelector('#confirmar').value = 'eliminar';
+				document.querySelector('.contraseña').classList.add('toggled');
+				setTimeout(() => {
+					document.querySelector('.contraseña').style.display = 'none';
+				}, 300);
 			}
 		}
 	}
