@@ -194,7 +194,7 @@ if (!isset($_SESSION['admin'])) {
 						<h5>Administradores actuales</h5>
 						<!--generar un párrafo por cada resultado de la consulta-->
 					</div>
-					<form action="manage-admins.php" method="post" autocomplete="off">
+					<form action="manage-admins.php" method="post" autocomplete="off" id="eleccion">
 						<h5>Acciones</h5>
 						<div>
 							<a>Añadir</a><a>Eliminar</a>
@@ -202,20 +202,20 @@ if (!isset($_SESSION['admin'])) {
 						</div>
 						<label>
 							Nombre de administrador:
-							<input type="text" name="nombre" id="nombre">
+							<input type="text" name="nombre-añadir" id="nombre">
 						</label>
 						<label>
 							Email:
-							<input type="email" name="mail" id="mail">
+							<input type="email" name="mail-añadir" id="mail">
 						</label>
 						<label class="contraseña">
 							Contraseña:
-							<input type="text" name="contraseña" id="contraseña">
+							<input type="password" name="contraseña-añadir" id="contraseña">
 						</label>
 						<label class="confirm">
 							<input type="checkbox" name="confirmar" id="confirmar" value="añadir"> Confirmar acción.
 						</label>
-						<button>Finalizar</button>
+						<button id="boton">Finalizar</button>
 					</form>
 				</section>
 			</div>
