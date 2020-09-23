@@ -78,9 +78,6 @@ function displaySection(hash="removeAll") {
 }
 
 function changeForm(source) {
-	let name = document.querySelector('#nombre')
-	let mail = document.querySelector('#mail')
-	let pass = document.querySelector('#contraseña')
 	let formSections = [].slice.call(document.querySelectorAll('#manage form div'));
 	formSections.shift();
 	formSections.shift();
@@ -118,9 +115,6 @@ function changeForm(source) {
 			} else {
 				underline[0].classList.remove('toggled');
 				document.querySelector('#confirmar').value = 'añadir';
-				name.setAttribute('name', 'nombre-añadir');
-				mail.setAttribute('name', 'mail-añadir');
-				pass.setAttribute('name', 'contraseña-añadir');
 				document.querySelector('.contraseña').style.display = 'flex';
 				setTimeout(() => {
 					document.querySelector('.contraseña').classList.remove('toggled');
@@ -135,9 +129,6 @@ function changeForm(source) {
 			} else {
 				underline[0].classList.add('toggled');
 				document.querySelector('#confirmar').value = 'eliminar';
-				name.setAttribute('name', 'nombre-eliminar');
-				mail.setAttribute('name', 'mail-eliminar');
-				pass.setAttribute('name', 'contraseña-eliminar');
 				document.querySelector('.contraseña').classList.add('toggled');
 				setTimeout(() => {
 					document.querySelector('.contraseña').style.display = 'none';

@@ -2,6 +2,14 @@ header {
     position: static;
 }
 
+.alert {
+    margin-top: 1rem;
+}
+
+.close {
+    height: 100%;
+}
+
 .main {
     display: flex;
     aside {
@@ -299,6 +307,51 @@ form {
             left: calc(100% / 3);
             &.toggled-2 {
                 left: calc(100% / 3 * 2);
+            }
+        }
+    }
+}
+
+
+footer {
+    .sesion {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        small, a {
+            width: auto;
+        }
+        a {
+            color: white;
+            position: relative;
+            &::before, &::after {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                opacity: 0.9;
+                transition: 0.3s ease-in-out;
+            }
+            &::before {
+                background-color: white;
+                transition-delay: 0ms;
+            }
+            &::after {
+                background-color: #440206;
+                transition-delay: 0.15s;
+            }
+            &:hover {
+                &::before, &::after {
+                    width: 100%;
+                }
+                &::before {
+                    transition-delay: 0.15s;
+                }
+                &::after {
+                    transition-delay: 0ms;
+                }   
             }
         }
     }

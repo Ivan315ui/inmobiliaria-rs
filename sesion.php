@@ -3,9 +3,6 @@
 include_once('conexion.php');
 session_start();
 
-if (isset($_SESSION['admin'])) {
-	header('Location: admin.php');
-}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$credenciales = array($_POST['mail'], $_POST['contraseña']);
@@ -13,10 +10,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$consulta->execute($credenciales);
 
 	$resultados = $consulta->fetch();
-
+	
 	if ($resultados) {
 		$_SESSION['admin'] = $resultados['Nombre_Administrador'];
 	}
+} else {
+	if (isset($_GET['endsession']) && $_GET['endsession'] == 'true') {
+		session_destroy();
+	}
+}
+
+if (isset($_SESSION['admin'])) {
+	header('Location: admin.php');
 }
 
 ?>
@@ -38,48 +43,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-	<header>
-		<div class="container">
-			<img src="imgs/logo.png" alt="rs-logo">
-			<nav class="md-menu">
-				<ul>
-					<li><a href="index.html">Inicio</a></li>
-					<li><a href="info.html">Nosotros</a></li>
-					<li><a href="">Servicios</a></li>
-					<li><a href="consulta.html">Contacto</a></li>
-				</ul>
-			</nav>
-			<div id="burger-icon">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
-			<nav class="mobile-menu">
-				<ul>
-					<li><a href="index.html">Inicio</a></li>
-					<li><a href="info.html">Nosotros</a></li>
-					<li><a href="">Servicios</a></li>
-					<li><a href="">Propiedades</a></li>
-					<li><a href="consulta.html">Contacto</a></li>
-				</ul>
-			</nav>
+	<?php require_once('templates/header.html') ?>
+	<?php if ($_SERVER['REQUEST_METHOD'] == 'POST' && !$resultados) : ?>
+		<div class="alert alert-danger container" role="alert">
+			No hay ningún usuario con esas credenciales en la base de datos, por favor, inténtelo de nuevo.
 		</div>
-	</header>
+	<?php endif ?>
 	<div class="container main">
-		<?php if(!$resultados): //probar esto ?>
-			<div class="alert alert-danger" role="alert">
-				No hay ningún usuario con esas credenciales en la base de datos, por favor, inténtelo de nuevo.
-			</div>
-		<?php endif ?>
 		<div class="row">
 			<aside class="col-md-5">
 				<h6>Inicio de sesión</h6>
 				<p>
-					Bienvenido a la página de inicio de sesión. Si usted es un administrador, puede usar esta página para verificar sus 
-					credenciales e ingresar a la sección de administrador y poder realizar diversas tareas de gestión sobre el sitio web. 
+					Bienvenido a la página de inicio de sesión. Si usted es un administrador, puede usar esta página para verificar sus
+					credenciales e ingresar a la sección de administrador y poder realizar diversas tareas de gestión sobre el sitio web.
 					<br>
-					En caso de que no sea un administrador o por alguna razón no pueda iniciar sesión, comuníquese con un administrador 
+					En caso de que no sea un administrador o por alguna razón no pueda iniciar sesión, comuníquese con un administrador
 					para solucionar su problema o añadirse a la lista.
 					<br>
 					<span>Nótese que si ya se ha iniciado sesión, esta parte será inaccesible a menos que cierre sesión como administrador.</span>
@@ -94,59 +72,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					</label>
 					<label class="contraseña">
 						Contraseña:
-						<input type="text" name="contraseña" id="contraseña">
+						<input type="password" name="contraseña" id="contraseña">
 					</label>
 					<button>Iniciar sesión</button>
 				</form>
 			</div>
 		</div>
 	</div>
-	<footer>
-		<div class="footer-row">
-			<div class="container social">
-				<a class="icon-Facebook" href="#">
-					<i class="fab fa-facebook-f"></i>
-				</a>
-				<a class="icon-Twitter" href="#">
-					<i class="fab fa-twitter"></i>
-				</a>
-				<a class="icon-Instagram" href="#">
-					<i class="fab fa-instagram"></i>
-				</a>
-				<a class="icon-Google" href="#">
-					<i class="far fa-envelope"></i>
-				</a>
-			</div>
-		</div>
-		<div class="footer-row">
-			<div class="container footer-links">
-				<div>
-					<h4>Preguntas frecuentes</h4>
-					<ul>
-						<li><a href="#">¿Cómo publicar una propiedad?</a></li>
-						<li><a href="#">Horarios de atención</a></li>
-					</ul>
-				</div>
-				<div>
-					<h4>Soporte</h4>
-					<ul>
-						<li><a href="#">Nosotros</a></li>
-						<li><a href="#">Contacto</a></li>
-					</ul>
-				</div>
-				<div>
-					<h4>Información</h4>
-					<ul>
-						<li><a href="#">Preguntas frecuentes</a></li>
-						<li><a href="#">Servicios</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="footer-row">
-			<small>@ 2020 RS Propiedades</small>
-		</div>
-	</footer>
+	<?php require_once('templates/footer.html') ?>
 </body>
 
 </html>

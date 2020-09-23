@@ -3,8 +3,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RS Propiedades: Nosotros</title>
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/info.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<link
@@ -12,39 +10,13 @@
 		rel="stylesheet">
 	<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/info.css">
+    <link rel="stylesheet" href="css/master.css">
 	<script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
 	<script src="js/tab.js" defer></script>
-	<script src="js/navMobile.js" defer></script>
 </head>
 <body>
-    <header>
-		<div class="container">
-			<img src="imgs/logo.png" alt="rs-logo">
-			<nav class="md-menu">
-				<ul>
-					<li><a href="index.html">Inicio</a></li>
-					<li><a href="info.html">Nosotros</a></li>
-					<li><a href="">Servicios</a></li>
-					<li><a href="consulta.html">Contacto</a></li>
-				</ul>
-			</nav>
-			<div id="burger-icon">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
-			<nav class="mobile-menu">
-				<ul>
-					<li><a href="index.html">Inicio</a></li>
-					<li><a href="info.html">Nosotros</a></li>
-					<li><a href="">Servicios</a></li>
-					<li><a href="">Propiedades</a></li>
-					<li><a href="consulta.html">Contacto</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
+	<?php require_once('templates/header.html') ?>
 	<section>
 		<div class="container-links">
 			<div id="myLinks">
@@ -119,51 +91,6 @@
 			</div>
 		</div>
 	</div>
-    <footer>
-		<div class="footer-row">
-			<div class="container social">
-				<a class="icon-Facebook" href="#">
-					<i class="fab fa-facebook-f"></i>
-				</a>
-				<a class="icon-Twitter" href="#">
-					<i class="fab fa-twitter"></i>
-				</a>
-				<a class="icon-Instagram" href="#">
-					<i class="fab fa-instagram"></i>
-				</a>
-				<a class="icon-Google" href="#">
-					<i class="far fa-envelope"></i>
-				</a>
-			</div>
-		</div>
-		<div class="footer-row">
-			<div class="container footer-links">
-				<div>
-					<h4>Preguntas frecuentes</h4>
-					<ul>
-						<li><a href="#">¿Cómo publicar una propiedad?</a></li>
-						<li><a href="#">Horarios de atención</a></li>
-					</ul>
-				</div>
-				<div>
-					<h4>Soporte</h4>
-					<ul>
-						<li><a href="#">Nosotros</a></li>
-						<li><a href="#">Contacto</a></li>
-					</ul>
-				</div>
-				<div>
-					<h4>Información</h4>
-					<ul>
-						<li><a href="#">Preguntas frecuentes</a></li>
-						<li><a href="#">Servicios</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="footer-row">
-			<small>@ 2020 RS Propiedades</small>
-		</div>
-	</footer>
+    <?php require_once('templates/footer.html') ?>
 </body>
 </html>

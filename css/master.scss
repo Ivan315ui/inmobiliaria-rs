@@ -643,8 +643,10 @@ header.scrolled {
         text-align: center;
         border-radius: 50%;
         transition: 0.5s ease-in-out;
+        display: flex;
         i {
             color: white;
+            margin: auto;
         }
         &:nth-child(1) {
             &:hover {
@@ -698,7 +700,6 @@ footer {
         }
     }
     .footer-links {
-        height: 100%;
         display: grid;
         grid-template-columns: 100%;
         grid-auto-rows: 1fr;
@@ -721,7 +722,7 @@ footer {
                         bottom: -2px;
                         left: 0;
                         opacity: 0.9;
-                        transition: 0.5s ease-in-out;
+                        transition: 0.3s ease-in-out;
                     }
                     &::before {
                         background-color: white;
@@ -729,14 +730,14 @@ footer {
                     }
                     &::after {
                         background-color: #440206;
-                        transition-delay: 0.3s;
+                        transition-delay: 0.15s;
                     }
                     &:hover {
                         &::before, &::after {
                             width: 100%;
                         }
                         &::before {
-                            transition-delay: 0.3s;
+                            transition-delay: 0.15s;
                         }
                         &::after {
                             transition-delay: 0ms;

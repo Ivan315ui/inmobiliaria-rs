@@ -1,3 +1,7 @@
+body {
+    min-height: 100vh;
+}
+
 .main {
     .col-md-5 {
         h6 {
@@ -18,12 +22,27 @@
     }
 }
 
+
 @media only screen and (min-width: 768px) {
     .row .col-md-7 {
         display: flex;
         overflow: auto;
         form {
             margin: auto;
+        }
+    }
+}
+
+@media only screen and (min-height: 900px) {
+    .main {
+        height: calc(100vh - 76px - 275px);
+        .col-md-5 {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            * {
+                width: 100%;
+            }
         }
     }
 }

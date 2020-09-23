@@ -5,6 +5,7 @@ session_start();
 if (!isset($_SESSION['admin'])) {
 	header('Location: sesion.php');
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,38 +21,28 @@ if (!isset($_SESSION['admin'])) {
 	<link rel="stylesheet" href="css/admin.css">
 	<script src="js/header.js" defer></script>
 	<script src="js/admin.js" defer></script>
-	<script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous" defer></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous" defer></script>
 </head>
 
 <body>
-	<header>
-		<div class="container">
-			<img src="imgs/logo.png" alt="rs-logo">
-			<nav class="md-menu">
-				<ul>
-					<li><a href="">Inicio</a></li>
-					<li><a href="">Nosotros</a></li>
-					<li><a href="">Servicios</a></li>
-					<li><a href="">Contacto</a></li>
-				</ul>
-			</nav>
-			<div id="burger-icon">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
-			<nav class="mobile-menu">
-				<ul>
-					<li><a href="">Inicio</a></li>
-					<li><a href="">Nosotros</a></li>
-					<li><a href="">Servicios</a></li>
-					<li><a href="">Propiedades</a></li>
-					<li><a href="">Contacto</a></li>
-				</ul>
-			</nav>
+	<?php require_once('templates/header.html') ?>
+	<?php if(isset($_GET['result']) && $_GET['result'] == 'success'):?>
+		<div class="alert alert-success alert-dismissible fade show container" role="alert">
+			<strong>Operación realizada exitosamente</strong>. Por favor, cierre esta alerta.
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
 		</div>
-	</header>
+	<?php elseif(isset($_GET['result']) && $_GET['result'] == 'fail'):?>
+		<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+			<strong>Hubo un problema al realizar la operación, verifique los datos</strong>. Al finalizar de leer, cierre esta alerta.
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	<?php endif ?>
 	<div class="main container">
 		<div class="row">
 			<aside class="col-md-4">
@@ -194,7 +185,7 @@ if (!isset($_SESSION['admin'])) {
 						<h5>Administradores actuales</h5>
 						<!--generar un párrafo por cada resultado de la consulta-->
 					</div>
-					<form action="manage-admins.php" method="post" autocomplete="off" id="eleccion">
+					<form action="manage-actions.php" method="post" autocomplete="off">
 						<h5>Acciones</h5>
 						<div>
 							<a>Añadir</a><a>Eliminar</a>
@@ -202,15 +193,15 @@ if (!isset($_SESSION['admin'])) {
 						</div>
 						<label>
 							Nombre de administrador:
-							<input type="text" name="nombre-añadir" id="nombre">
+							<input type="text" name="nombre" id="nombre">
 						</label>
 						<label>
 							Email:
-							<input type="email" name="mail-añadir" id="mail">
+							<input type="email" name="mail" id="mail">
 						</label>
 						<label class="contraseña">
 							Contraseña:
-							<input type="password" name="contraseña-añadir" id="contraseña">
+							<input type="password" name="contraseña" id="contraseña">
 						</label>
 						<label class="confirm">
 							<input type="checkbox" name="confirmar" id="confirmar" value="añadir"> Confirmar acción.
@@ -223,7 +214,7 @@ if (!isset($_SESSION['admin'])) {
 				<section id="manage">
 					<h4>Gestionar archivos y propiedades</h4>
 					<p>
-						Esta pestaña es la de gestión de propiedades. Las acciones posibles de realizar en este apartado son: añadir, 
+						Esta pestaña es la de gestión de propiedades. Las acciones posibles de realizar en este apartado son: añadir,
 						eliminar o cambiar la información de las propiedades y sus respectivas imágenes.
 					</p>
 					<div class="query">
@@ -238,15 +229,15 @@ if (!isset($_SESSION['admin'])) {
 						</div>
 						<div class="add toggled">
 							<label>
-								Dirección: 
+								Dirección:
 								<input type="text" name="dirección" id="dirección">
 							</label>
 							<label>
-								Piso: 
+								Piso:
 								<input type="text" name="piso" id="piso">
 							</label>
 							<label>
-								Departamento: 
+								Departamento:
 								<input type="text" name="depto" id="depto">
 							</label>
 							<label>
@@ -325,7 +316,10 @@ if (!isset($_SESSION['admin'])) {
 	</div>
 	<footer>
 		<div class="footer-row">
-			<small>@ 2020 RS Propiedades</small>
+			<div class="container sesion">
+				<small>@ 2020 RS Propiedades</small>
+				<a href="sesion.php?endsession=true">Cerrar sesión</a>
+			</div>
 		</div>
 	</footer>
 </body>
