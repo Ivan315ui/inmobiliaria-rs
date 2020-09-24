@@ -221,7 +221,7 @@ if (!isset($_SESSION['admin'])) {
 						<h5>Listado de propiedades actuales</h5>
 						<!--generar un párrafo por cada resultado de la consulta-->
 					</div>
-					<form action="" method="get" autocomplete="off">
+					<form action="manage-properties.php" method="post" autocomplete="off">
 						<h5>Gestionar propiedades</h5>
 						<div>
 							<a id="add">Añadir</a><a id="rem">Eliminar</a><a id="mod">Modificar</a>
@@ -245,6 +245,14 @@ if (!isset($_SESSION['admin'])) {
 								<input type="text" name="título" id="título">
 							</label>
 							<label>
+								Tipo:
+								<select name="tipo" id="tipo">
+									<option value="1">Casa</option>
+									<option value="2">Departamento</option>
+									<option value="3">Galpon</option>
+								</select>
+							</label>
+							<label>
 								Categoría:
 								<select name="categoría" id="categoría">
 									<option value="venta">Venta</option>
@@ -263,23 +271,19 @@ if (!isset($_SESSION['admin'])) {
 									<option value="monte">Monte Hermoso</option>
 								</select>
 							</label>
-							<label>
-								Imágenes:
-								<input type="file" name="imágenes" id="imágenes" multiple>
-							</label>
 						</div>
 						<div class="rem">
 							<label>
 								ID:
-								<input type="text" name="ridprop">
+								<input type="text" name="ridprop" id="ridprop">
 							</label>
 							<label>
 								Dirección:
-								<input type="text" name="rdirección">
+								<input type="text" name="rdirección" id="rdirección">
 							</label>
 							<label>
 								Título:
-								<input type="text" name="rtítulo">
+								<input type="text" name="rtítulo" id="rtítulo">
 							</label>
 						</div>
 						<div class="mod">
