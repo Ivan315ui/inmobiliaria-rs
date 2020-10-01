@@ -3,6 +3,14 @@ header {
   position: static;
 }
 
+.alert {
+  margin-top: 1rem;
+}
+
+.close {
+  height: 100%;
+}
+
 .main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -181,6 +189,7 @@ form label {
 }
 
 form label input:not([type=file]) {
+  width: 100%;
   height: 2rem;
   padding: 5px;
   border: 1px solid grey;
@@ -256,8 +265,9 @@ form label select:focus {
 }
 
 form label input[type=file] {
-  max-width: 280px;
+  width: 280px;
   margin: 5px 0;
+  margin-left: auto;
 }
 
 form label input[type=file]:focus {
@@ -350,15 +360,15 @@ form button:hover::after {
 }
 
 .add.toggled {
-  height: 419px;
+  height: 580px;
 }
 
 .rem.toggled {
-  height: 106px;
+  height: 178px;
 }
 
 .mod.toggled {
-  height: 255px;
+  height: 580px;
 }
 
 #manage form .underline {
@@ -371,6 +381,85 @@ form button:hover::after {
 
 #manage form .underline.toggled.toggled-2 {
   left: calc(100% / 3 * 2);
+}
+
+footer .sesion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+footer .sesion small, footer .sesion a {
+  width: auto;
+}
+
+footer .sesion a {
+  color: white;
+  position: relative;
+}
+
+footer .sesion a::before, footer .sesion a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  opacity: 0.9;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+footer .sesion a::before {
+  background-color: white;
+  -webkit-transition-delay: 0ms;
+          transition-delay: 0ms;
+}
+
+footer .sesion a::after {
+  background-color: #440206;
+  -webkit-transition-delay: 0.15s;
+          transition-delay: 0.15s;
+}
+
+footer .sesion a:hover::before, footer .sesion a:hover::after {
+  width: 100%;
+}
+
+footer .sesion a:hover::before {
+  -webkit-transition-delay: 0.15s;
+          transition-delay: 0.15s;
+}
+
+footer .sesion a:hover::after {
+  -webkit-transition-delay: 0ms;
+          transition-delay: 0ms;
+}
+
+@media only screen and (min-width: 414px) {
+  .add.toggled, .mod.toggled {
+    height: 556px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  form label input:not([type=file]) {
+    width: auto;
+  }
+  .add.toggled {
+    height: 452px;
+  }
+  .rem.toggled {
+    height: 106px;
+  }
+  .mod.toggled {
+    height: 452px;
+  }
 }
 
 @media only screen and (min-width: 768px) {

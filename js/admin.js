@@ -15,7 +15,7 @@ let interval = setInterval(() => {
 			content.style.height = 'auto';
 		}
 	});
-}, 2000);
+}, 500);
 
 links.forEach(link => {
 	if (links.indexOf(link) > 3) {

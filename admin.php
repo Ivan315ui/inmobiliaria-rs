@@ -36,12 +36,28 @@ if (!isset($_SESSION['admin'])) {
 			</button>
 		</div>
 	<?php elseif(isset($_GET['result']) && $_GET['result'] == 'fail'):?>
-		<div class="alert alert-danger alert-dismissible fade show container" role="alert">
-			<strong>Hubo un problema al realizar la operación, verifique los datos</strong>. Al finalizar de leer, cierre esta alerta.
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
+		<?php if(isset($_GET['badImageType']) && $_GET['badImageType'] == 'true'):?>
+			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+				<strong>Solo se admiten archivos de imagen para subir</strong>. Al finalizar de leer, cierre esta alerta.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php elseif(isset($_GET['files']) && $_GET['files'] == 'fail'): ?>
+			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+				<strong>Hubo un problema al subir los archivos</strong>. Por favor, verifique los datos e inténtelo de nuevo en unos instantes.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php else: ?>
+			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+				<strong>Hubo un problema al realizar la operación, verifique los datos</strong>. Al finalizar de leer, cierre esta alerta.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php endif ?>
 	<?php endif ?>
 	<div class="main container">
 		<div class="row">
@@ -221,7 +237,7 @@ if (!isset($_SESSION['admin'])) {
 						<h5>Listado de propiedades actuales</h5>
 						<!--generar un párrafo por cada resultado de la consulta-->
 					</div>
-					<form action="manage-properties.php" method="post" autocomplete="off">
+					<form action="manage-properties.php" method="post" autocomplete="off"  enctype="multipart/form-data">
 						<h5>Gestionar propiedades</h5>
 						<div>
 							<a id="add">Añadir</a><a id="rem">Eliminar</a><a id="mod">Modificar</a>
@@ -250,6 +266,8 @@ if (!isset($_SESSION['admin'])) {
 									<option value="1">Casa</option>
 									<option value="2">Departamento</option>
 									<option value="3">Galpon</option>
+									<option value="4">Terreno</option>
+									<option value="5">Lote</option>
 								</select>
 							</label>
 							<label>
@@ -271,6 +289,10 @@ if (!isset($_SESSION['admin'])) {
 									<option value="monte">Monte Hermoso</option>
 								</select>
 							</label>
+							<label for="">
+								Archivos:
+								<input type="file" name="files[]" multiple="">
+							</label>
 						</div>
 						<div class="rem">
 							<label>
@@ -287,7 +309,7 @@ if (!isset($_SESSION['admin'])) {
 							</label>
 						</div>
 						<div class="mod">
-							<label>
+							<label style="display: none;">
 								ID:
 								<input type="text" name="midprop">
 							</label>
@@ -296,12 +318,49 @@ if (!isset($_SESSION['admin'])) {
 								<input type="text" name="mdirección">
 							</label>
 							<label>
+								Piso:
+								<input type="text" name="mpiso">
+							</label>
+							<label>
+								Departamento:
+								<input type="text" name="mdepto">
+							</label>
+							<label>
 								Título:
 								<input type="text" name="mtítulo">
+							</label>
+							<label>
+								Tipo:
+								<select name="mtipo">
+									<option value="1">Casa</option>
+									<option value="2">Departamento</option>
+									<option value="3">Galpon</option>
+									<option value="4">Terreno</option>
+									<option value="5">Lote</option>
+								</select>
+							</label>
+							<label>
+								Categoría:
+								<select name="mcategoría">
+									<option value="venta">Venta</option>
+									<option value="alquiler">Alquiler</option>
+									<option value="ambas">Venta/Alquiler</option>
+								</select>
 							</label>
 							<label class="descrip">
 								<span>Descripción:</span>
 								<textarea name="mdescripción" cols="30" rows="10"></textarea>
+							</label>
+							<label>
+								Localidad:
+								<select name="mlocalidad">
+									<option value="bahía">Bahía Blanca</option>
+									<option value="monte">Monte Hermoso</option>
+								</select>
+							</label>
+							<label for="">
+								Archivos:
+								<input type="file" name="mfiles[]" multiple="">
 							</label>
 						</div>
 						<label class="confirm">
