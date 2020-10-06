@@ -5,11 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>RS Propiedades</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	<link
-		href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-		rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
 	<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="css/master.css">
 	<script src="js/index-grid.js" defer></script>
@@ -26,12 +23,12 @@
 		<div class="slide"></div>
 		<div class="slide"></div>
 		<div class="container">
-			<h1>RS Propiedades</h2>
-				<h3><i>Servicios inmobiliarios en Bahía Blanca y la zona.</i></h3>
-				<div>
-					<a href="" class="button">Sobre nosotros</a>
-					<a href="" class="button">Servicios</a>
-				</div>
+			<h1>RS Propiedades</h1>
+			<h3><i>Servicios inmobiliarios en Bahía Blanca y la zona.</i></h3>
+			<div>
+				<a href="" class="button">Sobre nosotros</a>
+				<a href="" class="button">Servicios</a>
+			</div>
 		</div>
 	</div>
 	<section id="servicios">
@@ -158,11 +155,11 @@
 			</div>
 			<form action="">
 				<label>
-					Nombre: 
+					Nombre:
 					<input type="text" name="nombre">
 				</label>
 				<label>
-					Email: 
+					Email:
 					<input type="text" name="email">
 				</label>
 				<label>
@@ -173,52 +170,7 @@
 			</form>
 		</div>
 	</section>
-	<footer>
-		<div class="footer-row">
-			<div class="container social">
-				<a class="icon-Facebook" href="#">
-					<i class="fab fa-facebook-f"></i>
-				</a>
-				<a class="icon-Twitter" href="#">
-					<i class="fab fa-twitter"></i>
-				</a>
-				<a class="icon-Instagram" href="#">
-					<i class="fab fa-instagram"></i>
-				</a>
-				<a class="icon-Google" href="#">
-					<i class="far fa-envelope"></i>
-				</a>
-			</div>
-		</div>
-		<div class="footer-row">
-			<div class="container footer-links">
-				<div>
-					<h4>Preguntas frecuentes</h4>
-					<ul>
-						<li><a href="#">¿Cómo publicar una propiedad?</a></li>
-						<li><a href="#">Horarios de atención</a></li>
-					</ul>
-				</div>
-				<div>
-					<h4>Soporte</h4>
-					<ul>
-						<li><a href="#">Nosotros</a></li>
-						<li><a href="#">Contacto</a></li>
-					</ul>
-				</div>
-				<div>
-					<h4>Información</h4>
-					<ul>
-						<li><a href="#">Preguntas frecuentes</a></li>
-						<li><a href="#">Servicios</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="footer-row">
-			<small>@ 2020 RS Propiedades</small>
-		</div>
-	</footer>
+	<?php require('templates/footer.html') ?>
 </body>
 
 </html>
