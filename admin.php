@@ -273,9 +273,10 @@ if (!isset($_SESSION['admin'])) {
 							<label>
 								Categoría:
 								<select name="categoría" id="categoría">
-									<option value="venta">Venta</option>
-									<option value="alquiler">Alquiler</option>
-									<option value="ambas">Venta/Alquiler</option>
+									<option value="Venta">Venta</option>
+									<option value="Alquiler">Alquiler</option>
+									<option value="Ambas">Venta/Alquiler</option>
+									<option value="No disponible">No disponible</option>
 								</select>
 							</label>
 							<label class="descrip">
@@ -285,11 +286,11 @@ if (!isset($_SESSION['admin'])) {
 							<label>
 								Localidad:
 								<select name="localidad" id="localidad">
-									<option value="bahía">Bahía Blanca</option>
-									<option value="monte">Monte Hermoso</option>
+									<option value="Bahía Blanca">Bahía Blanca</option>
+									<option value="Monte Hermoso">Monte Hermoso</option>
 								</select>
 							</label>
-							<label for="">
+							<label>
 								Archivos:
 								<input type="file" name="files[]" multiple="">
 							</label>
@@ -342,9 +343,10 @@ if (!isset($_SESSION['admin'])) {
 							<label>
 								Categoría:
 								<select name="mcategoría">
-									<option value="venta">Venta</option>
-									<option value="alquiler">Alquiler</option>
-									<option value="ambas">Venta/Alquiler</option>
+									<option value="Venta">Venta</option>
+									<option value="Alquiler">Alquiler</option>
+									<option value="Ambas">Venta/Alquiler</option>
+									<option value="No disponible">No disponible</option>
 								</select>
 							</label>
 							<label class="descrip">
@@ -354,8 +356,8 @@ if (!isset($_SESSION['admin'])) {
 							<label>
 								Localidad:
 								<select name="mlocalidad">
-									<option value="bahía">Bahía Blanca</option>
-									<option value="monte">Monte Hermoso</option>
+									<option value="Bahía Blanca">Bahía Blanca</option>
+									<option value="Monte Hermoso">Monte Hermoso</option>
 								</select>
 							</label>
 							<label for="">

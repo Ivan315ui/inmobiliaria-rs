@@ -8,17 +8,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if ($_POST['confirmarP'] == 'add') {
 
-		$elementos = array($_POST['título'], $_POST['dirección'], $_POST['piso'], $_POST['tipo'], $_POST['depto'], $_POST['localidad'], $_POST['descripción'], $_POST['categoría']);
+		if ($_POST['depto'] == "") {
+			$_POST['depto'] = null;
+			$_POST['piso'] = null;
+		} else if ($_POST['piso'] == "") {
+			$_POST['piso'] = null;
+		}
+
+		$elementos = array($_POST['título'], $_POST['dirección'], $_POST['tipo'], $_POST['piso'], $_POST['depto'], $_POST['descripción'], $_POST['localidad'], $_POST['categoría']);
 
 		$consulta = $conexionBD->prepare("INSERT INTO Propiedades (Título, Dirección, ID_Tipo, Piso, Departamento, Descripción, Localidad, Categoría) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 		$src = "files";
 	} else if ($_POST['confirmarP'] == 'rem') {
 
-		$elementos = array($_POST['ridprop'], $_POST['rdirección']);
+		$elementos = array($_POST['ridprop']);
 
 		$consulta = $conexionBD->prepare("DELETE FROM Propiedades WHERE ID_Propiedad=?");
 	} else if ($_POST['confirmarP'] == 'mod') {
+
+		if ($_POST['mdepto'] == "") {
+			$_POST['mdepto'] = null;
+			$_POST['mpiso'] = null;
+		} else if ($_POST['mpiso'] == "") {
+			$_POST['mpiso'] = null;
+		}
 
 		$elementos = array($_POST['mtítulo'], $_POST['mdirección'], $_POST['mtipo'], $_POST['mpiso'], $_POST['mdepto'], $_POST['mdescripción'], $_POST['mlocalidad'], $_POST['mcategoría'], $_POST['midprop']);
 
@@ -79,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	//seguir con la ejecución de la consulta
 
 	$consulta->execute($elementos);
-
+	
 	//redireccionar acorde al resultado de la consulta
 	if ($consulta) {
 		header('Location: admin.php?result=success');
