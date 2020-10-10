@@ -133,14 +133,8 @@ if (!isset($_SESSION['admin'])) {
 						<li>
 							Cada una de las posibles acciones a realizar en el panel, tiene ciertas
 							recomendaciones, ya sea en el formato de los campos, de los archivos a subir,
-							etc. Se profundizará más en el tema en cada acción posible.
+							etc. Se profundizará más en el tema en los apartados de cada acción.
 						</li>
-					</ul>
-					<li>
-						Cada una de las posibles acciones a realizar en el panel, tiene ciertas
-						recomendaciones, ya sea en el formato de los campos, de los archivos a subir,
-						etc. Se profundizará más en el tema en cada acción posible.
-					</li>
 					</ul>
 				</section>
 				<section id="funcs">
