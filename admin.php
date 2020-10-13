@@ -178,6 +178,10 @@ if (!isset($_SESSION['admin'])) {
 							en el email de la persona autorizada o pérdida de conexión al actualizar la lista
 							de administradores, similar a lo que sucede con las propiedades en el primer punto.
 						</li>
+						<li>
+							<span>Simbolismo prohibido en gestionar propiedades:</span> Existen distintos simbolos que estan prohibidos
+							a la hora de subir nuestras propiedades, por ejemplo "(-, +, &, *, ¿?, ¡!, #, %)"
+						</li>
 					</ol>
 				</section>
 			</div>
