@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	//si hay archivos
 	if ($subir == true) {
 		//destino de los archivos
-		$destino = "imgs/" . ($src == "files" ? $_POST['título'] : $_POST['mtítulo']) . "/";
+		$destino = "imgs/propiedades/" . ($src == "files" ? $_POST['título'] : $_POST['mtítulo']) . "/";
 		
 		//crear la carpeta destino
 		mkdir("./$destino");
@@ -96,9 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 
 	//seguir con la ejecución de la consulta
-	die();
 	$consulta->execute($elementos);
-	
 	//redireccionar acorde al resultado de la consulta
 	if ($consulta) {
 		header('Location: admin.php?result=success');
