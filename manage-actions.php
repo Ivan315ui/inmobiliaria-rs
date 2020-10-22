@@ -7,10 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if ($_POST['confirmar'] == 'añadir') {
 		$elementos[] = $_POST['contraseña'];
 
-		$consulta = $conexionBD->prepare("INSERT INTO Administradores (Mail, Nombre_Administrador, Contraseña) VALUES (?, ?, ?)");
+		$consulta = $conexionBD->prepare("INSERT INTO administradores (Mail, Nombre_Administrador, Contraseña) VALUES (?, ?, ?)");
 
 	} else if($_POST['confirmar'] == 'eliminar') {
-		$consulta = $conexionBD->prepare("DELETE FROM Administradores WHERE Mail=? AND Nombre_Administrador=?");
+		$consulta = $conexionBD->prepare("DELETE FROM administradores WHERE Mail=? AND Nombre_Administrador=?");
 	}
 
     $consulta->execute($elementos);

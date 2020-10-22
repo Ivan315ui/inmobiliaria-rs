@@ -17,14 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		$elementos = array($_POST['título'], $_POST['dirección'], $_POST['tipo'], $_POST['piso'], $_POST['depto'], $_POST['descripción'], $_POST['localidad'], $_POST['categoría']);
 
-		$consulta = $conexionBD->prepare("INSERT INTO Propiedades (Título, Dirección, ID_Tipo, Piso, Departamento, Descripción, Localidad, Categoría) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+		$consulta = $conexionBD->prepare("INSERT INTO propiedades (Título, Dirección, ID_Tipo, Piso, Departamento, Descripción, Localidad, Categoría) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 		$src = "files";
 	} else if ($_POST['confirmarP'] == 'rem') {
 
 		$elementos = array($_POST['ridprop']);
 
-		$consulta = $conexionBD->prepare("DELETE FROM Propiedades WHERE ID_Propiedad=?");
+		$consulta = $conexionBD->prepare("DELETE FROM propiedades WHERE ID_Propiedad=?");
 	} else if ($_POST['confirmarP'] == 'mod') {
 
 		if ($_POST['mdepto'] == "") {
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		$elementos = array($_POST['mtítulo'], $_POST['mdirección'], $_POST['mtipo'], $_POST['mpiso'], $_POST['mdepto'], $_POST['mdescripción'], $_POST['mlocalidad'], $_POST['mcategoría'], $_POST['midprop']);
 
-		$consulta = $conexionBD->prepare("UPDATE Propiedades SET Título=?, Dirección=?, ID_Tipo=?, Piso=?, Departamento=?, Descripción=?, Localidad=?, Categoría=? WHERE ID_Propiedad=?");
+		$consulta = $conexionBD->prepare("UPDATE propiedades SET Título=?, Dirección=?, ID_Tipo=?, Piso=?, Departamento=?, Descripción=?, Localidad=?, Categoría=? WHERE ID_Propiedad=?");
 
 		$src = "mfiles";
 	} else {
@@ -54,7 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	//si hay archivos
 	if ($subir == true) {
 		//destino de los archivos
-		$destino = "imgs/";
+		$destino = "imgs/" . ($src == "files" ? $_POST['título'] : $_POST['mtítulo']) . "/";
+		
+		//crear la carpeta destino
+		mkdir("./$destino");
+		chmod("./$destino", 0766);
+
 		$nombres = array();
 		$tipos = array();
 		//por cada nombre de los archivos, cambiar el nombre para que coincida con el de la propiedad
@@ -91,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 
 	//seguir con la ejecución de la consulta
-
+	die();
 	$consulta->execute($elementos);
 	
 	//redireccionar acorde al resultado de la consulta
