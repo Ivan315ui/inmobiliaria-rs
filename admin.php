@@ -21,6 +21,7 @@ if (!isset($_SESSION['admin'])) {
 	<link rel="stylesheet" href="css/admin.css">
 	<script src="js/header.js" defer></script>
 	<script src="js/admin.js" defer></script>
+	<script src="js/verificador.js" defer></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous" defer></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous" defer></script>
@@ -209,14 +210,17 @@ if (!isset($_SESSION['admin'])) {
 							Nombre de administrador:
 							<input type="text" name="nombre" id="nombre">
 						</label>
+						<div id="verificar-name"></div>
 						<label>
 							Email:
 							<input type="email" name="mail" id="mail">
 						</label>
+						<div id="verificar-mail"></div>
 						<label class="contraseña">
 							Contraseña:
 							<input type="password" name="contraseña" id="contraseña">
 						</label>
+						<div id="verificar-pass"></div>
 						<label class="confirm">
 							<input type="checkbox" name="confirmar" id="confirmar" value="añadir"> Confirmar acción.
 						</label>
