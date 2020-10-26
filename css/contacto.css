@@ -2,121 +2,12 @@ body {
   color: #333;
 }
 
-header {
-  background-color: transparent;
-  position: fixed;
-}
-
-header img {
-  opacity: 0;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-
-header .container .md-menu ul li a {
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-
-header .container .md-menu ul li:hover {
-  background-color: transparent;
-}
-
-header .container .md-menu ul li:hover a {
-  color: gray;
-}
-
-header.scrolled {
-  background-color: #440206;
-}
-
-header.scrolled img {
-  opacity: 1;
-}
-
-header.scrolled #burger-icon span {
-  background-color: whitesmoke;
-}
-
-header.scrolled .mobile-menu {
-  border-color: whitesmoke;
-}
-
-header.scrolled .mobile-menu li {
-  border-color: whitesmoke;
-}
-
-header.scrolled .mobile-menu li a {
-  color: whitesmoke;
-}
-
-header.scrolled .mobile-menu li:hover {
-  background-color: whitesmoke;
-}
-
-header.scrolled .mobile-menu li:hover a {
-  color: #440206;
-}
-
-header.scrolled .md-menu ul li a {
-  color: whitesmoke;
-}
-
-header.scrolled .md-menu ul li:hover {
-  background-color: whitesmoke;
-}
-
-header.scrolled .md-menu ul li:hover a {
-  color: #440206;
-}
-
-.intro {
-  margin-top: 76px;
-  position: relative;
-  color: whitesmoke;
-  height: 70vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .intro::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: calc(100% + 76px);
-  left: 0;
-  bottom: 0;
   background-image: url(../imgs/banner-contacto.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: -1;
 }
 
 .intro::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: calc(100% + 76px);
-  left: 0;
-  bottom: 0;
   background-color: #030D19;
-  opacity: 0.5;
-  z-index: -1;
-}
-
-.intro .container {
-  margin: auto;
-  padding-bottom: 38px;
-}
-
-.intro .container a {
-  margin: auto;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 10px;
 }
 
 .container {

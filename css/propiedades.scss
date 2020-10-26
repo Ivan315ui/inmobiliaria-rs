@@ -1,0 +1,19 @@
+.intro {
+    height: 400px;
+    &::before {
+        background-image: url("../imgs/props-fondo.jpg");
+    }
+    &::after {
+        background-color: black;
+    }
+    h1 {
+        text-align: center;
+        margin-top: 38px;
+    }
+}
+
+.propiedades {
+    .container {
+        display: grid;
+    }
+}

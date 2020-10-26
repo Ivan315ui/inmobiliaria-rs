@@ -12,7 +12,7 @@ function displayMenu() {
     } else {
         header.style.padding = 0;
     }
-    if (location.pathname === '/inmobiliaria-rs/contacto.php' && pageYOffset == 0) {
+    if (pageYOffset == 0) {
         header.classList.toggle('scrolled');
     }
 }
@@ -27,17 +27,4 @@ window.addEventListener('scroll', ()=> {
         }
     }
     
-})
-
-/*window.addEventListener('scroll', ()=> {
-    
-    if (pageYOffset > 0) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-        if (button.classList.contains("touched")) {
-            header.style.background = "#440206";
-        }
-    }
-    
-}) */
+});

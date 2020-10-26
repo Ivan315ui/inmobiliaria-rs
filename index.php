@@ -9,6 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
 	<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="css/master.css">
+	<link rel="stylesheet" href="css/index.css">
 	<script src="js/index-grid.js" defer></script>
 	<script src="js/header.js" defer></script>
 	<script src="js/slider.js" defer></script>
@@ -23,7 +24,7 @@
 		<div class="slide"></div>
 		<div class="slide"></div>
 		<div class="container">
-			<h1>RS Propiedades</h1>
+			<h1>ROSCH Propiedades</h1>
 			<h3><i>Servicios inmobiliarios en Bahía Blanca y la zona.</i></h3>
 			<div>
 				<a href="" class="button">Sobre nosotros</a>
@@ -33,7 +34,7 @@
 	</div>
 	<section id="servicios">
 		<div class="banner">
-			<h4>RS Propiedades</h4>
+			<h4>ROSCH Propiedades</h4>
 			<h2>Servicios</h2>
 		</div>
 		<div class="container">
@@ -136,6 +137,7 @@
 					<i class="fas fa-caret-right"></i>
 				</button>
 			</div>
+			<a href="propiedades.php" class="button">Ver el catálogo completo</a>
 		</div>
 	</section>
 	<section id="contacto">

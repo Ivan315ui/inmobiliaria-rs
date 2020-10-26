@@ -2,111 +2,12 @@ body {
     color: #333;
 }
 
-header {
-    background-color: transparent;
-    position: fixed;
-    img {
-        opacity: 0;
-        transition: 0.3s ease-in-out;
-    }
-    .container {
-        .md-menu {
-            ul {
-                li {
-                    a {
-                        transition: 0.3s ease-in-out;
-                    }
-                    &:hover {
-                        background-color: transparent;
-                        a {
-                            color: gray;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    &.scrolled {
-        background-color: #440206;
-        img {
-            opacity: 1;
-        }
-        #burger-icon {
-            span {
-                background-color: whitesmoke;
-            }
-        }
-        .mobile-menu {
-            border-color: whitesmoke;
-            li {
-                border-color: whitesmoke;
-                a {
-                    color: whitesmoke;
-                }
-                &:hover {
-                    background-color: whitesmoke;
-                    a {
-                        color: #440206;
-                    }
-                }
-            }
-        }
-        .md-menu {
-            ul {
-                li {
-                    a {
-                        color: whitesmoke;
-                    }
-                    &:hover {
-                        background-color: whitesmoke;
-                        a {
-                            color: #440206;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
 .intro {
-    margin-top: 76px;
-    position: relative;
-    color: whitesmoke;
-    height: 70vh;
-    display: flex;
     &::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: calc(100% + 76px);
-        left: 0;
-        bottom: 0;
         background-image: url(../imgs/banner-contacto.jpg);
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        z-index: -1;
     }
     &::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: calc(100% + 76px);
-        left: 0;
-        bottom: 0;
         background-color: #030D19;
-        opacity: 0.5;
-        z-index: -1;
-    }
-    .container {
-        margin: auto;
-        padding-bottom: 38px;
-        a {
-            margin: auto;
-            width: fit-content;
-            padding: 10px;
-        }
     }
 }
 

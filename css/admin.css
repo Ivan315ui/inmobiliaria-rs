@@ -1,6 +1,11 @@
 @charset "UTF-8";
 header {
   position: static;
+  background-color: #440206;
+}
+
+header .container img {
+  opacity: 1;
 }
 
 .alert {
