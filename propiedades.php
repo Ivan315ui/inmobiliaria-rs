@@ -45,12 +45,16 @@ if (empty($_GET)) {
 		<!--Carga de las propiedades (fichate esa jere), podés adaptarlo a lo del inicio-->
 		<?php foreach ($resultados as $resultado => $propiedad): ?>
 			<div class="propiedad">
-				<div class="cat" style="background: url(\"imgs/propiedades/<?php echo $propiedad['Título'] ?>\")"><a href="<?php echo "propiedades.php?cat=" . $propiedad['Categoría'] ?>"><?php echo $propiedad['Categoría'] ?></a></div>
+				<div class="cat" style="background: url('imgs/propiedades/<?php echo $propiedad['Título']; ?>/<?php echo $propiedad['Título']; ?>-1.jpeg'); height: 500px; width: 600px; background-size: contain; background-repeat: no-repeat;">
+					<a href="<?php echo 'propiedades.php?cat=' . $propiedad['Categoría']; ?>">
+						<?php echo $propiedad['Categoría']; ?>
+					</a>
+				</div>
 				<div class="desc">
-					<h5><?php echo $propiedad['Título'] ?></h5>
-					<h5><?php echo $propiedad['Dirección'] ?></h5>
-					<h5><?php echo $propiedad['Localidad'] ?></h5>
-					<h5><?php echo $propiedad['Tipo'] ?></h5>
+					<h5><?php echo $propiedad['Título']; ?></h5>
+					<h5><?php echo $propiedad['Dirección']; ?></h5>
+					<h5><?php echo $propiedad['Localidad']; ?></h5>
+					<h5><?php echo $propiedad['Tipo']; ?></h5>
 				</div>
 			</div>
 		<?php endforeach; ?>
@@ -59,4 +63,4 @@ if (empty($_GET)) {
 </body>
 </html>
 
-<?php /*cerrar la conexión bd */ $conexionBD = null ?>
+<?php /*cerrar la conexión bd */ $conexionBD = null; ?>
