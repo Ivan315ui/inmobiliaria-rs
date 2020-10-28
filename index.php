@@ -85,9 +85,8 @@
 		<?php 
 				$lenght = count($resultados);
 
-				$random = rand(1, $lenght);
-
 				$array = [];
+				
 				for($i = 0; $i < 5; $i++){
 					$random = rand(1, $lenght);
 					if (!in_array($random, $array)) {
