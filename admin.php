@@ -51,6 +51,69 @@ if (!isset($_SESSION['admin'])) {
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
+		<?php elseif(strlen($_POST['nombre']) == 0 || strlen($_POST['mail']) == 0 || strlen($_POST['contraseña']) == 0): ?>
+			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+				<strong>Los campos Nombre, Email y Contraseña no deben estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php elseif(strlen($_POST['nombre']) == 0 || strlen($_POST['mail']) == 0): ?>
+			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+				<strong>Los campos Nombre y Email no deben estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php elseif(strlen($_POST['nombre']) == 0 || strlen($_POST['contraseña']) == 0): ?>
+			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+				<strong>Los campos Nombre y Contraseña no deben estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php elseif(strlen($_POST['mail']) == 0 || strlen($_POST['contraseña']) == 0): ?>
+			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+				<strong>Los campos Email y Contraseña no deben estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php elseif(strlen($_POST['contraseña']) == 0): ?>
+			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+				<strong>El campo contraseña no debe estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php elseif(strlen($_POST['contraseña']) < 6): ?>
+			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+				<strong>La contraseña es menor a 6 caracteres, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php elseif(strlen($_POST['contraseña']) > 16): ?>
+			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+				<strong>La contraseña es mayor a 16 caracteres, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php elseif(strlen($_POST['mail']) == 0): ?>
+			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+				<strong>El campo Email no debe estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php elseif(strlen($_POST['nombre']) == 0): ?>
+			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+				<strong>El campo Nombre no debe estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
 		<?php else: ?>
 			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
 				<strong>Hubo un problema al realizar la operación, verifique los datos</strong>. Al finalizar de leer, cierre esta alerta.
