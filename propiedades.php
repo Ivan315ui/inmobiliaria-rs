@@ -42,19 +42,17 @@ if (empty($_GET)) {
 			</div>
 		</div>
 		<div class="container">
-		<!--Carga de las propiedades (fichate esa jere), podés adaptarlo a lo del inicio-->
 		<?php foreach ($resultados as $resultado => $propiedad): ?>
 			<div class="propiedad">
-				<div class="cat" style="background: url('imgs/propiedades/<?php echo $propiedad['Título']; ?>/<?php echo $propiedad['Título']; ?>-1.jpeg'); height: 500px; width: 600px; background-size: contain; background-repeat: no-repeat;">
-					<a href="<?php echo 'propiedades.php?cat=' . $propiedad['Categoría']; ?>">
-						<?php echo $propiedad['Categoría']; ?>
-					</a>
-				</div>
+				<a class="cat" href="<?php echo 'propiedades.php?cat=' . $propiedad['Categoría']; ?>">
+					<?php echo $propiedad['Categoría']; ?>
+				</a>
+				<div class="back" style="background: url('imgs/propiedades/<?php echo $propiedad['Título']; ?>/<?php echo scandir("imgs/propiedades/{$propiedad['Título']}")[2]; ?>');"></div>
 				<div class="desc">
-					<h5><?php echo $propiedad['Título']; ?></h5>
-					<h5><?php echo $propiedad['Dirección']; ?></h5>
-					<h5><?php echo $propiedad['Localidad']; ?></h5>
-					<h5><?php echo $propiedad['Tipo']; ?></h5>
+					<h5><?php echo $propiedad['Título']; ?></h6>
+					<h6><?php echo $propiedad['Dirección']; ?></h6>
+					<h6><?php echo $propiedad['Localidad']; ?></h6>
+					<span><?php echo $propiedad['Tipo']; ?></span>
 				</div>
 			</div>
 		<?php endforeach; ?>

@@ -18,5 +18,48 @@
 .propiedades .container {
   display: -ms-grid;
   display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  grid-gap: 25px;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+.propiedades .container .propiedad {
+  height: 360px;
+  background-color: teal;
+  position: relative;
+  overflow: hidden;
+}
+
+.propiedades .container .propiedad .back {
+  height: calc((100vw - 30px) * 2 / 3);
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+}
+
+.propiedades .container .propiedad .back:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.propiedades .container .propiedad .cat {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .propiedades .container {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
 }
 /*# sourceMappingURL=propiedades.css.map */

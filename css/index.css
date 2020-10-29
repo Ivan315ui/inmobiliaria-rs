@@ -100,7 +100,7 @@ header.scrolled .md-menu ul li:hover a {
 }
 
 .slider .slide:nth-child(3) {
-  background-image: url(../imgs/sillon.jpg);
+  background-image: url(../imgs/slide-3.jpg);
   left: 100%;
 }
 
@@ -150,7 +150,7 @@ header.scrolled .md-menu ul li:hover a {
 }
 
 #servicios .container .grid-container .grid-item:first-child {
-  background-image: url(../imgs/Ventas.jpeg);
+  background-image: url(../imgs/Ventas.jpg);
 }
 
 #servicios .container .grid-container .grid-item:nth-child(2) {

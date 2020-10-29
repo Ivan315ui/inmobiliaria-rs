@@ -15,5 +15,44 @@
 .propiedades {
     .container {
         display: grid;
+        justify-content: center;
+        justify-self: center;
+        grid-gap: 25px;
+        grid-template-columns: 1fr;
+        .propiedad {
+            height: 360px;
+            background-color: teal;
+            position: relative;
+            overflow: hidden;
+            .back {
+                height: calc((100vw - 30px) * 2 / 3);
+                width: 100%;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                transition: 0.3s ease-out;
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+            .cat {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+
+@media only screen and (min-width: 1200px) {
+    .propiedades {
+        .container {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 }

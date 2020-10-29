@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 22-10-2020 a las 21:56:35
--- Versión del servidor: 10.4.13-MariaDB
--- Versión de PHP: 7.4.8
+-- Host: localhost
+-- Generation Time: Oct 29, 2020 at 06:43 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `inmobiliaria_rs`
+-- Database: `inmobiliaria_rs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `administradores`
+-- Table structure for table `administradores`
 --
 
 CREATE TABLE `administradores` (
@@ -34,7 +34,7 @@ CREATE TABLE `administradores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `administradores`
+-- Dumping data for table `administradores`
 --
 
 INSERT INTO `administradores` (`Mail`, `Nombre_Administrador`, `Contraseña`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `administradores` (`Mail`, `Nombre_Administrador`, `Contraseña`) VA
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `propiedades`
+-- Table structure for table `propiedades`
 --
 
 CREATE TABLE `propiedades` (
@@ -60,7 +60,7 @@ CREATE TABLE `propiedades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `propiedades`
+-- Dumping data for table `propiedades`
 --
 
 INSERT INTO `propiedades` (`ID_Propiedad`, `Título`, `Dirección`, `ID_Tipo`, `Piso`, `Departamento`, `Descripción`, `Localidad`, `Categoría`) VALUES
@@ -68,20 +68,18 @@ INSERT INTO `propiedades` (`ID_Propiedad`, `Título`, `Dirección`, `ID_Tipo`, `
 (2, 'Ramon y Cajal 4100, CASA, Lote de 400 M2', 'Ramon y Cajal 4100', 1, NULL, NULL, 'Importante propiedad en Barrio Patagonia.\r\n3 Dormitorios, 1 en suite con vestidor.\r\n3 baños.\r\nLiving, cocina comedor y lavadero.\r\nOficina/dormitorio en planta alta con gran balcón.\r\nPileta 5.5x10.5mts. Bomba y sisterna\r\nQuincho con parrilla y baño.\r\nGalpón.\r\nLote de 40x100mts con arbolado perimetral, riego por aspersión y portón eléctrico.', 'Bahía Blanca', 'Venta'),
 (3, 'Uruguay 113, DUPLEX, 115 MTS cubiertos, Barrio Universitario', 'Uruguay 113', 1, NULL, NULL, 'Barrio Universitario - Uruguay 113\r\n115mts cubiertos.\r\n1 dormitorio equipado con aire acondicionado frio/calor.\r\nLiving amplio.\r\nCocina independiente.\r\nOficina en altos.\r\nBaño completo.\r\nTerraza.\r\nCochera.', 'Bahía Blanca', 'Venta'),
 (4, 'Amplio Terreno de 837 m2 (20x42) en Barrio Molina Campos (Patagonia)', 'Rehue 260, Parcela 7 ', 4, NULL, NULL, 'Barrio Molina Campos (Patagonia).\r\nAmplio Terreno de 837 m2 (20x42) en Rehue 260, Parcela 7 (entre Las Heras y Belgrano).\r\nApto para construcción Bifamiliar/Duplex hasta 3 pisos (zona RP2(2)). \r\nTodos los servicios: Agua, Luz y Gas.', 'Bahía Blanca', 'Venta'),
-(5, 'Terreno en Barrio Mercichde 37,5 mts de frente por 65 mts de fondo', 'Barrio Mercich (Frente a Pago Chico) ', 4, NULL, NULL, 'Barrio Mercich (Frente a Pago Chico) \r\n(Ubicación: https://goo.gl/maps/mBjpeA8BZAXu3skJA  )\r\nTerreno de 37,5 mts de frente por 65 mts de fondo. \r\nAlambrado olímpico y tranquera.\r\nServicios de Luz y agua.\r\nCasa a terminar (falta terminar de hacer conexión de agua, detalles en el interior y pintura interior) .\r\n2 habitaciones \r\nLiving.\r\nCocina.\r\nBaño.\r\nGalpon.', 'Bahía Blanca', 'Venta'),
+(5, 'Terreno en Barrio Mercich de 37,5 mts de frente por 65 mts de fondo', 'Barrio Mercich (Frente a Pago Chico) ', 4, NULL, NULL, 'Barrio Mercich (Frente a Pago Chico) \r\n(Ubicación: https://goo.gl/maps/mBjpeA8BZAXu3skJA  )\r\nTerreno de 37,5 mts de frente por 65 mts de fondo. \r\nAlambrado olímpico y tranquera.\r\nServicios de Luz y agua.\r\nCasa a terminar (falta terminar de hacer conexión de agua, detalles en el interior y pintura interior) .\r\n2 habitaciones \r\nLiving.\r\nCocina.\r\nBaño.\r\nGalpon.', 'Bahía Blanca', 'Venta'),
 (6, 'Castelli 455, Departamento en venta, 61 M2', 'Castelli 455', 2, NULL, NULL, 'Castelli 455\r\nDepartamento en venta primer piso.\r\n2 habitaciones.\r\nCocina independiente.\r\nBalcón al frente.\r\nBaño.\r\nCochera.\r\n61mts2', 'Bahía Blanca', 'Venta'),
 (7, 'Moreno 529, Departamento de 1D a estrenar', 'Moreno 529', 2, 1, 'D', 'Departamento de 1D a estrenar.\r\nMoreno 529\r\nHermoso departamento al frente.\r\n1 dormitorio con calefacción por radiador, placard y vista al frente.\r\nAmplio living comedor con cocina integrada y barra.\r\nBalcón.\r\nBaño completo con griferia y accesorios FV.', 'Bahía Blanca', 'Venta'),
 (8, 'Lote en Patagonia, 19x27 mts', 'Lote en Patagonia', 1, NULL, NULL, 'Lote en Patagonia.\r\n19x27 mts.\r\nBifamiliar.\r\nTodos los servicios.\r\nExcelente ubicación. ', 'Bahía Blanca', 'Venta'),
 (9, 'Casa Avellaneda 2200 en Venta o Permuta por Lotes en Barrio La Cañada o El Maiten', 'Avellaneda 2200', 1, NULL, NULL, 'Casa Avellaneda 2200\r\nCasa en Venta o Permuta por Lotes en Barrio La Cañada o El Maiten\r\nLiving\r\n3 Dormitorios\r\n2 baños.\r\nLavadero\r\nQuincho 50mts.\r\nParrilla\r\nAmplio garaje 2 vehiculos\r\n160mts cubiertos\r\nSobre un lote de 273mts2', 'Bahía Blanca', 'Venta'),
 (10, 'Lotes Barrio San Agustín Lotes de 17x37 mts', 'Lotes Barrio San Agustín', 4, NULL, NULL, 'Lotes Barrio San Agustín\r\nVenta individual o en conjunto.\r\nLotes de 17x37 mts.\r\nNivelados.\r\nAlambrado perimetral.', 'Bahía Blanca', 'Venta'),
-(11, 'Casa en Tucumán 1100', 'Tucumán 1100', 1, NULL, NULL, 'Casa en Tucumán 1100.\r\n2 dormitorios.\r\nLiving.\r\nComedor.\r\nCocina.\r\nGarage.\r\nPatio.\r\nQuincho con baño.', 'Bahía Blanca', 'Venta'),
-(12, 'Importante propiedad a estrenar Barrio Las Acacias, Patagonia Norte', 'Calle Azara 4822', 1, NULL, NULL, 'Importante propiedad a estrenar\r\nBarrio Las Acacias, Patagonia Norte\r\nMuy luminosa, buena ventilación, con materiales de alta calidad.\r\nBuena distribución en dos plantas,\r\nPB: hall de entrada, baño de servicio, living comedor y cocina integrados (separados por barra), lavadero, entrada para autos con parte cubierta para dos vehículos,  amplio patio, \r\nPA: dormitorio principal en suite con vestidor, amplio baño con hidromasaje, dos dormitorios con placar, baño compartimentado\r\ncerco perimetral\r\ncaldera  y termotanque\r\ncalefacción central por radiadores  \r\nsobre lote de 17x30', 'Bahía Blanca', 'Venta'),
-(13, 'Hermosa propiedad localizada en Barrio Patagonia', 'Barrio Patagonia', 1, NULL, NULL, 'En el exterior cuenta con patio, espacios semicubiertos, pileta climatizada con yacuzzi, ducha exterior, barandas de acero inoxidable, riego automatizado y parrilla.\r\nLa propiedad posee cuatro dormitorios y cinco baños en total.\r\nEn planta baja posee amplio espacio semicubierto con ventiladores de techo, gran quincho con parrilla de acero inoxidable e importante cocina, amplio living comedor, habitación en suite, lavadero y garaje.\r\nEn planta alta cuenta con habitacion en suite con vestidor y baño, habitación con balcón y baño de niños, y una tercera habitación con baño. Todas las habitaciones cuentan con placard.\r\nEquipamiento: persianas automatizadas, bomba de riego y pileta, riego automatizado, aires acondicionado, caldera, termotanque, calefacción por radiodadores, alarma, parrilla de acero inoxidable, cocina industrial, pileta climatizada, parrilla de exterior, entre otros.', 'Bahía Blanca', 'Venta');
+(11, 'Casa en Tucumán 1100', 'Tucumán 1100', 1, NULL, NULL, 'Casa en Tucumán 1100.\r\n2 dormitorios.\r\nLiving.\r\nComedor.\r\nCocina.\r\nGarage.\r\nPatio.\r\nQuincho con baño.', 'Bahía Blanca', 'Venta');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos_propiedades`
+-- Table structure for table `tipos_propiedades`
 --
 
 CREATE TABLE `tipos_propiedades` (
@@ -90,7 +88,7 @@ CREATE TABLE `tipos_propiedades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `tipos_propiedades`
+-- Dumping data for table `tipos_propiedades`
 --
 
 INSERT INTO `tipos_propiedades` (`ID_Tipo`, `Nombre_Tipo`) VALUES
@@ -101,50 +99,50 @@ INSERT INTO `tipos_propiedades` (`ID_Tipo`, `Nombre_Tipo`) VALUES
 (5, 'Lote');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `administradores`
+-- Indexes for table `administradores`
 --
 ALTER TABLE `administradores`
   ADD PRIMARY KEY (`Mail`);
 
 --
--- Indices de la tabla `propiedades`
+-- Indexes for table `propiedades`
 --
 ALTER TABLE `propiedades`
   ADD PRIMARY KEY (`ID_Propiedad`),
   ADD KEY `ID_Tipo` (`ID_Tipo`);
 
 --
--- Indices de la tabla `tipos_propiedades`
+-- Indexes for table `tipos_propiedades`
 --
 ALTER TABLE `tipos_propiedades`
   ADD PRIMARY KEY (`ID_Tipo`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `propiedades`
+-- AUTO_INCREMENT for table `propiedades`
 --
 ALTER TABLE `propiedades`
-  MODIFY `ID_Propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_Propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT de la tabla `tipos_propiedades`
+-- AUTO_INCREMENT for table `tipos_propiedades`
 --
 ALTER TABLE `tipos_propiedades`
   MODIFY `ID_Tipo` tinyint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `propiedades`
+-- Constraints for table `propiedades`
 --
 ALTER TABLE `propiedades`
   ADD CONSTRAINT `Propiedades_ibfk_1` FOREIGN KEY (`ID_Tipo`) REFERENCES `tipos_propiedades` (`ID_Tipo`);
