@@ -87,92 +87,42 @@
 
 				$array = [];
 				
-				for($i = 0; $i < 5; $i++){
+				for($i = 0; $i < 8; $i++){
 					$random = rand(1, $lenght);
-					if (!in_array($random, $array)) {
-						$random = $random;
-					}else{
+					while(in_array($random, $array)) {
 						$random = rand(1, $lenght);
 					}
 					foreach($resultados as $resultado => $propiedad){
 						$propiedad['ID_Propiedad'] = $random;
 					}
 					$array[$i] = $propiedad['ID_Propiedad'];
+
+					$consulta2[$i] = $conexionBD->prepare("SELECT Título, Dirección, Categoría, Localidad, tipos_propiedades.Nombre_Tipo AS Tipo FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE ID_Propiedad =".$array[$i]);
+					$consulta2[$i]->execute();
+		
+					$title[$i] = $consulta2[$i]->fetchAll();
 					
 				}
-				echo $array[0];
-				echo "<br>";
-				echo $array[1];
-				echo "<br>";
-				echo $array[2];
-				echo "<br>";
-				echo $array[3];
-				echo "<br>";
-				echo $array[4];
+
 				?>
 		<div class="container">
 			<div class="grid-wrapper">
+				<?php for ($i=0; $i < 8 ; $i++):?>
 				<div class="grid-item">
 				
 					<a href="">
-						<img src="imgs/Casa-pago-chico.jpg">
+						<img src='imgs/propiedades/<?php echo $title[$i][0]['Título']; ?>/<?php echo scandir("imgs/propiedades/{$title[$i][0]['Título']}")[2]; ?>'>
 						<div class="desc">
-							<h5>Casa con pileta en Pago Chico</h5>
-							<span class="direccion"></span>
-							<span class="categoria">Venta</span>
-							<span class="precio">USD 600.000</span>
+							<h5><?php echo $title[$i][0]['Título']; ?></h5>
+							<span class="direccion"><?php echo $title[$i][0]['Dirección']; ?></span>
+							<span class="categoria"><?php echo $title[$i][0]['Categoría']; ?></span>
+							<span class="tipo"><?php echo $title[$i][0]['Tipo']; ?></span>
+							<span class="localidad"><?php echo $title[$i][0]['Localidad']; ?></span>
 						</div>
 						<h4>Ver más <i class='bx bx-chevron-right'></i></h4>
 					</a>
 				</div>
-				<div class="grid-item">
-					<a href="">
-						<img src="imgs/Casa-pileta.jpg">
-						<div class="desc">
-							<h5>Casa con pileta en Palihue Sur</h5>
-							<span class="direccion">Reconquista 319</span>
-							<span class="categoria">Venta</span>
-							<span class="precio">USD 500.000</span>
-						</div>
-						<h4>Ver más <i class='bx bx-chevron-right'></i></h4>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="">
-						<img src="imgs/Departamento-abajo.jpg">
-						<div class="desc">
-							<h5>Departamento en zona centro</h5>
-							<span class="direccion">Alsina 370</span>
-							<span class="categoria">Alquiler</span>
-							<span class="precio">$ 11.500</span>
-						</div>
-						<h4>Ver más <i class='bx bx-chevron-right'></i></h4>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="">
-						<img src="imgs/Departamento-costado.jpg">
-						<div class="desc">
-							<h5>Departamento en zona centro</h5>
-							<span class="direccion">Zelarrayán 580</span>
-							<span class="categoria">Venta</span>
-							<span class="precio">USD 300.000</span>
-						</div>
-						<h4>Ver más <i class='bx bx-chevron-right'></i></h4>
-					</a>
-				</div>
-				<div class="grid-item">
-					<a href="">
-						<img src="imgs/Casa-zona-centro.jpg">
-						<div class="desc">
-							<h5>Casa zona centro</h5>
-							<span class="direccion">Gorriti 780</span>
-							<span class="categoria">Venta</span>
-							<span class="precio">USD 250.000</span>
-						</div>
-						<h4>Ver más <i class='bx bx-chevron-right'></i></h4>
-					</a>
-				</div>
+				<?php endfor;?>
 				
 				<button class="slide-buttons left">
 					<i class="fas fa-caret-left"></i>
