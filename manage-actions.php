@@ -4,6 +4,7 @@ require_once("conexion.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (strlen($_POST['contraseña']) == 0 || strlen($_POST['contraseña']) < 6 || strlen($_POST['contraseña']) > 16 || strlen($_POST['mail']) == 0 || strlen($_POST['nombre']) == 0) {
+		header('Location: admin.php?result=fail');
 		die();
 	}else{
 		$elementos = array($_POST['mail'], $_POST['nombre']);
