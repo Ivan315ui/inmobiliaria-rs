@@ -292,6 +292,14 @@ div.grid {
     }
 }
 
+@media (max-width: 768px) {
+    .container {
+        br {
+            display: none;
+        }
+    }
+}
+
 @media (min-width: 576px) {
 
 }

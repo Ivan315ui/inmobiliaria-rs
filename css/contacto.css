@@ -351,6 +351,12 @@ div.grid {
   margin: 0 auto 0 auto;
 }
 
+@media (max-width: 768px) {
+  .container br {
+    display: none;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .info .grid {
     -ms-grid-columns: (minmax(220px, 350px))[2];

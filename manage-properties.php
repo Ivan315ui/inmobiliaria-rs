@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//por cada nombre de los archivos, cambiar el nombre para que coincida con el de la propiedad
 		for ($i = 0; $i < count($_FILES["$src"]['name']); $i++) {
 			$título = $src == "files" ? $_POST['título'] : $_POST['mtítulo'];
-			$nombres[] = "{$título}-" . ($i + 1);
+			$nombres[] = "{$título}-" . (($i + 1) < 10 ? "0" . ($i + 1) : ($i + 1));
 		}
 
 		//si el tipo de archivo subido no es una imagen, volver a admin y tirar un error
@@ -94,7 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 
 	}
-
 	//seguir con la ejecución de la consulta
 	$consulta->execute($elementos);
 	//redireccionar acorde al resultado de la consulta

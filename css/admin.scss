@@ -88,8 +88,15 @@ header {
     margin: 5px 0;
     h5 {
         padding: 0;
+        margin-bottom: .5rem;
+    }
+    .grid {
+        display: grid;
+        grid-auto-rows: 1fr;
     }
 }
+
+
 h5 {
     color: #440206;
     font-weight: 300;
@@ -159,6 +166,7 @@ form {
         flex-wrap: wrap;
         input:not([type=file]) {
             width: 100%;
+            max-width: 200px;
             height: 2rem;
             padding: 5px;
             border: 1px solid grey;
@@ -306,13 +314,39 @@ form {
     }
 }
 
-#manage form {
-    .underline {
-        width: calc(100% / 3);
-        &.toggled {
-            left: calc(100% / 3);
-            &.toggled-2 {
-                left: calc(100% / 3 * 2);
+#manage {
+    form {
+        .underline {
+            width: calc(100% / 3);
+            &.toggled {
+                left: calc(100% / 3);
+                &.toggled-2 {
+                    left: calc(100% / 3 * 2);
+                }
+            }
+        }
+    }
+    .query {
+        overflow-x: scroll;
+        .grid {
+            grid-template-columns: repeat(9, 250px);
+            grid-template-rows: auto;
+            div {
+                padding: 5px;
+            }
+            .header {
+                border: 1px solid #440206;
+                color: #440206;
+                font-weight: 600;
+            }
+            .data {
+                border: 1px solid #212529;
+                color: #212529;
+                height: 5rem;
+                overflow-y: scroll;
+            }
+            .summary {
+                display: none;
             }
         }
     }

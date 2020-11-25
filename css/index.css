@@ -546,6 +546,14 @@ header.scrolled .md-menu ul li:hover a {
   opacity: 1;
 }
 
+@media only screen and (max-width: 320px) {
+  .button {
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
+  }
+}
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .slider .container h1 {

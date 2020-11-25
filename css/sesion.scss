@@ -2,6 +2,14 @@ body {
     min-height: 100vh;
 }
 
+header {
+    position: static;
+    background-color: #440206;
+    .container img {
+        opacity: 1;
+    }
+}
+
 .main {
     .col-md-5 {
         h6 {

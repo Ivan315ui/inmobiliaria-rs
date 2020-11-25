@@ -137,3 +137,9 @@ function changeForm(source) {
 		}
 	}
 }
+
+let closeButton = document.querySelector('.close');
+
+closeButton.addEventListener('click', () => {
+	document.querySelector('.alert').style.display = 'none';
+})

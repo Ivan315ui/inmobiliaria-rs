@@ -1,4 +1,6 @@
 <?php
+
+require('conexion.php');
 //verificación de que se haya iniciado sesión
 session_start();
 
@@ -21,104 +23,101 @@ if (!isset($_SESSION['admin'])) {
 	<link rel="stylesheet" href="css/admin.css">
 	<script src="js/header.js" defer></script>
 	<script src="js/admin.js" defer></script>
-	<script src="js/verificador.js" defer></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous" defer></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous" defer></script>
+	<script src="js/getData.js" defer></script>
 </head>
 
 <body>
 	<?php require_once('templates/header.html') ?>
 	<?php if(isset($_GET['result']) && $_GET['result'] == 'success'):?>
-		<div class="alert alert-success alert-dismissible fade show container" role="alert">
+		<div class="alert alert-success container" role="alert">
 			<strong>Operación realizada exitosamente</strong>. Por favor, cierre esta alerta.
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
+			<button type="button" class="close">
+				<span>&times;</span>
 			</button>
 		</div>
 	<?php elseif(isset($_GET['result']) && $_GET['result'] == 'fail'):?>
 		<?php if(isset($_GET['badImageType']) && $_GET['badImageType'] == 'true'):?>
-			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+			<div class="alert alert-danger container" role="alert">
 				<strong>Solo se admiten archivos de imagen para subir</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+				<button type="button" class="close">
+					<span>&times;</span>
 				</button>
 			</div>
 		<?php elseif(isset($_GET['files']) && $_GET['files'] == 'fail'): ?>
-			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+			<div class="alert alert-danger container" role="alert">
 				<strong>Hubo un problema al subir los archivos</strong>. Por favor, verifique los datos e inténtelo de nuevo en unos instantes.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+				<button type="button" class="close">
+					<span>&times;</span>
 				</button>
 			</div>
 		<?php elseif(strlen($_POST['nombre']) == 0 || strlen($_POST['mail']) == 0 || strlen($_POST['contraseña']) == 0): ?>
-			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
-				<strong>Los campos Nombre, Email y Contraseña no deben estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+			<div class="alert alert-danger container" role="alert">
+				<strong>Los campos Nombre, Email y Contraseña no deben estar vacíos, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
+				<button type="button" class="close">
+					<span>&times;</span>
 				</button>
 			</div>
 		<?php elseif(strlen($_POST['nombre']) == 0 || strlen($_POST['mail']) == 0): ?>
-			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+			<div class="alert alert-danger container" role="alert">
 				<strong>Los campos Nombre y Email no deben estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+				<button type="button" class="close">
+					<span>&times;</span>
 				</button>
 			</div>
 		<?php elseif(strlen($_POST['nombre']) == 0 || strlen($_POST['contraseña']) == 0): ?>
-			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+			<div class="alert alert-danger container" role="alert">
 				<strong>Los campos Nombre y Contraseña no deben estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+				<button type="button" class="close">
+					<span>&times;</span>
 				</button>
 			</div>
 		<?php elseif(strlen($_POST['mail']) == 0 || strlen($_POST['contraseña']) == 0): ?>
-			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+			<div class="alert alert-danger container" role="alert">
 				<strong>Los campos Email y Contraseña no deben estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+				<button type="button" class="close">
+					<span>&times;</span>
 				</button>
 			</div>
 		<?php elseif(strlen($_POST['contraseña']) == 0): ?>
-			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+			<div class="alert alert-danger container" role="alert">
 				<strong>El campo contraseña no debe estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+				<button type="button" class="close">
+					<span>&times;</span>
 				</button>
 			</div>
 		<?php elseif(strlen($_POST['contraseña']) < 6): ?>
-			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+			<div class="alert alert-danger container" role="alert">
 				<strong>La contraseña es menor a 6 caracteres, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+				<button type="button" class="close">
+					<span>&times;</span>
 				</button>
 			</div>
 		<?php elseif(strlen($_POST['contraseña']) > 16): ?>
-			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+			<div class="alert alert-danger container" role="alert">
 				<strong>La contraseña es mayor a 16 caracteres, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+				<button type="button" class="close">
+					<span>&times;</span>
 				</button>
 			</div>
 		<?php elseif(strlen($_POST['mail']) == 0): ?>
-			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+			<div class="alert alert-danger container" role="alert">
 				<strong>El campo Email no debe estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+				<button type="button" class="close">
+					<span>&times;</span>
 				</button>
 			</div>
 		<?php elseif(strlen($_POST['nombre']) == 0): ?>
-			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+			<div class="alert alert-danger container" role="alert">
 				<strong>El campo Nombre no debe estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+				<button type="button" class="close">
+					<span>&times;</span>
 				</button>
 			</div>
 		<?php else: ?>
-			<div class="alert alert-danger alert-dismissible fade show container" role="alert">
+			<div class="alert alert-danger container" role="alert">
 				<strong>Hubo un problema al realizar la operación, verifique los datos</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+				<button type="button" class="close">
+					<span >&times;</span>
 				</button>
 			</div>
 		<?php endif ?>
@@ -157,13 +156,9 @@ if (!isset($_SESSION['admin'])) {
 						El panel de administrador implementa una serie de scripts (o códigos) para
 						permitir la modificación de archivos, elementos de la base de datos y otras
 						funciones de interés para el usuario administrador. <br>
-						Para poder utilizarlo, se deberá iniciar sesión cada vez que se deje la
-						página, por lo que si se cierra la pestaña, se vuelve al inicio o a cualquier
-						otra página del dominio, se cerrará la sesión de administrador y deberá ingresar
-						nuevamente. <br>
-						Por razones de seguridad, <span>es recomendable cerrar esta página</span> cada
-						vez que se termina de utilizar, porque podría quedar expuesta en su PC y
-						cualquier otra persona podría realizar cambios en el sistema.
+						Para hacer uso de esta página, es necesario que inicie sesión con sus credenciales. 
+						Por cuestines prácticas, la sesión de administrador permanecerá abierta incluso después 
+						de dejar la página, pero es recomendable cerrar sesión al terminar, por seguridad.<br>
 					</p>
 					<h5>Recomendaciones generales</h5>
 					<p>
@@ -177,22 +172,9 @@ if (!isset($_SESSION['admin'])) {
 							credenciales de acceso puede realizar cambios.
 						</li>
 						<li>
-							Al subir imágenes de una propiedad, llamarlas todas de forma similar según su
-							dirección. Por ejemplo, si se tiene una propiedad en Lavalle 1349, llamar a
-							las imágenes de la propiedad "Lavalle 1349-1", "Lavalle 1349-2", y así
-							sucesivamente. <br>
-							<span>Nótese que en caso contrario, se producirá un error, es probable que no
-								de muestren todas las imágenes deseadas.</span>
-						</li>
-						<li>
-							Al subiur imágenes d euna propiedad, es recomendable tambiém que se indique cuál
-							es la principal, es decir, que la imagen principal de la propiedad se llame
-							"Lavalle 1349-P", siguiendo con el ejemplo anterior y luego se las enumere desde
-							la primera a la última, como se indicó en el ejemplo anterior. <span>En caso de
-								no indicar cuál es la principal, la primer imagen subida ocupará su lugar.</span>.
-						</li>
-						<li>
-							Cerrar la página después de terminar las acciones a realizar.
+							Al momento de subir las imágenes, hacerlo de forma ordenada, es decir, seleccionarlas 
+							según el orden en el que se desea que se muestren. <span>En caso de seleccionarlas al mismo 
+							tiempo, no hay garantía de la forma en la que aparecerán.</span>
 						</li>
 						<li>
 							Cada una de las posibles acciones a realizar en el panel, tiene ciertas
@@ -213,7 +195,7 @@ if (!isset($_SESSION['admin'])) {
 						<li>Añadir imágenes a propiedades ya existentes.</li>
 						<li>Eliminar propiedades.</li>
 						<li>Cambiar información de una propiedad ya existente.</li>
-						<li>Verificar las propiedades subidas actualmente por su nombre.</li>
+						<li>Añadir localidades y tipos de propiedades.</li>
 					</ul>
 				</section>
 				<section id="bugs">
@@ -228,23 +210,16 @@ if (!isset($_SESSION['admin'])) {
 					</p>
 					<ol>
 						<li>
-							<span>Las propiedades no se almacenan correctamente en el servidor:</span> puede suceder
-							por pérdida momentánea de conexión o una conexión débil por parte del administrador.
-							También es posible que se produzca porque el servidor no tiene disponible la base de datos
-							momentáneamente.
-						</li>
-						<li>
 							<span>No se encuentran las propiedades:</span> es probable que suceda por un error de
 							tipado al subir una propiedad, por ejemplo, escribir "Lavale 123" en vez de "Lavalle 123".
 						</li>
 						<li>
-							<span>Una persona con acceso no puede acceder:</span> puede ser producto de un mal tipado
-							en el email de la persona autorizada o pérdida de conexión al actualizar la lista
-							de administradores, similar a lo que sucede con las propiedades en el primer punto.
+							<span>Una persona con acceso no puede acceder:</span> puede ser producto de una mala escritura 
+							de las credenciales de la persona autorizada.
 						</li>
 						<li>
 							<span>Simbolismo prohibido en gestionar propiedades:</span> Existen distintos simbolos que estan prohibidos
-							a la hora de subir nuestras propiedades, por ejemplo "(-, +, &, *, ¿?, ¡!, #, %)"
+							a la hora de subir nuestras propiedades, por ejemplo "(-, +, &, *, ¿?, ¡!, #, %, comillas dobles y comillas simples)".
 						</li>
 					</ol>
 				</section>
@@ -300,7 +275,32 @@ if (!isset($_SESSION['admin'])) {
 					</p>
 					<div class="query">
 						<h5>Listado de propiedades actuales</h5>
-						<!--generar un párrafo por cada resultado de la consulta-->
+						<div class="grid">
+							<?php 
+								$propiedades = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo ORDER BY propiedades.ID_Propiedad");
+								$propiedades->execute();
+								$resultados = $propiedades->fetchAll(PDO::FETCH_ASSOC);
+
+								foreach ($resultados as $propiedades => $propiedad) {
+									if ($propiedades == 0) {
+										foreach ($propiedad as $key => $value) {
+											echo '<div class="header">'. $key .'</div>';
+										}
+									}
+									$summary = '';
+									foreach ($propiedad as $key => $value) {
+										if ($key == 'ID_Propiedad') {
+											echo '<div class="data id">' . $value . "</div>";
+										} else {
+											echo '<div class="data">' . ($value == NULL ? "-" : $value) . "</div>";
+										}
+										$summary .= $value . ";";
+									}
+									echo '<div class="summary">' . $summary . '</div>';
+								}
+
+							?>
+						</div>
 					</div>
 					<form action="manage-properties.php" method="post" autocomplete="off"  enctype="multipart/form-data">
 						<h5>Gestionar propiedades</h5>
@@ -310,20 +310,12 @@ if (!isset($_SESSION['admin'])) {
 						</div>
 						<div class="add toggled">
 							<label>
-								Dirección:
-								<input type="text" name="dirección" id="dirección">
-							</label>
-							<label>
-								Piso:
-								<input type="text" name="piso" id="piso">
-							</label>
-							<label>
-								Departamento:
-								<input type="text" name="depto" id="depto">
-							</label>
-							<label>
 								Título:
 								<input type="text" name="título" id="título">
+							</label>
+							<label>
+								Dirección:
+								<input type="text" name="dirección" id="dirección">
 							</label>
 							<label>
 								Tipo:
@@ -334,6 +326,14 @@ if (!isset($_SESSION['admin'])) {
 									<option value="4">Terreno</option>
 									<option value="5">Lote</option>
 								</select>
+							</label>
+							<label>
+								Piso:
+								<input type="text" name="piso" id="piso">
+							</label>
+							<label>
+								Departamento:
+								<input type="text" name="depto" id="depto">
 							</label>
 							<label>
 								Categoría:
@@ -351,6 +351,7 @@ if (!isset($_SESSION['admin'])) {
 							<label>
 								Localidad:
 								<select name="localidad" id="localidad">
+									<?php ?>
 									<option value="Bahía Blanca">Bahía Blanca</option>
 									<option value="Monte Hermoso">Monte Hermoso</option>
 								</select>

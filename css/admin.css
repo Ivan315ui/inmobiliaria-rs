@@ -100,6 +100,13 @@ header .container img {
 
 .query h5 {
   padding: 0;
+  margin-bottom: .5rem;
+}
+
+.query .grid {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-rows: 1fr;
 }
 
 h5 {
@@ -195,6 +202,7 @@ form label {
 
 form label input:not([type=file]) {
   width: 100%;
+  max-width: 200px;
   height: 2rem;
   padding: 5px;
   border: 1px solid grey;
@@ -386,6 +394,38 @@ form button:hover::after {
 
 #manage form .underline.toggled.toggled-2 {
   left: calc(100% / 3 * 2);
+}
+
+#manage .query {
+  overflow-x: scroll;
+}
+
+#manage .query .grid {
+  -ms-grid-columns: (250px)[9];
+      grid-template-columns: repeat(9, 250px);
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+}
+
+#manage .query .grid div {
+  padding: 5px;
+}
+
+#manage .query .grid .header {
+  border: 1px solid #440206;
+  color: #440206;
+  font-weight: 600;
+}
+
+#manage .query .grid .data {
+  border: 1px solid #212529;
+  color: #212529;
+  height: 5rem;
+  overflow-y: scroll;
+}
+
+#manage .query .grid .summary {
+  display: none;
 }
 
 footer .sesion {
