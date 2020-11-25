@@ -21,5 +21,6 @@ foreach($prueba as $row){
     echo "Localidad: ".$row[7];
     echo "<br>";
     echo "Categoria: ".$row[8];
+    echo "Skere";
 }
 ?>
