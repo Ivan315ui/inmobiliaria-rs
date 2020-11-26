@@ -57,7 +57,7 @@
 
 			</div>
 			<div class="col-lg-8">
-				<h2 class="container">Sobre ROSCH inmobiliaria</h2>
+				<h2 class="container" id="sobre">Sobre ROSCH inmobiliaria</h2>
 				<p class="container">
 					Somos una empresa dedicada a la comercialización y administración de 
 					alquileres de inmuebles familiares, comerciales e industriales. 

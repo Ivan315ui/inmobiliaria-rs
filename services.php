@@ -24,7 +24,7 @@
             <p> En Rosch Inmobiliaria ofrecemos diversos servicios </p>
             <p> adaptados para cada uno de nuestros clientes</p>
         </div>
-        <div class="tasaciones">
+        <div class="tasaciones" id="tasaciones">
             <h1>
                 TASACIONES
             </h1>
