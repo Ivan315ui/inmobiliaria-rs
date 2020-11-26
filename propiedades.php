@@ -70,6 +70,7 @@ if (empty($_GET)) {
 	<script src="js/header.js" defer></script>
 	<script src="js/propiedades.js" defer></script>
 	<script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
+	<link rel="shortcut icon" href="imgs/logo.png">
 </head>
 <body>
 	<?php require_once('templates/header.html') ?>

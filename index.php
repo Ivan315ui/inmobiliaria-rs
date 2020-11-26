@@ -15,6 +15,7 @@
 	<script src="js/slider.js" defer></script>
 	<script src="js/featured.js" defer></script>
 	<script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
+	<link rel="shortcut icon" href="imgs/logo.png">
 </head>
 
 <body>

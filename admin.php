@@ -24,6 +24,7 @@ if (!isset($_SESSION['admin'])) {
 	<script src="js/header.js" defer></script>
 	<script src="js/admin.js" defer></script>
 	<script src="js/getData.js" defer></script>
+	<link rel="shortcut icon" href="imgs/logo.png">
 </head>
 
 <body>
