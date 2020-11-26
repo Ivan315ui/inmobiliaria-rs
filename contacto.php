@@ -46,7 +46,7 @@
 					<i class="far fa-envelope"></i> Correo electrónico
 				</a>
 				<a href="tel:telefonohere" class="grid-item" target="_self">
-				<i class="fas fa-phone-alt"></i> Teléfono
+					<i class="fas fa-phone-alt"></i> Teléfono
 				</a>
 			</div>
 		</div>

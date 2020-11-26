@@ -1,5 +1,10 @@
 .intro {
   height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .intro::before {
@@ -11,8 +16,52 @@
 }
 
 .intro h1 {
+  width: 100%;
   text-align: center;
   margin-top: 38px;
+}
+
+.intro form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px;
+  margin: 10px;
+}
+
+.intro form input {
+  width: 100%;
+  padding: 5px;
+}
+
+.intro form .button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.intro form .button span {
+  display: none;
+}
+
+.gets {
+  display: none;
+}
+
+.button {
+  border: 1px solid #440206;
+  background: white;
+  color: #440206;
+  padding: 5px 10px;
+  margin: 0;
+}
+
+.button:hover {
+  background: #440206;
+  color: white;
 }
 
 .propiedades .filtros .container {
@@ -46,17 +95,7 @@
 }
 
 .propiedades .filtros .container .grid-wrapper .button {
-  border: 1px solid #440206;
-  background: white;
-  color: #440206;
-  padding: 5px 10px;
-  margin: 0;
   grid-column: 1/-1;
-}
-
-.propiedades .filtros .container .grid-wrapper .button:hover {
-  background: #440206;
-  color: white;
 }
 
 .propiedades .container {
@@ -161,13 +200,27 @@
   transition: inherit;
 }
 
-.propiedades .container .propiedad .desc h5 {
+.propiedades .container .propiedad .desc h5, .propiedades .container .propiedad .desc h6 {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
 @media only screen and (min-width: 768px) {
+  .intro form {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+  }
+  .intro form input {
+    width: 60%;
+  }
+  .intro form .button {
+    width: 125px;
+  }
+  .intro form .button span {
+    display: initial;
+  }
   .propiedades .filtros .container .grid-wrapper {
     -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
@@ -192,6 +245,19 @@
 }
 
 @media only screen and (min-width: 992px) {
+  .intro form {
+    margin: 10px auto;
+    width: 50%;
+  }
+  .intro form input {
+    width: 60%;
+  }
+  .intro form .button {
+    width: 125px;
+  }
+  .intro form .button span {
+    display: initial;
+  }
   .propiedades .filtros .container .grid-wrapper {
     -ms-grid-columns: (1fr)[4];
         grid-template-columns: repeat(4, 1fr);

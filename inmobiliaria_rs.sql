@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 29, 2020 at 06:43 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 26-11-2020 a las 14:49:04
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,33 +18,55 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `inmobiliaria_rs`
+-- Base de datos: `inmobiliaria_rs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `administradores`
+-- Estructura de tabla para la tabla `administradores`
 --
 
 CREATE TABLE `administradores` (
-  `Mail` varchar(255) NOT NULL,
-  `Nombre_Administrador` varchar(255) NOT NULL,
-  `Contraseña` varchar(255) NOT NULL
+  `id` tinyint(4) NOT NULL,
+  `Mail` varchar(30) NOT NULL,
+  `Nombre_Administrador` varchar(20) NOT NULL,
+  `Contraseña` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `administradores`
+-- Volcado de datos para la tabla `administradores`
 --
 
-INSERT INTO `administradores` (`Mail`, `Nombre_Administrador`, `Contraseña`) VALUES
-('ivanemanuel315@gmail.com', 'Ivan315', 'admin110'),
-('jere@gmail.com', 'jere', 'jere');
+INSERT INTO `administradores` (`id`, `Mail`, `Nombre_Administrador`, `Contraseña`) VALUES
+(1, 'ivanemanuel315@gmail.com', 'Iván', 'admin110'),
+(3, 'jereet_31@gmail.com', 'Jere', 'jere110');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `propiedades`
+-- Estructura de tabla para la tabla `localidades`
+--
+
+CREATE TABLE `localidades` (
+  `id` tinyint(11) NOT NULL,
+  `localidad` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `localidades`
+--
+
+INSERT INTO `localidades` (`id`, `localidad`) VALUES
+(1, 'Bahía Blanca'),
+(2, 'Monte Hermoso'),
+(3, 'CABA'),
+(4, 'Punta Alta');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `propiedades`
 --
 
 CREATE TABLE `propiedades` (
@@ -60,7 +82,7 @@ CREATE TABLE `propiedades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `propiedades`
+-- Volcado de datos para la tabla `propiedades`
 --
 
 INSERT INTO `propiedades` (`ID_Propiedad`, `Título`, `Dirección`, `ID_Tipo`, `Piso`, `Departamento`, `Descripción`, `Localidad`, `Categoría`) VALUES
@@ -79,7 +101,7 @@ INSERT INTO `propiedades` (`ID_Propiedad`, `Título`, `Dirección`, `ID_Tipo`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipos_propiedades`
+-- Estructura de tabla para la tabla `tipos_propiedades`
 --
 
 CREATE TABLE `tipos_propiedades` (
@@ -88,7 +110,7 @@ CREATE TABLE `tipos_propiedades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tipos_propiedades`
+-- Volcado de datos para la tabla `tipos_propiedades`
 --
 
 INSERT INTO `tipos_propiedades` (`ID_Tipo`, `Nombre_Tipo`) VALUES
@@ -99,50 +121,68 @@ INSERT INTO `tipos_propiedades` (`ID_Tipo`, `Nombre_Tipo`) VALUES
 (5, 'Lote');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `administradores`
+-- Indices de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  ADD PRIMARY KEY (`Mail`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `propiedades`
+-- Indices de la tabla `localidades`
+--
+ALTER TABLE `localidades`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `propiedades`
 --
 ALTER TABLE `propiedades`
   ADD PRIMARY KEY (`ID_Propiedad`),
   ADD KEY `ID_Tipo` (`ID_Tipo`);
 
 --
--- Indexes for table `tipos_propiedades`
+-- Indices de la tabla `tipos_propiedades`
 --
 ALTER TABLE `tipos_propiedades`
   ADD PRIMARY KEY (`ID_Tipo`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `propiedades`
+-- AUTO_INCREMENT de la tabla `administradores`
+--
+ALTER TABLE `administradores`
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `localidades`
+--
+ALTER TABLE `localidades`
+  MODIFY `id` tinyint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `propiedades`
 --
 ALTER TABLE `propiedades`
   MODIFY `ID_Propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `tipos_propiedades`
+-- AUTO_INCREMENT de la tabla `tipos_propiedades`
 --
 ALTER TABLE `tipos_propiedades`
   MODIFY `ID_Tipo` tinyint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `propiedades`
+-- Filtros para la tabla `propiedades`
 --
 ALTER TABLE `propiedades`
   ADD CONSTRAINT `Propiedades_ibfk_1` FOREIGN KEY (`ID_Tipo`) REFERENCES `tipos_propiedades` (`ID_Tipo`);

@@ -50,76 +50,6 @@ if (!isset($_SESSION['admin'])) {
 					<span>&times;</span>
 				</button>
 			</div>
-		<?php elseif(strlen($_POST['nombre']) == 0 || strlen($_POST['mail']) == 0 || strlen($_POST['contraseña']) == 0): ?>
-			<div class="alert alert-danger container" role="alert">
-				<strong>Los campos Nombre, Email y Contraseña no deben estar vacíos, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close">
-					<span>&times;</span>
-				</button>
-			</div>
-		<?php elseif(strlen($_POST['nombre']) == 0 || strlen($_POST['mail']) == 0): ?>
-			<div class="alert alert-danger container" role="alert">
-				<strong>Los campos Nombre y Email no deben estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close">
-					<span>&times;</span>
-				</button>
-			</div>
-		<?php elseif(strlen($_POST['nombre']) == 0 || strlen($_POST['contraseña']) == 0): ?>
-			<div class="alert alert-danger container" role="alert">
-				<strong>Los campos Nombre y Contraseña no deben estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close">
-					<span>&times;</span>
-				</button>
-			</div>
-		<?php elseif(strlen($_POST['mail']) == 0 || strlen($_POST['contraseña']) == 0): ?>
-			<div class="alert alert-danger container" role="alert">
-				<strong>Los campos Email y Contraseña no deben estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close">
-					<span>&times;</span>
-				</button>
-			</div>
-		<?php elseif(strlen($_POST['contraseña']) == 0): ?>
-			<div class="alert alert-danger container" role="alert">
-				<strong>El campo contraseña no debe estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close">
-					<span>&times;</span>
-				</button>
-			</div>
-		<?php elseif(strlen($_POST['contraseña']) < 6): ?>
-			<div class="alert alert-danger container" role="alert">
-				<strong>La contraseña es menor a 6 caracteres, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close">
-					<span>&times;</span>
-				</button>
-			</div>
-		<?php elseif(strlen($_POST['contraseña']) > 16): ?>
-			<div class="alert alert-danger container" role="alert">
-				<strong>La contraseña es mayor a 16 caracteres, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close">
-					<span>&times;</span>
-				</button>
-			</div>
-		<?php elseif(strlen($_POST['mail']) == 0): ?>
-			<div class="alert alert-danger container" role="alert">
-				<strong>El campo Email no debe estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close">
-					<span>&times;</span>
-				</button>
-			</div>
-		<?php elseif(strlen($_POST['nombre']) == 0): ?>
-			<div class="alert alert-danger container" role="alert">
-				<strong>El campo Nombre no debe estar vacio, verifique los datos y vuelva a intentarlo</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close">
-					<span>&times;</span>
-				</button>
-			</div>
-		<?php else: ?>
-			<div class="alert alert-danger container" role="alert">
-				<strong>Hubo un problema al realizar la operación, verifique los datos</strong>. Al finalizar de leer, cierre esta alerta.
-				<button type="button" class="close">
-					<span >&times;</span>
-				</button>
-			</div>
 		<?php endif ?>
 	<?php endif ?>
 	<div class="main container">
@@ -236,29 +166,57 @@ if (!isset($_SESSION['admin'])) {
 					</p>
 					<div class="query">
 						<h5>Administradores actuales</h5>
-						<!--generar un párrafo por cada resultado de la consulta-->
+						<div class="grid" id="admins">
+							<?php 
+								$propiedades = $conexionBD->prepare("SELECT id, Nombre_Administrador, Mail FROM administradores ORDER BY id");
+								$propiedades->execute();
+								$resultados = $propiedades->fetchAll(PDO::FETCH_ASSOC);
+
+								foreach ($resultados as $administradores => $administrador) {
+									if ($administradores == 0) {
+										foreach ($administrador as $key => $value) {
+											echo '<div class="header">'. $key .'</div>';
+										}
+									}
+									$summary = '';
+									foreach ($administrador as $key => $value) {
+										if ($key == 'id') {
+											echo '<div class="data id-admin">' . $value . "</div>";
+										} else {
+											echo '<div class="data">' . ($value == NULL ? "-" : $value) . "</div>";
+										}
+										$summary .= $value . ";";
+									}
+									$summary = substr($summary, 0, -1);
+									echo '<div class="summary">' . $summary . '</div>';
+								}
+
+							?>
+						</div>
 					</div>
-					<form action="manage-actions.php" method="post" autocomplete="off">
+					<form action="manage-actions.php" method="post" autocomplete="off" id="adminsForm">
 						<h5>Acciones</h5>
 						<div>
 							<a>Añadir</a><a>Eliminar</a>
 							<div class="underline"></div>
 						</div>
+						<label style="display: none;">
+							ID:
+							<input type="text" name="adminID" class="inputs">
+						</label>
 						<label>
 							Nombre de administrador:
-							<input type="text" name="nombre" id="nombre">
+							<input type="text" name="nombre" id="nombre" class="inputs">
 						</label>
-						<div id="verificar-name"></div>
 						<label>
 							Email:
-							<input type="email" name="mail" id="mail">
+							<input type="email" name="mail" id="mail" class="inputs">
 						</label>
 						<div id="verificar-mail"></div>
 						<label class="contraseña">
 							Contraseña:
 							<input type="password" name="contraseña" id="contraseña">
 						</label>
-						<div id="verificar-pass"></div>
 						<label class="confirm">
 							<input type="checkbox" name="confirmar" id="confirmar" value="añadir"> Confirmar acción.
 						</label>
@@ -275,7 +233,7 @@ if (!isset($_SESSION['admin'])) {
 					</p>
 					<div class="query">
 						<h5>Listado de propiedades actuales</h5>
-						<div class="grid">
+						<div class="grid" id="props">
 							<?php 
 								$propiedades = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo ORDER BY propiedades.ID_Propiedad");
 								$propiedades->execute();
@@ -296,13 +254,14 @@ if (!isset($_SESSION['admin'])) {
 										}
 										$summary .= $value . ";";
 									}
+									$summary = substr($summary, 0, -1);
 									echo '<div class="summary">' . $summary . '</div>';
 								}
 
 							?>
 						</div>
 					</div>
-					<form action="manage-properties.php" method="post" autocomplete="off"  enctype="multipart/form-data">
+					<form action="manage-properties.php" method="post" autocomplete="off"  enctype="multipart/form-data" id="propsForm">
 						<h5>Gestionar propiedades</h5>
 						<div>
 							<a id="add">Añadir</a><a id="rem">Eliminar</a><a id="mod">Modificar</a>
@@ -320,11 +279,16 @@ if (!isset($_SESSION['admin'])) {
 							<label>
 								Tipo:
 								<select name="tipo" id="tipo">
-									<option value="1">Casa</option>
-									<option value="2">Departamento</option>
-									<option value="3">Galpon</option>
-									<option value="4">Terreno</option>
-									<option value="5">Lote</option>
+									<?php
+										$resultados = $conexionBD->prepare("SELECT * FROM tipos_propiedades ORDER BY ID_Tipo");
+										$resultados->execute();
+										$resultados = $resultados->fetchAll(PDO::FETCH_ASSOC);
+										
+										foreach ($resultados as $tipos => $campos) {
+											echo '<option value="'. $campos['ID_Tipo'] .'">'. $campos['Nombre_Tipo'] .'</option>';
+										}		
+
+									?>
 								</select>
 							</label>
 							<label>
@@ -335,15 +299,6 @@ if (!isset($_SESSION['admin'])) {
 								Departamento:
 								<input type="text" name="depto" id="depto">
 							</label>
-							<label>
-								Categoría:
-								<select name="categoría" id="categoría">
-									<option value="Venta">Venta</option>
-									<option value="Alquiler">Alquiler</option>
-									<option value="Ambas">Venta/Alquiler</option>
-									<option value="No disponible">No disponible</option>
-								</select>
-							</label>
 							<label class="descrip">
 								<span>Descripción:</span>
 								<textarea name="descripción" id="descripción" cols="30" rows="10"></textarea>
@@ -351,9 +306,28 @@ if (!isset($_SESSION['admin'])) {
 							<label>
 								Localidad:
 								<select name="localidad" id="localidad">
-									<?php ?>
-									<option value="Bahía Blanca">Bahía Blanca</option>
-									<option value="Monte Hermoso">Monte Hermoso</option>
+									<?php 
+										$resultados = $conexionBD->prepare("SELECT localidad FROM localidades ORDER BY localidad");
+										$resultados->execute();
+										$resultados = $resultados->fetchAll(PDO::FETCH_ASSOC);
+										
+										  
+										foreach ($resultados as $localidades) {
+											foreach ($localidades as $localidades => $value) {
+												echo '<option value="' . $value . '">' . $value . '</option>';
+											}
+										}		
+
+									?>
+								</select>
+							</label>
+							<label>
+								Categoría:
+								<select name="categoría" id="categoría">
+									<option value="Venta">Venta</option>
+									<option value="Alquiler">Alquiler</option>
+									<option value="Venta/Alquiler">Venta/Alquiler</option>
+									<option value="No disponible">No disponible</option>
 								</select>
 							</label>
 							<label>
@@ -378,52 +352,68 @@ if (!isset($_SESSION['admin'])) {
 						<div class="mod">
 							<label style="display: none;">
 								ID:
-								<input type="text" name="midprop">
-							</label>
-							<label>
-								Dirección:
-								<input type="text" name="mdirección">
-							</label>
-							<label>
-								Piso:
-								<input type="text" name="mpiso">
-							</label>
-							<label>
-								Departamento:
-								<input type="text" name="mdepto">
+								<input type="text" name="midprop" class="inputs">
 							</label>
 							<label>
 								Título:
-								<input type="text" name="mtítulo">
+								<input type="text" name="mtítulo" class="inputs">
+							</label>
+							<label>
+								Dirección:
+								<input type="text" name="mdirección" class="inputs">
 							</label>
 							<label>
 								Tipo:
-								<select name="mtipo">
-									<option value="1">Casa</option>
-									<option value="2">Departamento</option>
-									<option value="3">Galpon</option>
-									<option value="4">Terreno</option>
-									<option value="5">Lote</option>
+								<select name="mtipo" class="inputs">
+									<?php
+										$resultados = $conexionBD->prepare("SELECT * FROM tipos_propiedades ORDER BY ID_Tipo");
+										$resultados->execute();
+										$resultados = $resultados->fetchAll(PDO::FETCH_ASSOC);
+										
+										foreach ($resultados as $tipos => $campos) {
+											echo '<option value="'. $campos['ID_Tipo'] .'">'. $campos['Nombre_Tipo'] .'</option>';
+										}		
+
+									?>
+								</select>
+							</label>
+							<label>
+								Piso:
+								<input type="text" name="mpiso" class="inputs">
+							</label>
+							<label>
+								Departamento:
+								<input type="text" name="mdepto" class="inputs">
+							</label>
+							<label class="descrip">
+								<span>Descripción:</span>
+								<textarea name="mdescripción" cols="30" rows="10" class="inputs"></textarea>
+							</label>
+							<label>
+								Localidad:
+								<select name="mlocalidad" class="inputs">
+									<?php 
+										$resultados = $conexionBD->prepare("SELECT localidad FROM localidades ORDER BY localidad");
+										$resultados->execute();
+										$resultados = $resultados->fetchAll(PDO::FETCH_ASSOC);
+										
+										  
+										foreach ($resultados as $localidades) {
+											foreach ($localidades as $localidades => $value) {
+												echo '<option value="' . $value . '">' . $value . '</option>';
+											}
+										}		
+
+									?>
 								</select>
 							</label>
 							<label>
 								Categoría:
-								<select name="mcategoría">
+								<select name="mcategoría" class="inputs">
 									<option value="Venta">Venta</option>
 									<option value="Alquiler">Alquiler</option>
-									<option value="Ambas">Venta/Alquiler</option>
+									<option value="Venta/Alquiler">Venta/Alquiler</option>
 									<option value="No disponible">No disponible</option>
-								</select>
-							</label>
-							<label class="descrip">
-								<span>Descripción:</span>
-								<textarea name="mdescripción" cols="30" rows="10"></textarea>
-							</label>
-							<label>
-								Localidad:
-								<select name="mlocalidad">
-									<option value="Bahía Blanca">Bahía Blanca</option>
-									<option value="Monte Hermoso">Monte Hermoso</option>
 								</select>
 							</label>
 							<label for="">

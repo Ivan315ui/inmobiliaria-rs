@@ -109,6 +109,16 @@ header .container img {
   grid-auto-rows: 1fr;
 }
 
+.query .grid .summary {
+  display: none;
+}
+
+.query .grid .data.id-admin, .query .grid .data.id {
+  cursor: pointer;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
 h5 {
   color: #440206;
   font-weight: 300;
@@ -280,7 +290,7 @@ form label select:focus {
 form label input[type=file] {
   width: 280px;
   margin: 5px 0;
-  margin-left: auto;
+  overflow: hidden;
 }
 
 form label input[type=file]:focus {
@@ -424,8 +434,36 @@ form button:hover::after {
   overflow-y: scroll;
 }
 
-#manage .query .grid .summary {
-  display: none;
+#manage .query .grid .data.id:hover {
+  color: white;
+  background-color: #212529;
+}
+
+#admins .grid {
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+}
+
+#admins .grid div {
+  padding: 5px;
+}
+
+#admins .grid .header {
+  border: 1px solid #440206;
+  color: #440206;
+  font-weight: 600;
+}
+
+#admins .grid .data {
+  border: 1px solid #212529;
+  color: #212529;
+}
+
+#admins .grid .data.id-admin:hover {
+  color: white;
+  background-color: #212529;
 }
 
 footer .sesion {

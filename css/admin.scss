@@ -93,9 +93,17 @@ header {
     .grid {
         display: grid;
         grid-auto-rows: 1fr;
+        .summary {
+            display: none;
+        }
+        .data {
+            &.id-admin, &.id {
+                cursor: pointer;
+                transition: 0.3s ease-in-out;
+            }
+        }
     }
 }
-
 
 h5 {
     color: #440206;
@@ -224,7 +232,7 @@ form {
         input[type=file] {
             width: 280px;
             margin: 5px 0;
-            margin-left: auto;
+            overflow: hidden;
             &:focus {
                 outline: none;
             }
@@ -344,9 +352,37 @@ form {
                 color: #212529;
                 height: 5rem;
                 overflow-y: scroll;
+                &.id {
+                    &:hover {
+                        color: white;
+                        background-color: #212529;
+                    }
+                }
             }
-            .summary {
-                display: none;
+        }
+    }
+}
+
+#admins {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        div {
+            padding: 5px;
+        }
+        .header {
+            border: 1px solid #440206;
+            color: #440206;
+            font-weight: 600;
+        }
+        .data {
+            border: 1px solid #212529;
+            color: #212529;
+            &.id-admin {
+                &:hover {
+                    color: white;
+                    background-color: #212529;
+                }
             }
         }
     }

@@ -83,40 +83,38 @@
 	<section id="destacados">
 		<h2>Destacados</h2>
 		<?php 
-				$lenght = count($resultados);
+			$lenght = count($resultados);
 
-				$array = [];
-				
-				for($i = 0; $i < 8; $i++){
+			$array = [];
+			
+			for($i = 0; $i < 8; $i++){
+				$random = rand(1, $lenght);
+				while(in_array($random, $array)) {
 					$random = rand(1, $lenght);
-					while(in_array($random, $array)) {
-						$random = rand(1, $lenght);
-					}
-					foreach($resultados as $resultado => $propiedad){
-						$propiedad['ID_Propiedad'] = $random;
-					}
-					$array[$i] = $propiedad['ID_Propiedad'];
-
-					$consulta2[$i] = $conexionBD->prepare("SELECT Título, Dirección, Categoría, Localidad, tipos_propiedades.Nombre_Tipo AS Tipo FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE ID_Propiedad =".$array[$i]);
-					$consulta2[$i]->execute();
-		
-					$title[$i] = $consulta2[$i]->fetchAll();
-					
 				}
+				foreach($resultados as $resultado => $propiedad){
+					$propiedad['ID_Propiedad'] = $random;
+				}
+				$array[$i] = $propiedad['ID_Propiedad'];
 
-				?>
+				$consulta2[$i] = $conexionBD->prepare("SELECT ID_Propiedad, Título, Dirección, Categoría, Localidad, tipos_propiedades.Nombre_Tipo AS Tipo FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE ID_Propiedad =".$array[$i]);
+				$consulta2[$i]->execute();
+	
+				$title[$i] = $consulta2[$i]->fetchAll();
+				
+			}
+
+		?>
 		<div class="container">
 			<div class="grid-wrapper">
 				<?php for ($i=0; $i < 8 ; $i++):?>
 				<div class="grid-item">
 				
-					<a href="">
-						<img src='imgs/propiedades/<?php echo $title[$i][0]['Título']; ?>/<?php echo scandir("imgs/propiedades/{$title[$i][0]['Título']}")[2]; ?>'>
+					<a href="detalles.php?Propiedad=<?php  echo $title[$i][0]['ID_Propiedad'] ?>">
+						<div class="img" style="background-image: url('imgs/propiedades/<?php echo $title[$i][0]['Título'] ?>/<?php echo scandir("imgs/propiedades/{$title[$i][0]['Título']}")[2]?>')"></div>
 						<div class="desc">
 							<h5><?php echo $title[$i][0]['Título']; ?></h5>
 							<span class="direccion"><?php echo $title[$i][0]['Dirección']; ?></span>
-							<span class="categoria"><?php echo $title[$i][0]['Categoría']; ?></span>
-							<span class="tipo"><?php echo $title[$i][0]['Tipo']; ?></span>
 							<span class="localidad"><?php echo $title[$i][0]['Localidad']; ?></span>
 						</div>
 						<h4>Ver más <i class='bx bx-chevron-right'></i></h4>

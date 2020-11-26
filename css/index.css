@@ -304,12 +304,12 @@ header.scrolled .md-menu ul li:hover a {
   border-radius: 3px;
 }
 
-#destacados .container .grid-wrapper .grid-item a img {
+#destacados .container .grid-wrapper .grid-item a .img {
   width: 100%;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   border-radius: 3px 3px 0 0;
 }
 
@@ -328,21 +328,20 @@ header.scrolled .md-menu ul li:hover a {
 #destacados .container .grid-wrapper .grid-item a .desc h5 {
   width: 100%;
   font-weight: 550;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 #destacados .container .grid-wrapper .grid-item a .desc span {
   display: block;
 }
 
-#destacados .container .grid-wrapper .grid-item a .desc span:nth-of-type(2) {
-  border-radius: 2px;
-  padding: 3px;
-  background-color: #444444;
-  color: white;
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  opacity: 0.8;
+#destacados .container .grid-wrapper .grid-item a .desc span.direccion {
+  max-width: 250px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 #destacados .container .grid-wrapper .grid-item a .desc span:last-of-type {
@@ -572,8 +571,8 @@ header.scrolled .md-menu ul li:hover a {
     font-size: 3rem;
   }
   #destacados .container .grid-wrapper {
-    -ms-grid-columns: (calc(50% - 7.5px))[5];
-        grid-template-columns: repeat(5, calc(50% - 7.5px));
+    -ms-grid-columns: (calc(50% - 7.5px))[10];
+        grid-template-columns: repeat(10, calc(50% - 7.5px));
   }
 }
 
@@ -643,8 +642,8 @@ header.scrolled .md-menu ul li:hover a {
     height: 100vh;
   }
   #destacados .container .grid-wrapper {
-    -ms-grid-columns: (calc(100% / 3 - 15px / 3 * 2))[5];
-        grid-template-columns: repeat(5, calc(100% / 3 - 15px / 3 * 2));
+    -ms-grid-columns: (calc(100% / 3 - 15px / 3 * 2))[10];
+        grid-template-columns: repeat(10, calc(100% / 3 - 15px / 3 * 2));
   }
 }
 /*# sourceMappingURL=index.css.map */

@@ -20,46 +20,36 @@ if (empty($_GET)) {
 
 } else {
 
-	//consulta solicitada por filtros
-	$sentencia = "SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE ";
-	$elementos = array();
-	
 	if ($_GET['Tipo'] == "" && $_GET['Localidad'] == "" && $_GET['Categoría'] == 'Ambas') {
 		
 		$consulta = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE Categoría!='No disponible'");
 
-		$consulta->execute();
-
 	} else {
 		
+		$sentencia = "SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE ";
 		//paraterminar
-		$sentencia .= "tipos_propiedades.ID_Tipo ? AND propiedades.Localidad ? AND propiedades.Categoría ?";
-
-		if ($_GET['Tipo'] != "") {
-			$elementos[] = "= " . intval($_GET['Tipo']);
+		if ($_GET['Tipo'] == "") {
+			$sentencia .= 'tipos_propiedades.ID_Tipo != ' . "''";
 		} else {
-			$elementos[] = "!= {$_GET['Tipo']}";
+			$sentencia .= 'tipos_propiedades.ID_Tipo = ' . $_GET['Tipo'];
 		}
-		if ($_GET['Localidad'] != "") {
-			$elementos[] = "= " . $_GET['Localidad'];
+		if ($_GET['Localidad'] == "") {
+			$sentencia .= ' AND propiedades.Localidad != ' . "''";
 		} else {
-			$elementos[] = "!= {$_GET['Localidad']}";
+			$sentencia .= ' AND propiedades.Localidad = ' . "'" . $_GET['Localidad'] . "'";
 		}
-
-		if ($_GET['Categoría'] != "Ambas") {
-			$elementos[] = "= " . $_GET['Categoría'];
+		if ($_GET['Categoría'] == 'Ambas') {
+			$sentencia .= ' AND propiedades.Categoría != ' . "''";
 		} else {
-			$elementos[] = "!=" . "";
+			$sentencia .= ' AND propiedades.Categoría = ' . "'" . $_GET['Categoría'] . "'";
 		}
 
-		// echo $sentencia;
-		// echo "<br>";
-		// var_dump($elementos);
-		// die();
 		$consulta = $conexionBD->prepare($sentencia);
-		$consulta->execute($elementos);
+
 	}
 
+	
+	$consulta->execute();
 	$resultados = $consulta->fetchAll();
 
 }
@@ -78,6 +68,7 @@ if (empty($_GET)) {
 	<link rel="stylesheet" href="css/master.css">
 	<link rel="stylesheet" href="css/propiedades.css">
 	<script src="js/header.js" defer></script>
+	<script src="js/propiedades.js" defer></script>
 	<script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
@@ -85,11 +76,22 @@ if (empty($_GET)) {
 	<div class="intro">
 		<div class="container">
 			<h1>Listado de propiedades</h1>
+			<form action="">
+				<input type="text" name="Nombre" placeholder="Ingrese un nombre o fragmento">
+				<button class="button"><i class="fas fa-search"></i><span>Buscar</span></button>
+			</form>
 		</div>
 	</div>
 	<section class="propiedades">
 		<div class="filtros">
 			<div class="container">
+				<?php 
+					if (isset($_GET['Tipo']) && isset($_GET['Localidad']) && isset($_GET['Categoría'])) {
+						foreach ($_GET as $key => $value) {
+							echo "<div class=\"gets\">{$_GET[$key]}</div>";
+						}
+					}
+				?>
 				<form class="grid-wrapper" method="GET">
 					<label>
 						<span>Tipo:</span>
@@ -110,8 +112,18 @@ if (empty($_GET)) {
 						<span>Localidad:</span>
 						<select name="Localidad">
 							<option value="">Todas</option>
-							<option value="Bahía Blanca">Bahía Blanca</option>
-							<option value="Monte Hermoso">Monte Hermoso</option>
+							<?php
+								$consulta = $conexionBD->prepare("SELECT localidad FROM localidades ORDER BY localidad");
+								$consulta->execute();
+								$consulta = $consulta->fetchAll(PDO::FETCH_ASSOC);
+								
+								foreach ($consulta as $localidades) {
+									foreach ($localidades as $localidades => $value) {
+										echo '<option value="' . $value . '">' . $value . '</option>';
+									}
+								}
+
+							?>
 						</select>
 					</label>
 					<label>
@@ -129,16 +141,20 @@ if (empty($_GET)) {
 		<div class="container">
 		<?php foreach ($resultados as $resultado => $propiedad): ?>
 			<div class="propiedad">
-				<a class="cat" href="<?php echo 'propiedades.php?cat=' . $propiedad['Categoría']; ?>">
+				<a class="cat" href="<?php echo 'propiedades.php?Tipo=&Localidad=&Categoría=' . $propiedad['Categoría']; ?>">
 					<?php echo $propiedad['Categoría']; ?>
 				</a>
-				<a class="type" href="<?php echo 'propiedades.php?type=' . $propiedad['Tipo']; ?>"><?php echo $propiedad['Tipo']; ?></a>
-				<a href="detalles.php?<?php echo $propiedad['ID_Propiedad'] ?>" class="detail-link">
+				<?php foreach ($tipos as $resultado => $nombre): ?>
+					<?php if ($nombre['Nombre_Tipo'] == $propiedad['Tipo']): ?>
+						<a class="type" href="propiedades.php?Tipo=<?php echo $nombre['ID_Tipo'] ?>&Localidad=&Categoría=Ambas"> <?php echo $propiedad['Tipo']; ?> </a>
+					<?php endif; ?>
+				<?php endforeach; ?>
+				<a href="detalles.php?Propiedad=<?php echo $propiedad['ID_Propiedad'] ?>" class="detail-link">
 					<div class="back" style="background-image: url('imgs/propiedades/<?php echo $propiedad['Título']; ?>/<?php echo scandir("imgs/propiedades/{$propiedad['Título']}")[2]; ?>'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
 					<div class="desc">
 						<h5 title="<?php echo $propiedad['Título']; ?>"><?php echo $propiedad['Título']; ?></h6>
-						<h6><i class="fas fa-map-marker-alt"></i> <?php echo $propiedad['Dirección']; ?></h6>
-						<h6><i class="fas fa-map-marked-alt"></i> <?php echo $propiedad['Localidad']; ?></h6>
+						<h6 title="<?php echo $propiedad['Dirección']; ?>"><i class="fas fa-map-marker-alt"></i> <?php echo $propiedad['Dirección']; ?></h6>
+						<h6 title="<?php echo $propiedad['Localidad']; ?>"><i class="fas fa-map-marked-alt"></i> <?php echo $propiedad['Localidad']; ?></h6>
 					</div>
 				</a>
 			</div>

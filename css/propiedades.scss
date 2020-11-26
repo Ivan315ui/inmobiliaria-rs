@@ -1,5 +1,7 @@
 .intro {
     height: 400px;
+    display: flex;
+    flex-wrap: wrap;
     &::before {
         background-image: url("../imgs/props-fondo.jpg");
     }
@@ -7,8 +9,42 @@
         background-color: black;
     }
     h1 {
+        width: 100%;
         text-align: center;
         margin-top: 38px;
+    }
+    form {
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+        margin: 10px;
+        input {
+            width: 100%;
+            padding: 5px;
+        }
+        .button {
+            width: fit-content;
+            span {
+                display: none;
+            }
+        }
+    }
+}
+
+.gets {
+    display: none;
+}
+
+
+.button {
+    border: 1px solid #440206;
+    background: white;
+    color: #440206;
+    padding: 5px 10px;
+    margin: 0;
+    &:hover {
+        background: #440206;
+        color: white;
     }
 }
 
@@ -32,16 +68,7 @@
                     }
                 }
                 .button {
-                    border: 1px solid #440206;
-                    background: white;
-                    color: #440206;
-                    padding: 5px 10px;
-                    margin: 0;
                     grid-column: 1/-1;
-                    &:hover {
-                        background: #440206;
-                        color: white;
-                    }
                 }
             }
         }
@@ -124,7 +151,7 @@
                 color: whitesmoke;
                 padding: 10px;
                 transition: inherit;
-                h5 {
+                h5, h6 {
                     white-space: nowrap;
                     text-overflow: ellipsis;
                     overflow: hidden;
@@ -137,6 +164,22 @@
 
 
 @media only screen and (min-width: 768px) {
+    .intro {
+        form {
+            margin: auto;
+            width: 80%;
+            padding: 10px;
+            input {
+                width: 60%;
+            }
+            .button {
+                width: 125px;
+                span {
+                    display: initial;
+                }
+            }
+        }
+    }
     .propiedades {
         .filtros {
             .container {
@@ -166,6 +209,21 @@
 }
 
 @media only screen and (min-width: 992px) {
+    .intro {
+        form {
+            margin: 10px auto;
+            width: 50%;
+            input {
+                width: 60%;
+            }
+            .button {
+                width: 125px;
+                span {
+                    display: initial;
+                }
+            }
+        }
+    }
     .propiedades {
         .filtros {
             .container {
