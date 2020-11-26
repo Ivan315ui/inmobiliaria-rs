@@ -421,6 +421,7 @@ if (!isset($_SESSION['admin'])) {
 								<input type="file" name="mfiles[]" multiple="">
 							</label>
 						</div>
+						<br>
 						<label class="confirm">
 							<input type="checkbox" name="confirmarP" id="confirmarP" value="add"> Confirmar acción.
 						</label>
