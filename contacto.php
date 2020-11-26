@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>RS Propiedades</title>
+	<title>RS Propiedades: Contacto</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
 	<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
@@ -84,10 +84,11 @@
 				<form action="" class="container" autocomplete="off">
 					<div>
 						<input type="text" name="nombre" placeholder="Nombre">
-						<input type="text" name="email" placeholder="Email">
+						<input type="email" name="email" placeholder="Email">
 						<textarea name="mensaje" placeholder="Mensaje"></textarea>
 					</div>
-					<button class="button">Enviar</button>
+					<button class="button" type="submit" name="enviar">Enviar</button>
+					<?php //include_once("mailContacto.php") ?>
 				</form>
 			</div>
 			<div class="col-lg-4">
