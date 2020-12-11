@@ -9,7 +9,8 @@
 	<link rel="stylesheet" href="css/master.css">
 	<link rel="stylesheet" href="css/services.css">
 	<script src="js/header.js" defer></script>
-	<script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
+    <script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
+    <link rel="shortcut icon" href="imgs/logo.png">
 </head>
 <body>
     <?php require_once('templates/header.html') ?>
@@ -24,7 +25,7 @@
             <p> En Rosch Inmobiliaria ofrecemos diversos servicios </p>
             <p> adaptados para cada uno de nuestros clientes</p>
         </div>
-        <div class="tasaciones">
+        <div class="tasaciones" id="tasaciones">
             <h1>
                 TASACIONES
             </h1>

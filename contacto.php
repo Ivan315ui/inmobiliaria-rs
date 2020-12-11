@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="css/contacto.css">
 	<script src="js/header.js" defer></script>
 	<script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
+	<link rel="shortcut icon" href="imgs/logo.png">
 </head>
 
 <body>
@@ -57,7 +58,7 @@
 
 			</div>
 			<div class="col-lg-8">
-				<h2 class="container">Sobre ROSCH inmobiliaria</h2>
+				<h2 class="container" id="sobre">Sobre ROSCH inmobiliaria</h2>
 				<p class="container">
 					Somos una empresa dedicada a la comercialización y administración de 
 					alquileres de inmuebles familiares, comerciales e industriales. 

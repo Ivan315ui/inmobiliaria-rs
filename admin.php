@@ -24,6 +24,7 @@ if (!isset($_SESSION['admin'])) {
 	<script src="js/header.js" defer></script>
 	<script src="js/admin.js" defer></script>
 	<script src="js/getData.js" defer></script>
+	<link rel="shortcut icon" href="imgs/logo.png">
 </head>
 
 <body>
@@ -421,6 +422,7 @@ if (!isset($_SESSION['admin'])) {
 								<input type="file" name="mfiles[]" multiple="">
 							</label>
 						</div>
+						<br>
 						<label class="confirm">
 							<input type="checkbox" name="confirmarP" id="confirmarP" value="add"> Confirmar acción.
 						</label>

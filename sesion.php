@@ -40,6 +40,7 @@ if (isset($_SESSION['admin'])) {
 	<link rel="stylesheet" href="css/sesion.css">
 	<script src="js/header.js" defer></script>
 	<script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
+	<link rel="shortcut icon" href="imgs/logo.png">
 </head>
 
 <body>

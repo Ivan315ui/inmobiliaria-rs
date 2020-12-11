@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-11-2020 a las 14:49:04
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.10
+-- Tiempo de generación: 26-11-2020 a las 18:07:54
+-- Versión del servidor: 10.4.13-MariaDB
+-- Versión de PHP: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,28 +40,7 @@ CREATE TABLE `administradores` (
 
 INSERT INTO `administradores` (`id`, `Mail`, `Nombre_Administrador`, `Contraseña`) VALUES
 (1, 'ivanemanuel315@gmail.com', 'Iván', 'admin110'),
-(3, 'jereet_31@gmail.com', 'Jere', 'jere110');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `localidades`
---
-
-CREATE TABLE `localidades` (
-  `id` tinyint(11) NOT NULL,
-  `localidad` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `localidades`
---
-
-INSERT INTO `localidades` (`id`, `localidad`) VALUES
-(1, 'Bahía Blanca'),
-(2, 'Monte Hermoso'),
-(3, 'CABA'),
-(4, 'Punta Alta');
+(2, 'jereet31@gmail.com', 'Jere', 'jere110');
 
 -- --------------------------------------------------------
 
@@ -131,12 +110,6 @@ ALTER TABLE `administradores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `localidades`
---
-ALTER TABLE `localidades`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `propiedades`
 --
 ALTER TABLE `propiedades`
@@ -158,12 +131,6 @@ ALTER TABLE `tipos_propiedades`
 --
 ALTER TABLE `administradores`
   MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `localidades`
---
-ALTER TABLE `localidades`
-  MODIFY `id` tinyint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `propiedades`

@@ -53,6 +53,7 @@ $indices = NULL;
 	<script src="js/featured.js" defer></script>
 	<script src="js/index-grid.js" defer></script>
 	<script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
+	<link rel="shortcut icon" href="imgs/logo.png">
 </head>
 
 <body>
@@ -65,8 +66,8 @@ $indices = NULL;
 			<h1>ROSCH Propiedades</h1>
 			<h3><i>Servicios inmobiliarios en Bahía Blanca y la zona.</i></h3>
 			<div>
-				<a href="" class="button">Sobre nosotros</a>
-				<a href="" class="button">Servicios</a>
+				<a href="contacto.php#sobre" class="button">Sobre nosotros</a>
+				<a href="services.php" class="button">Servicios</a>
 			</div>
 		</div>
 	</div>
@@ -78,25 +79,25 @@ $indices = NULL;
 		<div class="container">
 			<div class="grid-container">
 				<div class="grid-item">
-					<a href="">
+					<a href="propiedades.php?Tipo=&Localidad=&Categoría=Venta">
 						<i class="fas fa-home"></i>
 						<h3>Ventas</h3>
 					</a>
 				</div>
 				<div class="grid-item">
-					<a href="">
+					<a href="propiedades.php?Tipo=&Localidad=&Categoría=Alquiler">
 						<i class="fas fa-key"></i>
 						<h3>Alquileres</h3>
 					</a>
 				</div>
 				<div class="grid-item">
-					<a href="">
+					<a href="services.php#tasaciones">
 						<i class="fas fa-dollar-sign"></i>
 						<h3>Tasaciones</h3>
 					</a>
 				</div>
 				<div class="grid-item">
-					<a href="">
+					<a href="propiedades.php?Tipo=&Localidad=Monte+Hermoso&Categoría=Ambas">
 						<i class="fas fa-map-marked-alt"></i>
 						<h3>Monte hermoso</h3>
 					</a>
