@@ -1,3 +1,41 @@
+<?php
+
+require_once("conexion.php");
+
+//conseguir la cantidad de propiedades, solo por si el servidor limita la cantidad de resultados posibles
+$consulta = $conexionBD->prepare("SELECT COUNT(ID_Propiedad) FROM propiedades");
+$consulta->execute();
+
+$rows = $consulta->fetch();
+
+//consulta que solicita los datos de las propiedades y cambia su id de tipo por el nombre del tipo de propiedad que es (INNER JOIN)
+$consulta = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, tipos_propiedades.ID_Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE Categoría!='No disponible' LIMIT $rows[0]");
+$consulta->execute();
+
+$propiedades = $consulta->fetchAll(PDO::FETCH_ASSOC);
+
+$indices = array_keys($propiedades);
+
+shuffle($indices);
+
+$destacados = array();
+$count = 0;
+
+foreach ($indices as $indice) {
+	$destacados[] = $propiedades[$indice];
+	$count++;
+	if ($count == 7) {
+		break;
+	}
+}
+
+$propiedades = NULL;
+$consulta = NULL;
+$rows = NULL;
+$indices = NULL;
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -10,29 +48,15 @@
 	<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="css/master.css">
 	<link rel="stylesheet" href="css/index.css">
-	<script src="js/index-grid.js" defer></script>
 	<script src="js/header.js" defer></script>
 	<script src="js/slider.js" defer></script>
 	<script src="js/featured.js" defer></script>
+	<script src="js/index-grid.js" defer></script>
 	<script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
 </head>
 
 <body>
 	<?php require('templates/header.html') ?>
-	<?php
-
-	require_once("conexion.php");
-
-	if (empty($_GET)) {
-		
-		//consulta que solicita los datos de las propiedades y cambia su id de tipo por el nombre del tipo de propiedad que es (INNER JOIN)
-		$consulta = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE Categoría!='No disponible'");
-		$consulta->execute();
-
-		$resultados = $consulta->fetchAll();
-	}
-
-	?>
 	<div class="slider">
 		<div class="slide"></div>
 		<div class="slide"></div>
@@ -82,46 +106,24 @@
 	</section>
 	<section id="destacados">
 		<h2>Destacados</h2>
-		<?php 
-			$lenght = count($resultados);
-
-			$array = [];
-			
-			for($i = 0; $i < 8; $i++){
-				$random = rand(1, $lenght);
-				while(in_array($random, $array)) {
-					$random = rand(1, $lenght);
-				}
-				foreach($resultados as $resultado => $propiedad){
-					$propiedad['ID_Propiedad'] = $random;
-				}
-				$array[$i] = $propiedad['ID_Propiedad'];
-
-				$consulta2[$i] = $conexionBD->prepare("SELECT ID_Propiedad, Título, Dirección, Categoría, Localidad, tipos_propiedades.Nombre_Tipo AS Tipo FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE ID_Propiedad =".$array[$i]);
-				$consulta2[$i]->execute();
-	
-				$title[$i] = $consulta2[$i]->fetchAll();
-				
-			}
-
-		?>
 		<div class="container">
 			<div class="grid-wrapper">
-				<?php for ($i=0; $i < 8 ; $i++):?>
+				<?php foreach ($destacados as $propiedad => $campos): ?>
 				<div class="grid-item">
-				
-					<a href="detalles.php?Propiedad=<?php  echo $title[$i][0]['ID_Propiedad'] ?>">
-						<div class="img" style="background-image: url('imgs/propiedades/<?php echo $title[$i][0]['Título'] ?>/<?php echo scandir("imgs/propiedades/{$title[$i][0]['Título']}")[2]?>')"></div>
+					<a class="cat" href="<?php echo 'propiedades.php?Tipo=&Localidad=&Categoría=' . $campos['Categoría']; ?>">
+						<?php echo $campos['Categoría']; ?>
+					</a>
+					<a class="type" href="propiedades.php?Tipo=<?php echo $campos['ID_Tipo'] ?>&Localidad=&Categoría=Ambas"> <?php echo $campos['Tipo']; ?> </a>
+					<a href="detalles.php?Propiedad=<?php echo $campos['ID_Propiedad'] ?>" class="detail-link">
+						<div class="back" style="background-image: url('<?php echo glob('imgs/propiedades/' . $campos['Título'] . '/*')[0]; ?>'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
 						<div class="desc">
-							<h5><?php echo $title[$i][0]['Título']; ?></h5>
-							<span class="direccion"><?php echo $title[$i][0]['Dirección']; ?></span>
-							<span class="localidad"><?php echo $title[$i][0]['Localidad']; ?></span>
+							<h5 title="<?php echo $campos['Título']; ?>"><?php echo $campos['Título']; ?></h6>
+							<h6 title="<?php echo $campos['Dirección']; ?>"><i class="fas fa-map-marker-alt"></i> <?php echo $campos['Dirección']; ?></h6>
+							<h6 title="<?php echo $campos['Localidad']; ?>"><i class="fas fa-map-marked-alt"></i> <?php echo $campos['Localidad']; ?></h6>
 						</div>
-						<h4>Ver más <i class='bx bx-chevron-right'></i></h4>
 					</a>
 				</div>
-				<?php endfor;?>
-				
+				<?php endforeach ?>
 				<button class="slide-buttons left">
 					<i class="fas fa-caret-left"></i>
 				</button>

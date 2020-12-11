@@ -30,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/detalles.css">
-	<script src="js/header.js" defer></script>
+    <script src="js/header.js" defer></script>
+    <script src="js/details.js" defer></script>
 	<script src="https://kit.fontawesome.com/79cc46baec.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
@@ -39,25 +40,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h3 class="container"><?php echo $propiedad['Título']; ?></h3>
     </div>
     <div class="detalles row container">
-        <div class="col-md-8">
+        <div class="col-md-7 col-lg-8">
             <?php $imgs = glob('imgs/propiedades/' . $propiedad['Título'] . '/*') ?>
             <div class="slider">
                 <?php
                     foreach ($imgs as $img) {
-                        echo "<div class=\"slide-image\"><img src=\"$img\" alt=\"\"></div>";
+                        echo "<div class=\"slide\"><img src=\"$img\" alt=\"\"></div>";
                     }
                 ?>
-                <button><i class="fas fa-angle-left"></i></button>
-                <button><i class="fas fa-angle-right"></i></button>
+                <button class="slide-button"><i class="fas fa-angle-left"></i></button>
+                <button class="slide-button"><i class="fas fa-angle-right"></i></button>
             </div>
-            <div class="detalles">
+            <div>
                 <h4>Descripción</h4>
                 <?php
                     echo "<p>{$propiedad['Descripción']}</p>"
                 ?>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5 col-lg-4">
             <div class="desc">
                 <h4>Detalles</h4>
                 <div class="grid">
@@ -77,20 +78,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <form action="">
                     <h4>Consultar</h4>
                     <label>
-                        <h6>Nombre</h6>
-                        <input type="text" required>
-                    </label>
-                    <label>
-                        <h6>Apellido</h6>
-                        <input type="text" required>
+                        <h6>Nombre completo</h6>
+                        <input name="nombre" type="text" required>
                     </label>
                     <label>
                         <h6>Asunto</h6>
-                        <input type="text" required>
+                        <input name="asunto" type="text" required>
                     </label>
                     <label>
                         <h6>Consulta</h6>
-                        <input type="text" required>
+                        <textarea name="" cols="30" rows="10" required></textarea>
                     </label>
                     <button class="button">Consultar</button>
                     <a href=""><i class="fab fa-whatsapp"></i>Consultar por WhatsApp</a>

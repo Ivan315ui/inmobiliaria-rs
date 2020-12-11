@@ -278,137 +278,110 @@ header.scrolled .md-menu ul li:hover a {
   display: -ms-grid;
   display: grid;
   position: relative;
-  -ms-grid-columns: (100%)[5];
-      grid-template-columns: repeat(5, 100%);
+  -ms-grid-columns: (1fr)[8];
+      grid-template-columns: repeat(8, 1fr);
   grid-auto-rows: 1fr;
   gap: 15px;
   overflow-x: hidden;
 }
 
-#destacados .container .grid-wrapper::-webkit-scrollbar {
-  display: none;
-}
-
 #destacados .container .grid-wrapper .grid-item {
   position: relative;
+  width: calc(100vw - 30px);
   left: 0;
-  -webkit-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
+  top: 0;
   z-index: 0;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
   overflow: hidden;
 }
 
-#destacados .container .grid-wrapper .grid-item a {
-  display: block;
-  height: 100%;
-  border-radius: 3px;
+#destacados .container .grid-wrapper .grid-item .detail-link {
+  -webkit-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
 }
 
-#destacados .container .grid-wrapper .grid-item a .img {
+#destacados .container .grid-wrapper .grid-item .detail-link:hover .back {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+#destacados .container .grid-wrapper .grid-item .detail-link:hover .desc {
+  background-color: whitesmoke;
+  color: #2f2f2f;
+}
+
+#destacados .container .grid-wrapper .grid-item .back {
+  height: calc((100vw - 30px) * 2 / 3);
   width: 100%;
-  height: 300px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  border-radius: 3px 3px 0 0;
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+  -webkit-transition: inherit;
+  transition: inherit;
+  position: relative;
+  z-index: 0;
 }
 
-#destacados .container .grid-wrapper .grid-item a .desc {
-  background-color: white;
-  padding: 5px;
-  border-radius: 0 0 3px 3px;
-  color: #440206;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-#destacados .container .grid-wrapper .grid-item a .desc h5 {
-  width: 100%;
-  font-weight: 550;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-#destacados .container .grid-wrapper .grid-item a .desc span {
-  display: block;
-}
-
-#destacados .container .grid-wrapper .grid-item a .desc span.direccion {
-  max-width: 250px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-#destacados .container .grid-wrapper .grid-item a .desc span:last-of-type {
-  margin-left: auto;
-}
-
-#destacados .container .grid-wrapper .grid-item a h4 {
+#destacados .container .grid-wrapper .grid-item .cat, #destacados .container .grid-wrapper .grid-item .type {
   position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  z-index: 3;
-  color: white;
-  text-align: center;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  opacity: 0;
-  text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: 2px;
-  -webkit-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
+  z-index: 1;
+  padding: 5px;
 }
 
-#destacados .container .grid-wrapper .grid-item a h4 i {
-  font-size: 1.8rem;
-  -webkit-transform: translateY(0.3rem);
-          transform: translateY(0.3rem);
-  -webkit-transition: none;
-  transition: none;
-}
-
-#destacados .container .grid-wrapper .grid-item a::before, #destacados .container .grid-wrapper .grid-item a::after {
+#destacados .container .grid-wrapper .grid-item .cat::before, #destacados .container .grid-wrapper .grid-item .type::before {
   content: "";
   position: absolute;
-  top: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.5;
-  border-radius: 3px;
-}
-
-#destacados .container .grid-wrapper .grid-item a::before {
-  left: -100%;
-  background-color: #444444;
-  z-index: 1;
-  -webkit-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
-}
-
-#destacados .container .grid-wrapper .grid-item a::after {
-  left: 100%;
-  background-color: #440206;
-  z-index: 2;
-  -webkit-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
-}
-
-#destacados .container .grid-wrapper .grid-item a:hover h4 {
-  opacity: 1;
-  -webkit-transition-delay: 0.5s;
-          transition-delay: 0.5s;
-}
-
-#destacados .container .grid-wrapper .grid-item a:hover::before, #destacados .container .grid-wrapper .grid-item a:hover::after {
   left: 0;
-  opacity: 0.9;
+  top: 0;
+  border-radius: 3px;
+  z-index: -1;
+  opacity: 0.8;
+  -webkit-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+}
+
+#destacados .container .grid-wrapper .grid-item .cat:hover::before, #destacados .container .grid-wrapper .grid-item .type:hover::before {
+  opacity: 1;
+}
+
+#destacados .container .grid-wrapper .grid-item .cat {
+  right: 10px;
+  top: 10px;
+  color: whitesmoke;
+}
+
+#destacados .container .grid-wrapper .grid-item .cat::before {
+  background-color: #2F2F2F;
+}
+
+#destacados .container .grid-wrapper .grid-item .type {
+  left: 10px;
+  top: 10px;
+  color: #2F2F2F;
+}
+
+#destacados .container .grid-wrapper .grid-item .type::before {
+  background-color: whitesmoke;
+}
+
+#destacados .container .grid-wrapper .grid-item .desc {
+  position: relative;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  background-color: #2F2F2F;
+  color: whitesmoke;
+  padding: 10px;
+  -webkit-transition: inherit;
+  transition: inherit;
+}
+
+#destacados .container .grid-wrapper .grid-item .desc h5, #destacados .container .grid-wrapper .grid-item .desc h6 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 #destacados .container .button {
@@ -553,6 +526,15 @@ header.scrolled .md-menu ul li:hover a {
   }
 }
 
+@media only screen and (min-width: 576px) {
+  #destacados .container .grid-wrapper .grid-item {
+    width: calc(540px - 30px);
+  }
+  #destacados .container .grid-wrapper .grid-item .back {
+    height: calc((540px - 30px) * 2 / 3);
+  }
+}
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .slider .container h1 {
@@ -569,10 +551,6 @@ header.scrolled .md-menu ul li:hover a {
   }
   #destacados h2 {
     font-size: 3rem;
-  }
-  #destacados .container .grid-wrapper {
-    -ms-grid-columns: (calc(50% - 7.5px))[10];
-        grid-template-columns: repeat(10, calc(50% - 7.5px));
   }
 }
 
@@ -627,12 +605,24 @@ header.scrolled .md-menu ul li:hover a {
   #contacto .grid div, #contacto .grid form {
     padding: 10px;
   }
+  #destacados .container .grid-wrapper .grid-item {
+    width: calc((720px - 30px - 15px) / 2);
+  }
+  #destacados .container .grid-wrapper .grid-item .back {
+    height: calc((720px - 30px - 15px) / 2 * 2 / 3);
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .slider {
     height: 70vh;
+  }
+  #destacados .container .grid-wrapper .grid-item {
+    width: calc((960px - 30px - 30px) / 3);
+  }
+  #destacados .container .grid-wrapper .grid-item .back {
+    height: calc((960px - 30px - 30px) / 3 * 2 / 3);
   }
 }
 
@@ -641,9 +631,11 @@ header.scrolled .md-menu ul li:hover a {
   .slider {
     height: 100vh;
   }
-  #destacados .container .grid-wrapper {
-    -ms-grid-columns: (calc(100% / 3 - 15px / 3 * 2))[10];
-        grid-template-columns: repeat(10, calc(100% / 3 - 15px / 3 * 2));
+  #destacados .container .grid-wrapper .grid-item {
+    width: calc((1140px - 30px - 30px) / 3);
+  }
+  #destacados .container .grid-wrapper .grid-item .back {
+    height: calc((1140px - 30px) / 3 * 2 / 3);
   }
 }
 /*# sourceMappingURL=index.css.map */

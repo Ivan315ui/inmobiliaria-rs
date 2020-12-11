@@ -15,11 +15,11 @@ buttonRight.addEventListener('click', () => {
 function slide(side) {
 	let width = document.querySelector('html').offsetWidth;
 	if (side === "right") {
-		if (width < 600 && iterations > -4) {
+		if (width < 600 && iterations > -6) {
 			iterations--;
-		} else if ((width > 600 && width < 1200) && iterations > -3) {
+		} else if ((width > 600 && width < 1200) && iterations > -5) {
 			iterations--;
-		} else if(iterations > -2) {
+		} else if(iterations > -4) {
 			iterations--;
 		}
 	} else if (side === "left" && iterations < 0) {
