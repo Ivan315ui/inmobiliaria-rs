@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-11-2020 a las 18:07:54
+-- Tiempo de generación: 12-12-2020 a las 04:53:13
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.8
 
@@ -31,7 +31,7 @@ CREATE TABLE `administradores` (
   `id` tinyint(4) NOT NULL,
   `Mail` varchar(30) NOT NULL,
   `Nombre_Administrador` varchar(20) NOT NULL,
-  `Contraseña` varchar(20) NOT NULL
+  `Contraseña` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -39,8 +39,29 @@ CREATE TABLE `administradores` (
 --
 
 INSERT INTO `administradores` (`id`, `Mail`, `Nombre_Administrador`, `Contraseña`) VALUES
-(1, 'ivanemanuel315@gmail.com', 'Iván', 'admin110'),
-(2, 'jereet31@gmail.com', 'Jere', 'jere110');
+(1, 'ivanemanuel315@gmail.com', 'Iván', 'bcd8e9aa62e70aab7fa339b1a9ebb2d2'),
+(2, 'jereet31@gmail.com', 'Jere', 'edf2bcad2bfafa7c24185baab591bc37');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `localidades`
+--
+
+CREATE TABLE `localidades` (
+  `id` tinyint(11) NOT NULL,
+  `localidad` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `localidades`
+--
+
+INSERT INTO `localidades` (`id`, `localidad`) VALUES
+(1, 'Bahía Blanca'),
+(2, 'Monte Hermoso'),
+(3, 'CABA'),
+(4, 'Punta Alta');
 
 -- --------------------------------------------------------
 
@@ -68,7 +89,7 @@ INSERT INTO `propiedades` (`ID_Propiedad`, `Título`, `Dirección`, `ID_Tipo`, `
 (1, 'Thompson 550, CASA, Lote de 7,95X61,63', 'Thompson 550', 1, NULL, NULL, 'Thompson 550 - Apto oficinas o comercios.\r\nRecepción\r\n2 Livings\r\n3 dormitorios\r\n2 baños\r\nCocina\r\nLavadero independiente.\r\nGran galpón con cocina, baño, asadores.\r\nPatio con piso de material, bomba y drenaje de agua.\r\n350mts cubiertos en total.\r\nLote de 7,90 x 62 mts.', 'Bahía Blanca', 'Venta'),
 (2, 'Ramon y Cajal 4100, CASA, Lote de 400 M2', 'Ramon y Cajal 4100', 1, NULL, NULL, 'Importante propiedad en Barrio Patagonia.\r\n3 Dormitorios, 1 en suite con vestidor.\r\n3 baños.\r\nLiving, cocina comedor y lavadero.\r\nOficina/dormitorio en planta alta con gran balcón.\r\nPileta 5.5x10.5mts. Bomba y sisterna\r\nQuincho con parrilla y baño.\r\nGalpón.\r\nLote de 40x100mts con arbolado perimetral, riego por aspersión y portón eléctrico.', 'Bahía Blanca', 'Venta'),
 (3, 'Uruguay 113, DUPLEX, 115 MTS cubiertos, Barrio Universitario', 'Uruguay 113', 1, NULL, NULL, 'Barrio Universitario - Uruguay 113\r\n115mts cubiertos.\r\n1 dormitorio equipado con aire acondicionado frio/calor.\r\nLiving amplio.\r\nCocina independiente.\r\nOficina en altos.\r\nBaño completo.\r\nTerraza.\r\nCochera.', 'Bahía Blanca', 'Venta'),
-(4, 'Amplio Terreno de 837 m2 (20x42) en Barrio Molina Campos (Patagonia)', 'Rehue 260, Parcela 7 ', 4, NULL, NULL, 'Barrio Molina Campos (Patagonia).\r\nAmplio Terreno de 837 m2 (20x42) en Rehue 260, Parcela 7 (entre Las Heras y Belgrano).\r\nApto para construcción Bifamiliar/Duplex hasta 3 pisos (zona RP2(2)). \r\nTodos los servicios: Agua, Luz y Gas.', 'Bahía Blanca', 'Venta'),
+(4, 'Amplio Terreno de 837 m2 (20x42) en Barrio Molina Campos (Patagonia)', 'Rehue 260', 4, NULL, NULL, 'Barrio Molina Campos (Patagonia).\r\nAmplio Terreno de 837 m2 (20x42) en Rehue 260, Parcela 7 (entre Las Heras y Belgrano).\r\nApto para construcción Bifamiliar/Duplex hasta 3 pisos (zona RP2(2)). \r\nTodos los servicios: Agua, Luz y Gas.', 'Bahía Blanca', 'Venta'),
 (5, 'Terreno en Barrio Mercich de 37,5 mts de frente por 65 mts de fondo', 'Barrio Mercich (Frente a Pago Chico) ', 4, NULL, NULL, 'Barrio Mercich (Frente a Pago Chico) \r\n(Ubicación: https://goo.gl/maps/mBjpeA8BZAXu3skJA  )\r\nTerreno de 37,5 mts de frente por 65 mts de fondo. \r\nAlambrado olímpico y tranquera.\r\nServicios de Luz y agua.\r\nCasa a terminar (falta terminar de hacer conexión de agua, detalles en el interior y pintura interior) .\r\n2 habitaciones \r\nLiving.\r\nCocina.\r\nBaño.\r\nGalpon.', 'Bahía Blanca', 'Venta'),
 (6, 'Castelli 455, Departamento en venta, 61 M2', 'Castelli 455', 2, NULL, NULL, 'Castelli 455\r\nDepartamento en venta primer piso.\r\n2 habitaciones.\r\nCocina independiente.\r\nBalcón al frente.\r\nBaño.\r\nCochera.\r\n61mts2', 'Bahía Blanca', 'Venta'),
 (7, 'Moreno 529, Departamento de 1D a estrenar', 'Moreno 529', 2, 1, 'D', 'Departamento de 1D a estrenar.\r\nMoreno 529\r\nHermoso departamento al frente.\r\n1 dormitorio con calefacción por radiador, placard y vista al frente.\r\nAmplio living comedor con cocina integrada y barra.\r\nBalcón.\r\nBaño completo con griferia y accesorios FV.', 'Bahía Blanca', 'Venta'),
@@ -110,6 +131,12 @@ ALTER TABLE `administradores`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `localidades`
+--
+ALTER TABLE `localidades`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `propiedades`
 --
 ALTER TABLE `propiedades`
@@ -130,7 +157,13 @@ ALTER TABLE `tipos_propiedades`
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `localidades`
+--
+ALTER TABLE `localidades`
+  MODIFY `id` tinyint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `propiedades`
