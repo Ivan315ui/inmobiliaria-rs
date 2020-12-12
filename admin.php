@@ -201,10 +201,6 @@ if (!isset($_SESSION['admin'])) {
 							<a>Añadir</a><a>Eliminar</a>
 							<div class="underline"></div>
 						</div>
-						<label style="display: none;">
-							ID:
-							<input type="text" name="adminID" class="inputs">
-						</label>
 						<label>
 							Nombre de administrador:
 							<input type="text" name="nombre" id="nombre" class="inputs">

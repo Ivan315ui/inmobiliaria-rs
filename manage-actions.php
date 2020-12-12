@@ -12,9 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	} else if($_POST['confirmar'] == 'eliminar') {
 
-		$elementos = array($_POST['adminID']);
+		$elementos = array($_POST['nombre'], $_POST['mail']);
 
-		$consulta = $conexionBD->prepare("DELETE FROM administradores WHERE id = ?");
+		$consulta = $conexionBD->prepare("DELETE FROM administradores WHERE Nombre_Administrador = ? AND Mail = ?");
 		
 	}
 
