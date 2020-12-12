@@ -94,6 +94,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <a href=""><i class="fas fa-phone-alt"></i>Llamar por teléfono</a>
                 </form>
             </div>
+		<div class="mapa">
+			<?php require_once('map.php'); ?>
+		</div>
         </div>
     </div>
     <?php require_once 'templates/footer.html'; ?>
