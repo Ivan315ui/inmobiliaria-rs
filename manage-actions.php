@@ -6,7 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	$elementos = array($_POST['mail'], $_POST['nombre']);
 	if ($_POST['confirmar'] == 'añadir') {
-		$elementos[] = $_POST['contraseña'];
+		$encriptada = md5($_POST['contraseña']);
+		$elementos[] = $encriptada;
 
 		$consulta = $conexionBD->prepare("INSERT INTO administradores (Mail, Nombre_Administrador, Contraseña) VALUES (?, ?, ?)");
 

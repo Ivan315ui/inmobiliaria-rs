@@ -5,12 +5,12 @@ session_start();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$credenciales = array($_POST['mail'], $_POST['contraseña']);
+	$desencriptada = md5($_POST['contraseña']);
+	$credenciales = array($_POST['mail'], $desencriptada);
 	$consulta = $conexionBD->prepare("SELECT * FROM administradores WHERE Mail=? AND Contraseña=?");
 	$consulta->execute($credenciales);
 
 	$resultados = $consulta->fetch();
-	
 	if ($resultados) {
 		$_SESSION['admin'] = $resultados['Nombre_Administrador'];
 	}
