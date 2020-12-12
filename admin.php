@@ -202,6 +202,10 @@ if (!isset($_SESSION['admin'])) {
 							<div class="underline"></div>
 						</div>
 						<label>
+							ID:
+							<input type="text" name="IDAdmin" id="IDAdmin" class="inputs" style="display: none;">
+						</label>
+						<label>
 							Nombre de administrador:
 							<input type="text" name="nombre" id="nombre" class="inputs">
 						</label>
