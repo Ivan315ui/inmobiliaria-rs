@@ -416,13 +416,18 @@ footer .footer-links {
   display: grid;
   -ms-grid-columns: 100%;
       grid-template-columns: 100%;
-  grid-auto-rows: 1fr;
+  grid-auto-rows: -webkit-fit-content;
+  grid-auto-rows: fit-content;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+footer .footer-links.container {
+  text-align: left;
 }
 
 footer .footer-links div {
@@ -478,19 +483,56 @@ footer .footer-links div ul a:hover::after {
           transition-delay: 0ms;
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  footer .footer-links {
-    -ms-grid-columns: (1fr)[3];
-        grid-template-columns: repeat(3, 1fr);
-    -webkit-box-pack: unset;
-        -ms-flex-pack: unset;
-            justify-content: unset;
-    width: auto;
-    justify-items: center;
-  }
+footer .footer-links form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
+footer .footer-links form div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+footer .footer-links form div input, footer .footer-links form div textarea {
+  width: 100%;
+  padding: 5px;
+  margin: 0 10px;
+  border-radius: 3px;
+  border: none;
+}
+
+footer .footer-links form div input:focus, footer .footer-links form div textarea:focus {
+  outline: none;
+}
+
+footer .footer-links form div input {
+  margin: 3px 10px;
+  border-radius: 0 5px 0 5px;
+}
+
+footer .footer-links form div textarea {
+  height: 150px;
+  border-radius: 5px 0 5px 0;
+}
+
+footer .footer-links form button {
+  border: 1px solid currentColor;
+  border-radius: 5px 0 5px 0;
+  margin: 10px 15px 10px auto;
+}
+
+footer .footer-links form button:focus {
+  outline: none;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   header .container .md-menu {
@@ -506,6 +548,25 @@ footer .footer-links div ul a:hover::after {
     opacity: 0;
     -webkit-transform: scaleY(0);
             transform: scaleY(0);
+  }
+  footer .footer-links {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+  footer .footer-links form {
+    grid-column: span 2;
+  }
+  footer .footer-links form h4 {
+    width: 100%;
+  }
+  footer .footer-links form div {
+    width: 50%;
+  }
+  footer .footer-links form div input, footer .footer-links form div textarea {
+    margin: 5px 0;
+  }
+  footer .footer-links form button {
+    margin: 0 5px 0 auto;
   }
 }
 

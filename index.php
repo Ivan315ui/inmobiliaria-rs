@@ -136,38 +136,6 @@ $indices = NULL;
 		</div>
 			
 	</section>
-	<section id="contacto">
-		<div class="banner">
-			<h2>Contáctenos</h2>
-		</div>
-		<div class="grid container">
-			<div>
-				<h4>Envíenos su mensaje</h4>
-				<p>
-					Consulte información sobre lo que requiera, propiedades, administración, cotizaciones, etc. <br>
-					Todas las consultas son bienvenidas y serán respondidas en el menor tiempo posible.
-				</p>
-				<h4>Información</h4>
-				<div><i class="fas fa-phone-alt"></i> 0291-5667988</div>
-				<div><i class="fas fa-envelope"></i> rspropiedades@gmail.com</div>
-			</div>
-			<form action="">
-				<label>
-					Nombre:
-					<input type="text" name="nombre">
-				</label>
-				<label>
-					Email:
-					<input type="text" name="email">
-				</label>
-				<label>
-					Mensaje: <br>
-					<textarea name="mensaje" id="" cols="30" rows="10"></textarea>
-				</label>
-				<button type="submit" class="button">Enviar</button>
-			</form>
-		</div>
-	</section>
 	<?php require('templates/footer.html') ?>
 </body>
 

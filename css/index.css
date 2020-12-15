@@ -389,69 +389,6 @@ header.scrolled .md-menu ul li:hover a {
   width: 100%;
 }
 
-#contacto {
-  background-color: #440206;
-  color: white;
-}
-
-#contacto .banner {
-  padding: 2rem 2rem 0.75rem;
-}
-
-#contacto .grid {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-}
-
-#contacto .grid form label {
-  width: 100%;
-  font-size: 1.2rem;
-  font-style: oblique;
-}
-
-#contacto .grid form label input, #contacto .grid form label textarea {
-  width: 100%;
-  -webkit-transition: 0.3s ease-out;
-  transition: 0.3s ease-out;
-  border: none;
-  padding: 5px;
-  border-radius: 3px;
-  font-size: 1rem;
-  margin-top: 3px;
-}
-
-#contacto .grid form label input:focus, #contacto .grid form label textarea:focus {
-  outline: none;
-  -webkit-box-shadow: 0px 0px 7.5px 0px white;
-          box-shadow: 0px 0px 7.5px 0px white;
-}
-
-#contacto .grid form label input {
-  height: 2.5rem;
-}
-
-#contacto .grid form label textarea {
-  height: 80px;
-}
-
-#contacto .grid form button {
-  border: 2px solid white;
-  width: 150px;
-  float: right;
-  margin: 0 0 10px;
-}
-
-#contacto .grid div div {
-  padding: 0;
-}
-
-#contacto .grid div div i {
-  padding: 3px;
-  font-size: 1.2rem;
-}
-
 .slide-buttons {
   position: absolute;
   top: 50%;
@@ -597,13 +534,6 @@ header.scrolled .md-menu ul li:hover a {
   }
   #servicios .container .grid-container .grid-item a i {
     font-size: 4rem;
-  }
-  #contacto .grid {
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
-  }
-  #contacto .grid div, #contacto .grid form {
-    padding: 10px;
   }
   #destacados .container .grid-wrapper .grid-item {
     width: calc((720px - 30px - 15px) / 2);

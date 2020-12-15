@@ -334,9 +334,12 @@ footer {
     .footer-links {
         display: grid;
         grid-template-columns: 100%;
-        grid-auto-rows: 1fr;
+        grid-auto-rows: fit-content;
         justify-content: center;
         width: fit-content;
+        &.container {
+            text-align: left;
+        }
         div {
             padding: 5px;
             ul {
@@ -378,20 +381,48 @@ footer {
                 }
             }
         }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            div {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                input, textarea {
+                    width: 100%;
+                    padding: 5px;
+                    margin: 0 10px;
+                    border-radius: 3px;
+                    border: none;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                input {
+                    margin: 3px 10px;
+                    border-radius: 0 5px 0 5px;
+                }
+                textarea {
+                    height: 150px;
+                    border-radius: 5px 0 5px 0;
+                }
+            }
+            button {
+                border: 1px solid currentColor;
+                border-radius: 5px 0 5px 0;
+                margin: 10px 15px 10px auto;
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
     }
 }
 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-    footer {
-        .footer-links {
-            grid-template-columns: repeat(3, 1fr);
-            justify-content: unset;
-            width: auto;
-            justify-items: center;
-        }
-    }
+    
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -411,6 +442,26 @@ footer {
 					transform: scaleY(0);
 				}
 			}
+        }
+    }
+    footer {
+        .footer-links {
+            grid-template-columns: repeat(3, 1fr);
+            form {
+                grid-column: span 2;
+                h4 {
+                    width: 100%;
+                }
+                div {
+                    width: 50%;
+                    input, textarea {
+                        margin: 5px 0;
+                    }
+                }
+                button {
+                    margin: 0 5px 0 auto;
+                }
+            }
         }
     }
 }

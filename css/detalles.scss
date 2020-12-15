@@ -154,9 +154,9 @@
             }
 
 			.button {
-				border: none;
+				border: 1px solid currentColor;
 				border-radius: 0 5px 0 5px;
-				margin: 10px 5px 10px auto;
+                margin: 10px 5px 10px auto;
 			}
             a {
                 width: 100%;
