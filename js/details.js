@@ -67,3 +67,9 @@ function slide(towards) {
 let desc = document.querySelector('p');
 
 desc.innerHTML = [].slice.call(desc.innerHTML.split('\n')).join('<br>')
+
+//hacer visible y ocultar el mapa
+
+document.getElementById('mapbutton').addEventListener('click', () => {
+	document.getElementById('map').classList.toggle('visible');
+});

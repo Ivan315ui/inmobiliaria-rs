@@ -55,6 +55,58 @@
   height: inherit;
 }
 
+.detalles .col-lg-8 .slider #map {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+  opacity: 0;
+  z-index: 1;
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.detalles .col-lg-8 .slider #map iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.detalles .col-lg-8 .slider #map.visible {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: 1;
+}
+
+.detalles .col-lg-8 .slider #mapbutton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px;
+  left: auto;
+  bottom: auto;
+  z-index: 1;
+  font-size: 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.detalles .col-lg-8 .slider #mapbutton:focus {
+  color: whitesmoke;
+  background-color: black;
+}
+
 .detalles .col-lg-8 .slider button {
   position: absolute;
   padding: 5px 15px;
@@ -64,8 +116,8 @@
   color: black;
   background-color: whitesmoke;
   opacity: 0.6;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
 }
 
 .detalles .col-lg-8 .slider button:hover {
@@ -75,6 +127,21 @@
 .detalles .col-lg-8 .slider button:nth-of-type(2) {
   -webkit-transform: translate(100%);
           transform: translate(100%);
+}
+
+.detalles .col-lg-8 .slider button:focus {
+  outline: none;
+}
+
+.detalles .col-lg-8 .slider button:active {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  opacity: 1;
+}
+
+.detalles .col-lg-8 .slider button:active:nth-of-type(2) {
+  -webkit-transform: scale(1.1) translate(90%);
+          transform: scale(1.1) translate(90%);
 }
 
 .detalles .col-lg-8 p {

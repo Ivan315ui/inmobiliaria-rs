@@ -39,6 +39,43 @@
                     height: inherit;
                 }
             }
+            #map {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                transform: scale(0);
+                transition: 0.4s ease-in-out;
+                opacity: 0;
+				z-index: 1;
+				transform-origin: top right;
+                iframe {
+                    width: 100%;
+                    height: 100%;
+                }
+                &.visible {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+			}
+			#mapbutton {
+				position: absolute;
+				top: 0;
+				right: 0;
+				padding: 15px;
+				left: auto;
+				bottom: auto;
+				z-index: 1;
+				font-size: 1.2rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				&:focus {
+					color: whitesmoke;
+					background-color: black;
+				}
+			}
             button {
                 position: absolute;
                 padding: 5px 15px;
@@ -48,13 +85,23 @@
                 color: black;
                 background-color: whitesmoke;
                 opacity: 0.6;
-                transition: 0.3s ease-in-out;
+                transition: 0.1s ease-in-out;
                 &:hover {
                     opacity: 0.8;
                 }
                 &:nth-of-type(2) {
                     transform:  translate(100%);
-                }
+				}
+				&:focus {
+					outline: none;
+				}
+				&:active {
+					transform: scale(1.1);
+					opacity: 1;
+					&:nth-of-type(2) {
+						transform: scale(1.1) translate(90%);
+					}
+				}
             }
 		}
 		p {

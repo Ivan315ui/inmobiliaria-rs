@@ -48,8 +48,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         echo "<div class=\"slide\"><img src=\"$img\" alt=\"\"></div>";
                     }
                 ?>
+                <div id="map">
+                    <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?hl=es&amp;q=<?php echo str_replace(' ', '%20', $propiedad['Dirección']) ?>,<?php echo str_replace(' ', '%20', $propiedad['Localidad']) ?>&amp;t=&amp;z=18&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                </div>
                 <button class="slide-button"><i class="fas fa-angle-left"></i></button>
                 <button class="slide-button"><i class="fas fa-angle-right"></i></button>
+                <button id="mapbutton"><i class="fas fa-map-marked-alt"></i></button>
             </div>
             <div>
                 <h4>Descripción</h4>
@@ -95,9 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </form>
             </div>
         </div>
-	<div class="mapa">
-		<?php require_once('map.php'); ?>
-	</div>
     </div>
     <?php require_once 'templates/footer.html'; ?>
 </body>
