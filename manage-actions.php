@@ -6,16 +6,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	$elementos = array($_POST['mail'], $_POST['nombre']);
 	if ($_POST['confirmar'] == 'añadir') {
-		$encriptada = md5($_POST['contraseña']);
-		$elementos[] = $encriptada;
+
+		$elementos[] = md5($_POST['contraseña']);
 
 		$consulta = $conexionBD->prepare("INSERT INTO administradores (Mail, Nombre_Administrador, Contraseña) VALUES (?, ?, ?)");
 
 	} else if($_POST['confirmar'] == 'eliminar') {
 
-		$elementos = array($_POST['nombre'], $_POST['mail']);
+		$elementos = array($_POST['adminID']);
 
-		$consulta = $conexionBD->prepare("DELETE FROM administradores WHERE Nombre_Administrador = ? AND Mail = ?");
+		$consulta = $conexionBD->prepare("DELETE FROM administradores WHERE id = ?");
 		
 	}
 

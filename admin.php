@@ -203,20 +203,20 @@ if (!isset($_SESSION['admin'])) {
 						</div>
 						<label>
 							ID:
-							<input type="text" name="IDAdmin" id="IDAdmin" class="inputs" style="display: none;">
+							<input type="text" name="adminID" class="inputs" style="display: none;">
 						</label>
 						<label>
 							Nombre de administrador:
-							<input type="text" name="nombre" id="nombre" class="inputs">
+							<input type="text" name="nombre" class="inputs">
 						</label>
 						<label>
 							Email:
-							<input type="email" name="mail" id="mail" class="inputs">
+							<input type="email" name="mail" class="inputs">
 						</label>
 						<div id="verificar-mail"></div>
 						<label class="contraseña">
 							Contraseña:
-							<input type="password" name="contraseña" id="contraseña">
+							<input type="password" name="contraseña">
 						</label>
 						<label class="confirm">
 							<input type="checkbox" name="confirmar" id="confirmar" value="añadir"> Confirmar acción.
@@ -271,15 +271,15 @@ if (!isset($_SESSION['admin'])) {
 						<div class="add toggled">
 							<label>
 								Título:
-								<input type="text" name="título" id="título">
+								<input type="text" name="título">
 							</label>
 							<label>
 								Dirección:
-								<input type="text" name="dirección" id="dirección">
+								<input type="text" name="dirección">
 							</label>
 							<label>
 								Tipo:
-								<select name="tipo" id="tipo">
+								<select name="tipo">
 									<?php
 										$resultados = $conexionBD->prepare("SELECT * FROM tipos_propiedades ORDER BY ID_Tipo");
 										$resultados->execute();
@@ -294,19 +294,19 @@ if (!isset($_SESSION['admin'])) {
 							</label>
 							<label>
 								Piso:
-								<input type="text" name="piso" id="piso">
+								<input type="text" name="piso">
 							</label>
 							<label>
 								Departamento:
-								<input type="text" name="depto" id="depto">
+								<input type="text" name="depto">
 							</label>
 							<label class="descrip">
 								<span>Descripción:</span>
-								<textarea name="descripción" id="descripción" cols="30" rows="10"></textarea>
+								<textarea name="descripción" cols="30" rows="10"></textarea>
 							</label>
 							<label>
 								Localidad:
-								<select name="localidad" id="localidad">
+								<select name="localidad">
 									<?php 
 										$resultados = $conexionBD->prepare("SELECT localidad FROM localidades ORDER BY localidad");
 										$resultados->execute();
@@ -324,7 +324,7 @@ if (!isset($_SESSION['admin'])) {
 							</label>
 							<label>
 								Categoría:
-								<select name="categoría" id="categoría">
+								<select name="categoría">
 									<option value="Venta">Venta</option>
 									<option value="Alquiler">Alquiler</option>
 									<option value="Venta/Alquiler">Venta/Alquiler</option>
@@ -339,15 +339,15 @@ if (!isset($_SESSION['admin'])) {
 						<div class="rem">
 							<label>
 								ID:
-								<input type="text" name="ridprop" id="ridprop">
+								<input type="text" name="ridprop">
 							</label>
 							<label>
 								Dirección:
-								<input type="text" name="rdirección" id="rdirección">
+								<input type="text" name="rdirección">
 							</label>
 							<label>
 								Título:
-								<input type="text" name="rtítulo" id="rtítulo">
+								<input type="text" name="rtítulo">
 							</label>
 						</div>
 						<div class="mod">

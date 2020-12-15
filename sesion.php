@@ -5,8 +5,8 @@ session_start();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$desencriptada = md5($_POST['contraseña']);
-	$credenciales = array($_POST['mail'], $desencriptada);
+
+	$credenciales = array($_POST['mail'], md5($_POST['contraseña']));
 	$consulta = $conexionBD->prepare("SELECT * FROM administradores WHERE Mail=? AND Contraseña=?");
 	$consulta->execute($credenciales);
 
