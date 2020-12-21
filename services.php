@@ -16,33 +16,61 @@
     <?php require_once('templates/header.html') ?>
     <div class="intro">
         <div class="container">
-            <h6>ROSCH INMOBILIARIA</h6>
+            <h3>ROSCH INMOBILIARIA</h3>
             <h1>SERVICIOS</h1>
         </div>
     </div>
-    <section class="inicio">
-        <div class="container">
-            <p>En Rosch Inmobiliaria ofrecemos diversos servicios adaptados para cada uno de nuestros clientes.</p>
-        </div>
-    </section>
     <section class="servicios row">
         <div class="col-md-4 container">
-            <h3>Ventas</h3>
-
+            <h3><i class="fas fa-home"></i> Ventas</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci harum omnis quia! Deleniti tempora eos, aspernatur quae dignissimos dicta. Reprehenderit soluta voluptatibus laborum sequi. Vel excepturi iste consequuntur officia tenetur!</p>
         </div>
         <div class="col-md-4 container">
-            <h3>Alquileres</h3>
-
+            <h3><i class="fas fa-key"></i> Alquileres</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci harum omnis quia! Deleniti tempora eos, aspernatur quae dignissimos dicta. Reprehenderit soluta voluptatibus laborum sequi. Vel excepturi iste consequuntur officia tenetur!</p>
         </div>
         <div class="col-md-4 container">
-            <h3>Tasaciones</h3>
-
+            <h3><i class="fas fa-dollar-sign"></i> Tasaciones</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, nobis. Dolorum commodi accusamus quisquam, atque numquam illum necessitatibus suscipit earum, ullam aliquid possimus debitis aut eaque itaque nemo consequuntur aliquam.</p>
+        </div>
+    </section>
+    <section class="banners">
+        <div class="ban">
+            <div class="container">
+                <h2>Tenemos lo que buscas</h2>
+                <p>
+					Tenemos un amplio listado que se expande constantemente, del cual se pueden elegir las propiedades 
+					que prefieras, solo basta consultar por ellas.<br>
+					¿Querés ver tu propiedad en nuestro listado? ¡Trabajemos juntos! <br>
+					En el <a href="#form">formulario</a> al final de la página podrás contactarte con nosotros.
+                </p>
+            </div>
+        </div>
+        <div class="ban">
+            <div class="container">
+                <h2>El mejor servicio</h2>
+                <p>
+                    Nuestros profesionales y equipo especializado en su 
+                    comodidad y en su experiencia como cliente
+                </p>
+            </div>
+        </div>
+        <div class="ban">
+            <div class="container">
+                <h2>Localidades</h2>
+                <p>
+                    Nuestros servicios actualmente abarcan la zona de Bahía Blanca, Capital Federal y provincia de Buenos 
+                    Aires, ¡pero nos expandimos constantemente!<br>
+                    Nuestro personal se ocupará de brindarle una experiencia cómoda y un buen servicio, independientemente de 
+                    su localización.
+                </p>
+            </div>
         </div>
     </section>
     <section id="form">
         <div class="row container">
             <div class="col-lg-4">
-                <h2>¡Solicitá tu servicio!</h2>
+                <h2>¡Trabajemos juntos!</h2>
                 <p>
                     Si algo no te quedó claro, o querés saber más, consultá 
                     por el servicio que necesites y en poco tiempo 
@@ -58,48 +86,6 @@
                 <textarea name="mensaje" placeholder="Mensaje" required></textarea>
                 <button class="button">Enviar</button>
             </form>
-        </div>
-    </section>
-    <section>
-        <div class="serviciosprop">
-            <div class="introprop">
-            <h1>
-                NUESTROS SERVICIOS
-            </h1>
-            </div>
-            <div class="prop1">
-                <h2>
-                    Tenemos lo que buscas
-                </h2>
-                <p>
-                    Tenemos multiples propiedades para que encuentres exactamente la 
-                </p>
-                <p>
-                    propiedad que has estado buscando
-                </p>
-            </div>
-            <div class="prop2">
-                <h2>
-                    El mejor servicio
-                </h2>
-                <p>
-                    Nuestros profesionales y equipo especializado en su  
-                </p>
-                <p>
-                    comodidad y en su experiencia como cliente
-                </p>
-            </div>
-            <div class="prop3">
-                <h2>
-                    Bahía y la zona
-                </h2>
-                <p>
-                    Le brindaremos servicios en Bahía Blanca, Monte Hermoso, 
-                </p>
-                <p>
-                    Punta alta, Cabíldo, Pehúen Co, Buenos Aires, etc. 
-                </p>
-            </div>
         </div>
     </section>
     <?php require_once('templates/footer.html') ?>
