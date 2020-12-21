@@ -51,6 +51,27 @@ if (!isset($_SESSION['admin'])) {
 					<span>&times;</span>
 				</button>
 			</div>
+		<?php elseif(isset($_GET['tipo']) && $_GET['tipo'] == 'fail'): ?>
+			<div class="alert alert-danger container" role="alert">
+				<strong>Tipo de propiedad ya existente en la base de datos</strong>.
+				<button type="button" class="close">
+					<span>&times;</span>
+				</button>
+			</div>
+		<?php elseif(isset($_GET['loc']) && $_GET['loc'] == 'fail'): ?>
+			<div class="alert alert-danger container" role="alert">
+				<strong>Localidad ya existente en la base de datos</strong>.
+				<button type="button" class="close">
+					<span>&times;</span>
+				</button>
+			</div>
+		<?php else: ?>
+			<div class="alert alert-danger container" role="alert">	
+				<strong>Se produjo un error al realizar la operación</strong>. Por favor, verifique los datos e inténtelo de nuevo en unos instantes.
+				<button type="button" class="close">
+					<span>&times;</span>
+				</button>
+			</div>
 		<?php endif ?>
 	<?php endif ?>
 	<div class="main container">
@@ -73,12 +94,11 @@ if (!isset($_SESSION['admin'])) {
 				<section id="intro">
 					<h4>Introducción</h4>
 					<p>
-						¡Bienvenido al panel de administración! En esta sección, podrá encontrar
-						tutoriales y secciones en las que se podrán ejecutar diversas acciones
-						sobre la página, entre las que están subir archivos, añadir propiedades o
+						¡Bienvenido al panel de administración! En esta página, se encuentran 
+						explicaciones, tutoriales y secciones en las que se podrán ejecutar diversas 
+						acciones sobre la página, entre las que están subir archivos, añadir propiedades o
 						cambiar su información, etc. <br>
-						En resumen, desde esta página, se gestionan las funciones generales del
-						sitio web.
+						En resumen, desde esta página, se gestionan la información del sitio web.
 					</p>
 				</section>
 				<section id="howto">
@@ -103,14 +123,21 @@ if (!isset($_SESSION['admin'])) {
 							credenciales de acceso puede realizar cambios.
 						</li>
 						<li>
+							Esta página de administración, no es accesible desde ninguna sección del sitio web, 
+							lo que hace improbable que una persona desconocida entre en la misma. A pesar de ello, 
+							sigue siendo visible desde internet, como se mencionó en el punto anterior.
+						</li>
+						<li>
 							Al momento de subir las imágenes, hacerlo de forma ordenada, es decir, seleccionarlas 
-							según el orden en el que se desea que se muestren. <span>En caso de seleccionarlas al mismo 
-							tiempo, no hay garantía de la forma en la que aparecerán.</span>
+							según el orden en el que se desea que se muestren.<br>
+							La primer imagen seleccionada será tomada como la principal y será utilizada como portada 
+							de la propiedad en todas las secciones que aparezca. Por eso mismo, <span>se recomienda discreción </span>
+							al momento de seleccionar las imágenes.
 						</li>
 						<li>
 							Cada una de las posibles acciones a realizar en el panel, tiene ciertas
 							recomendaciones, ya sea en el formato de los campos, de los archivos a subir,
-							etc. Se profundizará más en el tema en los apartados de cada acción.
+							etc. Se profundizará en los apartados de cada acción.
 						</li>
 					</ul>
 				</section>
@@ -121,11 +148,11 @@ if (!isset($_SESSION['admin'])) {
 						una a una:
 					</p>
 					<ul>
-						<li>Gestionar administradores de la página.</li>
+						<li>Añadir y eliminar administradores de la página.</li>
 						<li>Añadir propiedades y sus respectivas imágenes.</li>
-						<li>Añadir imágenes a propiedades ya existentes.</li>
-						<li>Eliminar propiedades.</li>
 						<li>Cambiar información de una propiedad ya existente.</li>
+						<li>Añadir imágenes a propiedades ya existentes.</li>
+						<li>Eliminar propiedades y sus archivos.</li>
 						<li>Añadir localidades y tipos de propiedades.</li>
 					</ul>
 				</section>
@@ -149,8 +176,10 @@ if (!isset($_SESSION['admin'])) {
 							de las credenciales de la persona autorizada.
 						</li>
 						<li>
-							<span>Simbolismo prohibido en gestionar propiedades:</span> Existen distintos simbolos que estan prohibidos
-							a la hora de subir nuestras propiedades, por ejemplo "(-, +, &, *, ¿?, ¡!, #, %, comillas dobles y comillas simples)".
+							<span>Simbolismo prohibido:</span> Se recomienda estrictamente no utilizar los siguientes símbolos al 
+							ingresar credenciales, a menos que sean estrictamente necesarios: <span>
+							(-, +, &, *, ¿?, ¡!, #, %, comillas dobles y comillas simples)"</span>. <br>
+							El uso de los mismos puede derivar en malfuncionamiento del sistema.
 						</li>
 					</ol>
 				</section>
@@ -167,7 +196,7 @@ if (!isset($_SESSION['admin'])) {
 					</p>
 					<div class="query">
 						<h5>Administradores actuales</h5>
-						<div class="grid" id="admins">
+						<div class="grid" id="adminslist">
 							<?php 
 								$propiedades = $conexionBD->prepare("SELECT id, Nombre_Administrador, Mail FROM administradores ORDER BY id");
 								$propiedades->execute();
@@ -230,13 +259,14 @@ if (!isset($_SESSION['admin'])) {
 					<h4>Gestionar archivos y propiedades</h4>
 					<p>
 						Esta pestaña es la de gestión de propiedades. Las acciones posibles de realizar en este apartado son: añadir,
-						eliminar o cambiar la información de las propiedades y sus respectivas imágenes.
+						eliminar o cambiar la información de las propiedades y sus respectivas imágenes. <br>
+						De igual manera, también se puede cambiar la información disponible sobre las localidades y tipos de propiedades disponibles.
 					</p>
 					<div class="query">
 						<h5>Listado de propiedades actuales</h5>
 						<div class="grid" id="props">
 							<?php 
-								$propiedades = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo ORDER BY propiedades.ID_Propiedad");
+								$propiedades = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, CONCAT(tipos_propiedades.Nombre_Tipo, ' (', tipos_propiedades.ID_Tipo, ')') AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo ORDER BY propiedades.ID_Propiedad");
 								$propiedades->execute();
 								$resultados = $propiedades->fetchAll(PDO::FETCH_ASSOC);
 
@@ -403,7 +433,7 @@ if (!isset($_SESSION['admin'])) {
 											foreach ($localidades as $localidades => $value) {
 												echo '<option value="' . $value . '">' . $value . '</option>';
 											}
-										}		
+										}
 
 									?>
 								</select>
@@ -427,6 +457,74 @@ if (!isset($_SESSION['admin'])) {
 							<input type="checkbox" name="confirmarP" id="confirmarP" value="add"> Confirmar acción.
 						</label>
 						<button>Finalizar</button>
+					</form>
+					<div class="query">
+						<h5>Tipos de propiedades disponibles</h5>
+						<div class="grid">
+							<?php
+								$tipos = $conexionBD->prepare("SELECT * FROM tipos_propiedades ORDER BY ID_Tipo");
+								$tipos->execute();
+								$resultados = $tipos->fetchAll(PDO::FETCH_ASSOC);
+
+								foreach ($resultados as $tipos => $tipo) {
+									if ($tipos == 0) {
+										foreach ($tipo as $key => $value) {
+											echo '<div class="header">'. $key .'</div>';
+										}
+									}
+									foreach ($tipo as $key => $value) {
+										if ($key == 'ID_Tipo') {
+											echo '<div class="data id">' . $value . "</div>";
+										} else {
+											echo '<div class="data">' . $value . "</div>";
+										}
+									}
+								}
+
+							?>
+						</div>
+					</div>
+					<form action="manage-types.php" method="POST">
+						<h5>Gestionar tipos de propiedades</h5>
+							<label>
+								Tipo:
+								<input type="text" name="nombre" required>
+							</label>
+							<button>Añadir</button>
+					</form>
+					<div class="query">
+						<h5>Localidades disponibles</h5>
+						<div class="grid">
+							<?php
+								$localidades = $conexionBD->prepare("SELECT * FROM localidades ORDER BY id");
+								$localidades->execute();
+								$resultados = $localidades->fetchAll(PDO::FETCH_ASSOC);
+
+								foreach ($resultados as $localidades => $localidad) {
+									if ($localidades == 0) {
+										foreach ($localidad as $key => $value) {
+											echo '<div class="header" style="text-transform: capitalize;">'. $key .'</div>';
+										}
+									}
+									foreach ($localidad as $key => $value) {
+										if ($key == 'id') {
+											echo '<div class="data id">' . $value . "</div>";
+										} else {
+											echo '<div class="data">' . $value . "</div>";
+										}
+									}
+								}
+
+							?>
+						</div>
+					</div>					
+					<form action="manage-locs.php" method="POST">
+						<h5>Gestionar localidades</h5>
+							<label>
+								Localidad:
+								<input type="text" name="nombre" required>
+							</label>
+							<button>Finalizar</button>
 					</form>
 				</section>
 			</div>

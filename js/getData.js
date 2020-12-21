@@ -1,4 +1,4 @@
-let propButton = document.querySelectorAll('.data.id');
+let propButton = document.querySelectorAll('#props .data.id');
 let propsForm = document.getElementById('propsForm');
 let propsContainer = document.getElementById('props');
 
@@ -27,27 +27,12 @@ function fillForm(dataContainer, sourceButton, form) {
     inputs = [].slice.call(inputs);
 
     inputs.forEach(input => {
-        //caso de los tipos de propiedad
-        switch (values[inputs.indexOf(input)]) {
-            case 'Casa':
-                input.value = 1;
-                break;
-            case 'Departamento':
-                input.value = 2;
-                break;
-            case 'Galpón':
-                input.value = 3;
-                break;
-            case 'Terreno':
-                input.value = 4;
-                break;
-            case 'Lote':
-                input.value = 5;
-                break;
-            default:
-                //caso normal
-                input.value = values[inputs.indexOf(input)];
-                break;
+        
+        if (input.name == "mtipo") {
+            input.value = values[inputs.indexOf(input)].split('(')[1].substr(0, 1);
+        } else {
+            input.value = values[inputs.indexOf(input)];
         }
+        
     });
 }

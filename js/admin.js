@@ -98,9 +98,11 @@ function changeForm(source) {
 							underline[1].classList.add('toggled-2');
 						}
 					}
+					//codigo de los formularios
 					section.classList.add('toggled');
 				}
 			} else {
+				//codigos de los formularios
 				section.classList.remove('toggled');
 			}
 		});

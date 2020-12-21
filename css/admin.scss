@@ -82,29 +82,6 @@ header {
 }
 
 
-.query {
-    background-color: whitesmoke;
-    padding: 5px;
-    margin: 5px 0;
-    h5 {
-        padding: 0;
-        margin-bottom: .5rem;
-    }
-    .grid {
-        display: grid;
-        grid-auto-rows: 1fr;
-        .summary {
-            display: none;
-        }
-        .data {
-            &.id-admin, &.id {
-                cursor: pointer;
-                transition: 0.3s ease-in-out;
-            }
-        }
-    }
-}
-
 h5 {
     color: #440206;
     font-weight: 300;
@@ -335,59 +312,75 @@ form {
         }
     }
     .query {
-        overflow-x: scroll;
+        overflow-x: auto;
         .grid {
-            grid-template-columns: repeat(9, 250px);
-            grid-template-rows: auto;
+            grid-template-columns: repeat(2, 1fr);
             div {
                 padding: 5px;
             }
-            .header {
-                border: 1px solid #440206;
-                color: #440206;
-                font-weight: 600;
-            }
-            .data {
-                border: 1px solid #212529;
-                color: #212529;
-                height: 5rem;
-                overflow-y: scroll;
-                &.id {
-                    &:hover {
-                        color: white;
-                        background-color: #212529;
-                    }
-                }
+            &#props {
+                grid-template-columns: repeat(9, 250px);
+				.data {
+					height: 5rem;
+					overflow-y: scroll;
+					&.id {
+						cursor: pointer;
+						&:hover {
+							color: white;
+							background-color: #212529;
+						}
+					}
+				}
             }
         }
     }
 }
 
 #admins {
-    .grid {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: auto;
-        div {
-            padding: 5px;
-        }
-        .header {
-            border: 1px solid #440206;
-            color: #440206;
-            font-weight: 600;
-        }
-        .data {
-            border: 1px solid #212529;
-            color: #212529;
-            &.id-admin {
-                &:hover {
-                    color: white;
-                    background-color: #212529;
-                }
-            }
-        }
+    .query {
+        .grid {
+            grid-template-columns: repeat(3, 1fr);
+        }    
     }
 }
 
+.query {
+    background-color: whitesmoke;
+    padding: 5px;
+    margin: 5px 0;
+    h5 {
+        padding: 0;
+        margin-bottom: .5rem;
+    }
+    .grid {
+        display: grid;
+        grid-auto-rows: 1fr;
+        .summary {
+            display: none;
+        }
+		grid-template-rows: auto;
+		div {
+			padding: 5px;
+		}
+		.header {
+			border: 1px solid #440206;
+			color: #440206;
+			font-weight: 600;
+		}
+		.data {
+			border: 1px solid #212529;
+			color: #212529;
+			transition: 0.3s ease-in-out;
+			&.id-admin {
+                cursor: pointer;
+				&:hover {
+					color: white;
+					background-color: #212529;
+				}
+			}
+		}
+	}    
+}
 
 footer {
     .sesion {
@@ -433,6 +426,7 @@ footer {
     }
 }
 
+
 @media only screen and (min-width: 414px) {
     .add, .mod {
         &.toggled {
@@ -466,6 +460,14 @@ footer {
         &.toggled {
             height: 452px;
         }
+    }
+}
+
+
+@media only screen and (max-width: 767px) {
+    .row {
+        width: 100%;
+        margin: 0;
     }
 }
 

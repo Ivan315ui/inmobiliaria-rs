@@ -289,31 +289,12 @@ div.grid {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  padding: 0;
 }
 
 #form .row div form div {
   width: 100%;
   padding: 20px 0;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 1fr;
-  gap: 10px;
-}
-
-#form .row div form div input:nth-child(1) {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-column: 1/2;
-  grid-row: span 1;
-}
-
-#form .row div form div input:nth-child(2) {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-column: 1/2;
-  grid-row: span 1;
 }
 
 #form .row div form div input, #form .row div form div textarea {
@@ -325,28 +306,24 @@ div.grid {
   transition: 0.3s ease-out;
   border: none;
   padding: 5px;
-  border-radius: 3px;
+  margin: 5px 0;
 }
 
 #form .row div form div input:focus, #form .row div form div textarea:focus {
   outline: none;
-  -webkit-box-shadow: 0px 0px 7.5px 0px white;
-          box-shadow: 0px 0px 7.5px 0px white;
+}
+
+#form .row div form div input {
+  border-radius: 0 5px 0 5px;
 }
 
 #form .row div form div textarea {
-  height: 90px;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2/3;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  grid-row: 1/3;
+  height: 140px;
+  border-radius: 5px 0 5px 0;
 }
 
 #form .row div form button {
   border: none;
-  float: right;
   width: 120px;
   margin: 0 auto 0 auto;
 }
@@ -354,6 +331,44 @@ div.grid {
 @media (max-width: 768px) {
   .container br {
     display: none;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  #form .row div form {
+    padding: 0 15px;
+  }
+  #form .row div form div {
+    width: 100%;
+    padding: 20px 0;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  #form .row div form div input, #form .row div form div textarea {
+    margin: 0;
+  }
+  #form .row div form div input:nth-child(1) {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+    grid-row: span 1;
+  }
+  #form .row div form div input:nth-child(2) {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+    grid-row: span 1;
+  }
+  #form .row div form div textarea {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 4;
+    grid-row: 1 / 5;
   }
 }
 

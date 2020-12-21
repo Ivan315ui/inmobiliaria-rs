@@ -26,4 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		header('Location: admin.php?result=fail');
 	}
 
+} else {
+	header('Location: index.php');
 }

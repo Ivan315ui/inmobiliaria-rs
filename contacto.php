@@ -52,19 +52,22 @@
 			</div>
 		</div>
 	</section>
-	<section class="valores">
+	<section id="form">
 		<div class="row">
+			<div class="col-lg-8">
+				<h2 class="container">¡Hablemos!</h2>
+				<form action="" class="container" autocomplete="off">
+					<div>
+						<input type="text" name="nombre" placeholder="Nombre">
+						<input type="text" name="asunto" placeholder="Asunto">
+						<input type="email" name="email" placeholder="Email">
+						<textarea name="mensaje" placeholder="Mensaje"></textarea>
+					</div>
+					<button class="button" type="submit" name="enviar">Enviar</button>
+				</form>
+			</div>
 			<div class="col-lg-4">
 
-			</div>
-			<div class="col-lg-8">
-				<h2 class="container" id="sobre">Sobre ROSCH inmobiliaria</h2>
-				<p class="container">
-					Somos una empresa dedicada a la comercialización y administración de 
-					alquileres de inmuebles familiares, comerciales e industriales. 
-					Centramos nuestro accionar en el valor, respeto y confidencialidad de las operaciones. <br>
-					Nuestro conocimiento de la actividad inmobiliaria de Bahía Blanca y la región nos avala para asesorarlo en sus necesidades.
-				</p>
 			</div>
 		</div>
 	</section>
@@ -78,22 +81,19 @@
 			</p>
 		</div>
 	</section>
-	<section id="form">
+	<section class="valores" id="nosotros">
 		<div class="row">
-			<div class="col-lg-8">
-				<h2 class="container">¡Hablemos!</h2>
-				<form action="" class="container" autocomplete="off">
-					<div>
-						<input type="text" name="nombre" placeholder="Nombre">
-						<input type="email" name="email" placeholder="Email">
-						<textarea name="mensaje" placeholder="Mensaje"></textarea>
-					</div>
-					<button class="button" type="submit" name="enviar">Enviar</button>
-					<?php //include_once("mailContacto.php") ?>
-				</form>
-			</div>
 			<div class="col-lg-4">
 
+			</div>
+			<div class="col-lg-8">
+				<h2 class="container" id="sobre">Sobre ROSCH inmobiliaria</h2>
+				<p class="container">
+					Somos una empresa dedicada a la comercialización y administración de 
+					alquileres de inmuebles familiares, comerciales e industriales. 
+					Centramos nuestro accionar en el valor, respeto y confidencialidad de las operaciones. <br>
+					Nuestro conocimiento de la actividad inmobiliaria de Bahía Blanca y la región nos avala para asesorarlo en sus necesidades.
+				</p>
 			</div>
 		</div>
 	</section>

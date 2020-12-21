@@ -20,44 +20,47 @@
             <h1>SERVICIOS</h1>
         </div>
     </div>
+    <section class="inicio">
+        <div class="container">
+            <p>En Rosch Inmobiliaria ofrecemos diversos servicios adaptados para cada uno de nuestros clientes.</p>
+        </div>
+    </section>
+    <section class="servicios row">
+        <div class="col-md-4 container">
+            <h3>Ventas</h3>
+
+        </div>
+        <div class="col-md-4 container">
+            <h3>Alquileres</h3>
+
+        </div>
+        <div class="col-md-4 container">
+            <h3>Tasaciones</h3>
+
+        </div>
+    </section>
+    <section id="form">
+        <div class="row container">
+            <div class="col-lg-4">
+                <h2>¡Solicitá tu servicio!</h2>
+                <p>
+                    Si algo no te quedó claro, o querés saber más, consultá 
+                    por el servicio que necesites y en poco tiempo 
+                    nuestro equipo se tomará el trabajo de realizar un seguimiento 
+                    a tu consulta y asesorarte debidamente.
+                </p>
+            </div>
+            <form action="mail.php" method="POST" autocomplete="off" class="col-lg-8">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="asunto" placeholder="Asunto" required>
+                <input type="text" name="telefono" placeholder="Teléfono" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+                <button class="button">Enviar</button>
+            </form>
+        </div>
+    </section>
     <section>
-        <div class="introduccion">
-            <p> En Rosch Inmobiliaria ofrecemos diversos servicios </p>
-            <p> adaptados para cada uno de nuestros clientes</p>
-        </div>
-        <div class="tasaciones" id="tasaciones">
-            <h1>
-                TASACIONES
-            </h1>
-            <p>
-                Nuestro equipo de profesionales esta dispuesto a valorizar tu 
-            </p>
-            <p>
-                propiedad y brindarte un excelente servicio
-            </p>
-        </div>
-        <div class="solicitar">
-            <h2>
-                SOLICITÁ TU TASACIÓN
-            </h2>
-            <p>
-                Por favor complete este formulario con los datos requeridos
-            </p>
-            <p>
-                y nos pondremos en contacto con usted
-            </p>
-            <form action="" class="container" autocomplete="off" method="POST">
-					<div>
-                        <input type="text" name="nombre" placeholder="Nombre" required="">
-                        <input type="text" name="apellido" placeholder="Apellido" required="">
-                        <input type="text" name="telefono" placeholder="Telefono" required="">
-                        <input type="email" name="email" placeholder="Email" required="">
-						<textarea name="comentarios" placeholder="Comentarios" required=""></textarea>
-					</div>
-                    <button class="button" type="submit" name="enviar">Enviar</button>
-                    <?php //include_once("mailService.php") ?>
-				</form>
-        </div>
         <div class="serviciosprop">
             <div class="introprop">
             <h1>

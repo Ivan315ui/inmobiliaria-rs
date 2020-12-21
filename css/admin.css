@@ -92,33 +92,6 @@ header .container img {
   font-weight: normal;
 }
 
-.query {
-  background-color: whitesmoke;
-  padding: 5px;
-  margin: 5px 0;
-}
-
-.query h5 {
-  padding: 0;
-  margin-bottom: .5rem;
-}
-
-.query .grid {
-  display: -ms-grid;
-  display: grid;
-  grid-auto-rows: 1fr;
-}
-
-.query .grid .summary {
-  display: none;
-}
-
-.query .grid .data.id-admin, .query .grid .data.id {
-  cursor: pointer;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-
 h5 {
   color: #440206;
   font-weight: 300;
@@ -407,61 +380,87 @@ form button:hover::after {
 }
 
 #manage .query {
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 #manage .query .grid {
-  -ms-grid-columns: (250px)[9];
-      grid-template-columns: repeat(9, 250px);
-  -ms-grid-rows: auto;
-      grid-template-rows: auto;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
 }
 
 #manage .query .grid div {
   padding: 5px;
 }
 
-#manage .query .grid .header {
-  border: 1px solid #440206;
-  color: #440206;
-  font-weight: 600;
+#manage .query .grid#props {
+  -ms-grid-columns: (250px)[9];
+      grid-template-columns: repeat(9, 250px);
 }
 
-#manage .query .grid .data {
-  border: 1px solid #212529;
-  color: #212529;
+#manage .query .grid#props .data {
   height: 5rem;
   overflow-y: scroll;
 }
 
-#manage .query .grid .data.id:hover {
+#manage .query .grid#props .data.id {
+  cursor: pointer;
+}
+
+#manage .query .grid#props .data.id:hover {
   color: white;
   background-color: #212529;
 }
 
-#admins .grid {
+#admins .query .grid {
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
+}
+
+.query {
+  background-color: whitesmoke;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+.query h5 {
+  padding: 0;
+  margin-bottom: .5rem;
+}
+
+.query .grid {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-rows: 1fr;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
 }
 
-#admins .grid div {
+.query .grid .summary {
+  display: none;
+}
+
+.query .grid div {
   padding: 5px;
 }
 
-#admins .grid .header {
+.query .grid .header {
   border: 1px solid #440206;
   color: #440206;
   font-weight: 600;
 }
 
-#admins .grid .data {
+.query .grid .data {
   border: 1px solid #212529;
   color: #212529;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-#admins .grid .data.id-admin:hover {
+.query .grid .data.id-admin {
+  cursor: pointer;
+}
+
+.query .grid .data.id-admin:hover {
   color: white;
   background-color: #212529;
 }
@@ -542,6 +541,13 @@ footer .sesion a:hover::after {
   }
   .mod.toggled {
     height: 452px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .row {
+    width: 100%;
+    margin: 0;
   }
 }
 
