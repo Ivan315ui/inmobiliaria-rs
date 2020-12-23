@@ -1,8 +1,6 @@
 <?php
 
-
-
-if(isset($_POST['enviar'])){
+if($_POST){
     if(!empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['email']) && !empty($_POST['telefono']) && !empty($_POST['comentarios'])){
         
         $nombre = $_POST['nombre'];
@@ -19,10 +17,10 @@ if(isset($_POST['enviar'])){
         $header.= "Reply-To: ". $email . "\r\n";
         $header.= "X-Mailer: PHP/" . phpversion();
 
-        $correo = mail($para, $asunto, $msg, $header); 
-        if($correo){
-            echo "Mail enviado exitosamente";
-        }
+        mail($para, $asunto, $msg, $header); 
+
+        echo "Mensaje enviado";
+        
     }
 }
 

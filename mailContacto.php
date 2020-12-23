@@ -16,9 +16,8 @@ if(isset($_POST['enviar'])){
         $header.= "X-Mailer: PHP/" . phpversion();
 
         $correo = mail($para, $asunto, $msg, $header); 
-        if($correo){
-            echo "Mail enviado exitosamente";
-        }
+
+        echo "Mensaje enviado";
     }
 }
 
