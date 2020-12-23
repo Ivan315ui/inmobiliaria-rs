@@ -2,10 +2,44 @@
 
 require_once("conexion.php");
 
+//Defino el tamaño de propiedades a ver
+$tamaño = 9;
+if($_GET){
+$pagina = $_GET["página"];
+}else{
+	$pagina = 1;
+}
+if (!$pagina) {
+    $inicio = 0;
+    $pagina = 1;
+}
+else {
+    $inicio = ($pagina - 1) * $tamaño;
+}
+
+//Hago la consulta
+$rows = $conexionBD->prepare("SELECT COUNT(*) FROM propiedades");
+$rows->execute(array());
+$num_total_registros = $rows->fetchALL();
+//Calculo el total de páginas
+$total_rows = $num_total_registros[0][0];
+$total_paginas = ceil($total_rows / $tamaño);
+
+/*
+echo "Número de registros encontrados: " . $total_rows . "<br>";
+echo "Se muestran páginas de " . $tamaño . " registros cada una<br>";
+echo "Mostrando la página " . $pagina . " de " . $total_paginas . "<p>";
+*/
+$maximo = $tamaño*$pagina;
+if($pagina == 1){
+$minimo = ($tamaño*$pagina)/$tamaño; 
+}else{
+$minimo = ($tamaño*$pagina)/$pagina; 
+}
 if (empty($_GET)) {
 	
 	//consulta que solicita los datos de las propiedades y cambia su id de tipo por el nombre del tipo de propiedad que es (INNER JOIN)
-	$consulta = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE Categoría!='No disponible'");
+	$consulta = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE Categoría!='No disponible' LIMIT {$minimo},{$maximo}");
 	$consulta->execute();
 
 	$resultados = $consulta->fetchAll();
@@ -13,7 +47,7 @@ if (empty($_GET)) {
 } else if(isset($_GET['Nombre'])) {
 
 	//consulta solicitada cuando se busca por nombre
-	$consulta = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE Título LIKE ?");
+	$consulta = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE Título LIKE ? LIMIT {$minimo},{$maximo}");
 	$consulta->execute(array("%" . $_GET['Nombre'] . "%"));
 
 	$resultados = $consulta->fetchAll();
@@ -22,7 +56,7 @@ if (empty($_GET)) {
 
 	if ($_GET['Tipo'] == "" && $_GET['Localidad'] == "" && $_GET['Categoría'] == 'Ambas') {
 		
-		$consulta = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE Categoría!='No disponible'");
+		$consulta = $conexionBD->prepare("SELECT propiedades.ID_Propiedad, propiedades.Título, propiedades.Dirección, tipos_propiedades.Nombre_Tipo AS Tipo, propiedades.Piso, propiedades.Departamento, propiedades.Descripción, propiedades.Localidad, propiedades.Categoría FROM propiedades INNER JOIN tipos_propiedades ON propiedades.ID_Tipo = tipos_propiedades.ID_Tipo WHERE Categoría!='No disponible' LIMIT {$minimo},{$maximo}");
 
 	} else {
 		
@@ -140,7 +174,8 @@ if (empty($_GET)) {
 			</div>
 		</div>
 		<div class="container">
-		<?php foreach ($resultados as $resultado => $propiedad): ?>
+		<?php
+		 foreach ($resultados as $resultado => $propiedad):?>
 			<div class="propiedad">
 				<a class="cat" href="<?php echo 'propiedades.php?Tipo=&Localidad=&Categoría=' . $propiedad['Categoría']; ?>">
 					<?php echo $propiedad['Categoría']; ?>
@@ -159,9 +194,34 @@ if (empty($_GET)) {
 					</div>
 				</a>
 			</div>
-		<?php endforeach; ?>
+		<?php 
+		endforeach; 
+		?>
 		</div>
 	</section>
+	<?php
+	if ($total_paginas > 1):
+		?>
+		<ul align="center">
+				<?php
+			for ($i=1;$i<=$total_paginas;$i++):
+				?>
+				<li>
+					<?php
+						if ($pagina == $i){
+							//si muestro el índice de la página actual, no coloco enlace
+							echo $pagina . " ";
+						}else{
+							//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página
+							echo "<a href='propiedades.php?Tipo=".$_GET['Tipo']."&Localidad=".$_GET['Localidad']."&Categoría=".$_GET['Categoría']."&página=" . $i ."'>".$i."</a>";
+						}
+					?>
+				</li>
+			<?php endfor; ?>
+		</ul>
+	<?php
+	endif;
+	?>
 	<?php require("templates/footer.html") ?>
 </body>
 </html>
