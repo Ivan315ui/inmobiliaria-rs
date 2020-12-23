@@ -65,6 +65,13 @@ if (!isset($_SESSION['admin'])) {
 					<span>&times;</span>
 				</button>
 			</div>
+		<?php elseif(isset($_GET['prop']) && $_GET['prop'] == 'exists'): ?>
+			<div class="alert alert-danger container" role="alert">
+				<strong>Propiedad con el mismo título existente en la base de datos</strong>.
+				<button type="button" class="close">
+					<span>&times;</span>
+				</button>
+			</div>
 		<?php else: ?>
 			<div class="alert alert-danger container" role="alert">	
 				<strong>Se produjo un error al realizar la operación</strong>. Por favor, verifique los datos e inténtelo de nuevo en unos instantes.
@@ -230,17 +237,17 @@ if (!isset($_SESSION['admin'])) {
 							<a>Añadir</a><a>Eliminar</a>
 							<div class="underline"></div>
 						</div>
-						<label>
+						<label style="display: none;">
 							ID:
-							<input type="text" name="adminID" class="inputs" style="display: none;">
+							<input type="text" name="adminID" class="inputs">
 						</label>
 						<label>
 							Nombre de administrador:
-							<input type="text" name="nombre" class="inputs">
+							<input type="text" name="nombre" class="inputs" required>
 						</label>
 						<label>
 							Email:
-							<input type="email" name="mail" class="inputs">
+							<input type="email" name="mail" class="inputs" required>
 						</label>
 						<div id="verificar-mail"></div>
 						<label class="contraseña">
@@ -292,24 +299,30 @@ if (!isset($_SESSION['admin'])) {
 							?>
 						</div>
 					</div>
-					<form action="manage-properties.php" method="post" autocomplete="off"  enctype="multipart/form-data" id="propsForm">
+					<form action="add-prop.php" method="post" autocomplete="off"  enctype="multipart/form-data" id="propsForm">
 						<h5>Gestionar propiedades</h5>
 						<div>
 							<a id="add">Añadir</a><a id="rem">Eliminar</a><a id="mod">Modificar</a>
 							<div class="underline"></div>
 						</div>
-						<div class="add toggled">
+						<div>	
+							<label>
+								ID:
+								<input type="text" name="idprop" class="inputs">
+							</label>
 							<label>
 								Título:
-								<input type="text" name="título">
+								<input type="text" name="título" class="inputs" required>
 							</label>
 							<label>
 								Dirección:
-								<input type="text" name="dirección">
+								<input type="text" name="dirección" class="inputs" required>
 							</label>
+						</div>
+						<div class="normal toggled">
 							<label>
 								Tipo:
-								<select name="tipo">
+								<select name="tipo" class="inputs" required>
 									<?php
 										$resultados = $conexionBD->prepare("SELECT * FROM tipos_propiedades ORDER BY ID_Tipo");
 										$resultados->execute();
@@ -317,32 +330,32 @@ if (!isset($_SESSION['admin'])) {
 										
 										foreach ($resultados as $tipos => $campos) {
 											echo '<option value="'. $campos['ID_Tipo'] .'">'. $campos['Nombre_Tipo'] .'</option>';
-										}		
+										}
 
 									?>
 								</select>
 							</label>
 							<label>
 								Piso:
-								<input type="text" name="piso">
+								<input type="text" name="piso" class="inputs">
 							</label>
 							<label>
 								Departamento:
-								<input type="text" name="depto">
+								<input type="text" name="depto" class="inputs">
 							</label>
 							<label class="descrip">
 								<span>Descripción:</span>
-								<textarea name="descripción" cols="30" rows="10"></textarea>
+								<textarea name="descripción" cols="30" rows="10" class="inputs" required></textarea>
 							</label>
 							<label>
 								Localidad:
-								<select name="localidad">
+								<select name="localidad" class="inputs" required>
 									<?php 
 										$resultados = $conexionBD->prepare("SELECT localidad FROM localidades ORDER BY localidad");
 										$resultados->execute();
 										$resultados = $resultados->fetchAll(PDO::FETCH_ASSOC);
 										
-										  
+										
 										foreach ($resultados as $localidades) {
 											foreach ($localidades as $localidades => $value) {
 												echo '<option value="' . $value . '">' . $value . '</option>';
@@ -354,7 +367,7 @@ if (!isset($_SESSION['admin'])) {
 							</label>
 							<label>
 								Categoría:
-								<select name="categoría">
+								<select name="categoría" class="inputs" required>
 									<option value="Venta">Venta</option>
 									<option value="Alquiler">Alquiler</option>
 									<option value="Venta/Alquiler">Venta/Alquiler</option>
@@ -366,96 +379,6 @@ if (!isset($_SESSION['admin'])) {
 								<input type="file" name="files[]" multiple="">
 							</label>
 						</div>
-						<div class="rem">
-							<label>
-								ID:
-								<input type="text" name="ridprop">
-							</label>
-							<label>
-								Dirección:
-								<input type="text" name="rdirección">
-							</label>
-							<label>
-								Título:
-								<input type="text" name="rtítulo">
-							</label>
-						</div>
-						<div class="mod">
-							<label style="display: none;">
-								ID:
-								<input type="text" name="midprop" class="inputs">
-							</label>
-							<label>
-								Título:
-								<input type="text" name="mtítulo" class="inputs">
-							</label>
-							<label>
-								Dirección:
-								<input type="text" name="mdirección" class="inputs">
-							</label>
-							<label>
-								Tipo:
-								<select name="mtipo" class="inputs">
-									<?php
-										$resultados = $conexionBD->prepare("SELECT * FROM tipos_propiedades ORDER BY ID_Tipo");
-										$resultados->execute();
-										$resultados = $resultados->fetchAll(PDO::FETCH_ASSOC);
-										
-										foreach ($resultados as $tipos => $campos) {
-											echo '<option value="'. $campos['ID_Tipo'] .'">'. $campos['Nombre_Tipo'] .'</option>';
-										}		
-
-									?>
-								</select>
-							</label>
-							<label>
-								Piso:
-								<input type="text" name="mpiso" class="inputs">
-							</label>
-							<label>
-								Departamento:
-								<input type="text" name="mdepto" class="inputs">
-							</label>
-							<label class="descrip">
-								<span>Descripción:</span>
-								<textarea name="mdescripción" cols="30" rows="10" class="inputs"></textarea>
-							</label>
-							<label>
-								Localidad:
-								<select name="mlocalidad" class="inputs">
-									<?php 
-										$resultados = $conexionBD->prepare("SELECT localidad FROM localidades ORDER BY localidad");
-										$resultados->execute();
-										$resultados = $resultados->fetchAll(PDO::FETCH_ASSOC);
-										
-										  
-										foreach ($resultados as $localidades) {
-											foreach ($localidades as $localidades => $value) {
-												echo '<option value="' . $value . '">' . $value . '</option>';
-											}
-										}
-
-									?>
-								</select>
-							</label>
-							<label>
-								Categoría:
-								<select name="mcategoría" class="inputs">
-									<option value="Venta">Venta</option>
-									<option value="Alquiler">Alquiler</option>
-									<option value="Venta/Alquiler">Venta/Alquiler</option>
-									<option value="No disponible">No disponible</option>
-								</select>
-							</label>
-							<label for="">
-								Archivos:
-								<input type="file" name="mfiles[]" multiple="">
-							</label>
-						</div>
-						<br>
-						<label class="confirm">
-							<input type="checkbox" name="confirmarP" id="confirmarP" value="add"> Confirmar acción.
-						</label>
 						<button>Finalizar</button>
 					</form>
 					<div class="query">

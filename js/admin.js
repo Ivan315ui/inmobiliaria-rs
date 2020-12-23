@@ -78,35 +78,52 @@ function displaySection(hash="removeAll") {
 }
 
 function changeForm(source) {
-	let formSections = [].slice.call(document.querySelectorAll('#manage form div'));
-	formSections.shift();
-	formSections.shift();
 	if (source.id) {
-		formSections.forEach(section => {
-			if (section.classList.contains(source.id)) {
-				if (section.classList.contains('toggled')) {
+		
+		let defSection = document.querySelector('.normal')
+		let idLabel = document.querySelector('#propsForm > div:not(:nth-of-type(1)) label');
+		let form = document.getElementById('propsForm');
+
+		if (source.id == 'add' || source.id == 'mod') {
+			idLabel.classList.remove('toggled');
+			if (source.id == 'add') {
+				if (!underline[1].classList.contains('toggled')) {
 					underline[1].style.transform = 'scale(1.1)';
 					setTimeout(() => {
 						underline[1].style.transform = 'scale(1)';
 					}, 300);
 				} else {
-					if (source.id === 'add') {
-						underline[1].classList.value = 'underline';
-					} else {
-						underline[1].classList.value = 'underline toggled';
-						if (source.id === 'mod') {
-							underline[1].classList.add('toggled-2');
-						}
-					}
-					//codigo de los formularios
-					section.classList.add('toggled');
+					underline[1].classList.value = 'underline';
 				}
+				form.action = "add-prop.php";
 			} else {
-				//codigos de los formularios
-				section.classList.remove('toggled');
+				form.action = "mod-prop.php";
+				if (underline[1].classList.contains('toggled-2')) {
+					underline[1].style.transform = 'scale(1.1)';
+					setTimeout(() => {
+						underline[1].style.transform = 'scale(1)';
+					}, 300);
+				} else {
+					underline[1].classList.value = 'underline toggled toggled-2';
+				}
 			}
-		});
-		document.querySelector('#confirmarP').value = source.id;
+			defSection.classList.add('toggled');
+			
+		} else {
+			form.action = 'rem-prop.php';
+			idLabel.classList.add('toggled');
+			if (!defSection.classList.contains('toggled')) {
+				underline[1].style.transform = 'scale(1.1)';
+				setTimeout(() => {
+					underline[1].style.transform = 'scale(1)';
+				}, 300);
+			} else {
+				underline[1].classList.value = 'underline toggled';
+			}
+			defSection.classList.remove('toggled');
+		}
+
+
 	} else {
 		if (source.text === "Añadir") {
 			if (underline[0].classList.value === 'underline') {
@@ -139,6 +156,71 @@ function changeForm(source) {
 		}
 	}
 }
+
+
+
+// function changeForm(source) {
+// 	let formSections = [].slice.call(document.querySelectorAll('#manage form div'));
+// 	formSections.shift();
+// 	formSections.shift();
+// 	if (source.id) {
+// 		formSections.forEach(section => {
+// 			if (section.classList.contains(source.id)) {
+// 				if (section.classList.contains('toggled')) {
+// 					underline[1].style.transform = 'scale(1.1)';
+// 					setTimeout(() => {
+// 						underline[1].style.transform = 'scale(1)';
+// 					}, 300);
+// 				} else {
+// 					if (source.id === 'add') {
+// 						underline[1].classList.value = 'underline';
+// 					} else {
+// 						underline[1].classList.value = 'underline toggled';
+// 						if (source.id === 'mod') {
+// 							underline[1].classList.add('toggled-2');
+// 						}
+// 					}
+// 					//codigo de los formularios
+// 					section.classList.add('toggled');
+// 				}
+// 			} else {
+// 				//codigos de los formularios
+// 				section.classList.remove('toggled');
+// 			}
+// 		});
+// 		document.querySelector('#confirmarP').value = source.id;
+// 	} else {
+// 		if (source.text === "Añadir") {
+// 			if (underline[0].classList.value === 'underline') {
+// 				underline[0].style.transform = 'scale(1.1)';
+// 				setTimeout(() => {
+// 					underline[0].style.transform = 'scale(1)';
+// 				}, 300);
+// 			} else {
+// 				underline[0].classList.remove('toggled');
+// 				document.querySelector('#confirmar').value = 'añadir';
+// 				document.querySelector('.contraseña').style.display = 'flex';
+// 				setTimeout(() => {
+// 					document.querySelector('.contraseña').classList.remove('toggled');
+// 				}, 25);
+// 			}
+// 		} else if (source.text === 'Eliminar') {
+// 			if (underline[0].classList.value === 'underline toggled') {
+// 				underline[0].style.transform = 'scale(1.1)';
+// 				setTimeout(() => {
+// 					underline[0].style.transform = 'scale(1)';
+// 				}, 300);
+// 			} else {
+// 				underline[0].classList.add('toggled');
+// 				document.querySelector('#confirmar').value = 'eliminar';
+// 				document.querySelector('.contraseña').classList.add('toggled');
+// 				setTimeout(() => {
+// 					document.querySelector('.contraseña').style.display = 'none';
+// 				}, 300);
+// 			}
+// 		}
+// 	}
+// }
 
 let closeButton = document.querySelector('.close');
 

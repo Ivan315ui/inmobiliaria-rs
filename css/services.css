@@ -10,6 +10,10 @@
   background-color: #030D19;
 }
 
+.intro .container {
+  text-align: center;
+}
+
 .container, .row {
   margin-left: auto;
   margin-right: auto;
@@ -113,7 +117,6 @@
 #form form button {
   border: 1px solid currentColor;
   border-radius: 5px 0 5px 0;
-  width: 120px;
   margin: 0 0 0 auto;
 }
 
@@ -217,6 +220,9 @@
     -ms-grid-row: 2;
     -ms-grid-row-span: 2;
     grid-row: 2 / 4;
+  }
+  #form form input:nth-child(2) {
+    border-radius: 5px 0 5px 0;
   }
   #form form button {
     grid-column: 1 / -1;

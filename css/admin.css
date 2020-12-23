@@ -331,6 +331,22 @@ form button:hover::after {
           transition-delay: 0.3s;
 }
 
+#propsForm div:not(.normal) label:nth-child(1) {
+  height: 0;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+}
+
+#propsForm div:not(.normal) label:nth-child(1).toggled {
+  height: 32px;
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+
 .contraseña {
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
@@ -340,31 +356,20 @@ form button:hover::after {
   opacity: 0;
 }
 
-.add, .rem, .mod {
-  -webkit-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
-  -webkit-transform-origin: top;
-          transform-origin: top;
+.normal {
+  height: 0;
   -webkit-transform: scaleY(0);
           transform: scaleY(0);
-  height: 0;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 
-.add.toggled, .rem.toggled, .mod.toggled {
+.normal.toggled {
+  height: 381px;
   -webkit-transform: scaleY(1);
           transform: scaleY(1);
-}
-
-.add.toggled {
-  height: 580px;
-}
-
-.rem.toggled {
-  height: 178px;
-}
-
-.mod.toggled {
-  height: 580px;
 }
 
 #manage form .underline {
@@ -414,6 +419,7 @@ form button:hover::after {
 #admins .query .grid {
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
+  overflow: auto;
 }
 
 .query {
@@ -572,6 +578,15 @@ footer .sesion a:hover::after {
   }
   form label input {
     width: auto;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .normal.toggled {
+    height: 401px;
+  }
+  #propsForm div:not(.normal) label:nth-child(1).toggled {
+    height: 36px;
   }
 }
 /*# sourceMappingURL=admin.css.map */

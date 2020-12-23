@@ -20,7 +20,7 @@ adminsButton.forEach(mail => {
 
 function fillForm(dataContainer, sourceButton, form) {
     
-    let values = document.querySelectorAll("#" + dataContainer.id + ' .summary')[sourceButton.innerText - 1].innerText;
+    let values = document.querySelectorAll("#" + dataContainer.id + ' .summary')[[].slice.call(document.querySelectorAll('#props .data.id')).indexOf(sourceButton)].innerText;
     values = values.split(';')
     
     let inputs = document.querySelectorAll('#' + form.id + ' .inputs');
@@ -28,7 +28,7 @@ function fillForm(dataContainer, sourceButton, form) {
 
     inputs.forEach(input => {
         
-        if (input.name == "mtipo") {
+        if (input.name == "tipo") {
             input.value = values[inputs.indexOf(input)].split('(')[1].substr(0, 1);
         } else {
             input.value = values[inputs.indexOf(input)];

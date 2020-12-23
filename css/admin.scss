@@ -264,6 +264,17 @@ form {
     }
 }
 
+#propsForm div:not(.normal) label:nth-child(1) {
+    height: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.4s ease-in-out;
+    &.toggled {    
+        height: 32px;
+        transform: scaleY(1);
+    }
+}
+
 .contraseña {
     transition: 0.3s ease-in-out;
     &.toggled {
@@ -271,33 +282,18 @@ form {
     }
 }
 
-.add, .rem, .mod {
-    transition: 0.5s ease-in-out;
-    transform-origin: top;
-    transform: scaleY(0);
+.normal {
     height: 0;
-    &.toggled {
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.4s ease-in-out;
+    &.toggled {    
+        height: 381px;
         transform: scaleY(1);
     }
 }
 
-.add {
-    &.toggled {
-        height: 580px;
-    }
-}
 
-.rem {
-    &.toggled {
-        height: 178px;
-    }
-}
-
-.mod {
-    &.toggled {
-        height: 580px;
-    }
-}
 
 #manage {
     form {
@@ -340,6 +336,7 @@ form {
     .query {
         .grid {
             grid-template-columns: repeat(3, 1fr);
+            overflow: auto;
         }    
     }
 }
@@ -496,6 +493,19 @@ footer {
             input {
                 width: auto;
             }
+        }
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .normal {
+        &.toggled {    
+            height: 401px;
+        }
+    }
+    #propsForm div:not(.normal) label:nth-child(1) {
+        &.toggled {    
+            height: 36px;
         }
     }
 }
