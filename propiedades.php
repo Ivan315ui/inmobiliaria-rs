@@ -4,7 +4,7 @@ require_once("conexion.php");
 
 //Defino el tamaño de propiedades a ver
 $tamaño = 9;
-if($_GET){
+if(isset($_GET["página"])){
 $pagina = $_GET["página"];
 }else{
 	$pagina = 1;
@@ -16,14 +16,110 @@ if (!$pagina) {
 else {
     $inicio = ($pagina - 1) * $tamaño;
 }
+//Verificacion de nombre
+//Verificación de campos GET y verificación de numeros de pagina
+if(isset($_GET['Nombre'])){
+	//Hago la consulta
+	$rows = $conexionBD->prepare('SELECT COUNT(*) FROM propiedades WHERE Título LIKE "%' . $_GET['Nombre'] .'%"');
+	$rows->execute(array());
+	$num_total_registros = $rows->fetchALL();
+	//Calculo el total de páginas
+	$total_rows = $num_total_registros[0][0];
+	$total_paginas = ceil($total_rows / $tamaño);
+}elseif(isset($_GET['Tipo']) || isset($_GET['Localidad']) || isset($_GET['Categoría'])){
+	if($_GET['Tipo'] && $_GET['Localidad'] && $_GET['Categoría']){
+		if($_GET['Categoría'] == "Ambas"){
+			$Cat = 'AND Categoría = "Venta" OR Categoría = "Alquiler"';
+		}else{
+			$Cat = 'AND Categoría = "'. $_GET['Categoría'].'"';
+		}
+		//Hago la consulta
+		$rows = $conexionBD->prepare('SELECT COUNT(*) FROM propiedades WHERE ID_Tipo = '. $_GET['Tipo'] .' AND Localidad = "'. $_GET['Localidad'] .'"'.$Cat.'');
+		$rows->execute(array());
+		$num_total_registros = $rows->fetchALL();
+		//Calculo el total de páginas
+		$total_rows = $num_total_registros[0][0];
+		$total_paginas = ceil($total_rows / $tamaño);
 
-//Hago la consulta
-$rows = $conexionBD->prepare("SELECT COUNT(*) FROM propiedades");
-$rows->execute(array());
-$num_total_registros = $rows->fetchALL();
-//Calculo el total de páginas
-$total_rows = $num_total_registros[0][0];
-$total_paginas = ceil($total_rows / $tamaño);
+	}elseif($_GET['Tipo'] && $_GET['Localidad']){
+		//Hago la consulta
+		$rows = $conexionBD->prepare('SELECT COUNT(*) FROM propiedades WHERE ID_Tipo = '. $_GET['Tipo'] .' AND Localidad = "'. $_GET['Localidad'] .'" AND Categoría = "Ambas"');
+		$rows->execute(array());
+		$num_total_registros = $rows->fetchALL();
+		//Calculo el total de páginas
+		$total_rows = $num_total_registros[0][0];
+		$total_paginas = ceil($total_rows / $tamaño);
+
+	}elseif($_GET['Tipo'] && $_GET['Categoría']){
+		if($_GET['Categoría'] == "Ambas"){
+			$Cat = 'AND Categoría = "Venta" OR Categoría = "Alquiler"';
+		}else{
+			$Cat = 'AND Categoría = "'. $_GET['Categoría'].'"';
+		}
+		//Hago la consulta
+		$rows = $conexionBD->prepare('SELECT COUNT(*) FROM propiedades WHERE ID_Tipo = '. $_GET['Tipo'] .' '. $Cat .'');
+		$rows->execute(array());
+		$num_total_registros = $rows->fetchALL();
+		//Calculo el total de páginas
+		$total_rows = $num_total_registros[0][0];
+		$total_paginas = ceil($total_rows / $tamaño);
+
+	}elseif($_GET['Localidad'] && $_GET['Categoría']){
+		if($_GET['Categoría'] == "Ambas"){
+			$Cat = 'AND Categoría = "Venta" OR Categoría = "Alquiler"';
+		}else{
+			$Cat = 'AND Categoría = "'. $_GET['Categoría'].'"';
+		}
+		//Hago la consulta
+		$rows = $conexionBD->prepare('SELECT COUNT(*) FROM propiedades WHERE Localidad = "'. $_GET['Localidad'] .'"'. $Cat .'');
+		$rows->execute(array());
+		$num_total_registros = $rows->fetchALL();
+		//Calculo el total de páginas
+		$total_rows = $num_total_registros[0][0];
+		$total_paginas = ceil($total_rows / $tamaño);
+
+	}elseif($_GET['Localidad']){
+		//Hago la consulta
+		$rows = $conexionBD->prepare('SELECT COUNT(*) FROM propiedades WHERE Localidad = "'. $_GET['Localidad'] .'"');
+		$rows->execute(array());
+		$num_total_registros = $rows->fetchALL();
+		//Calculo el total de páginas
+		$total_rows = $num_total_registros[0][0];
+		$total_paginas = ceil($total_rows / $tamaño);
+
+	}elseif($_GET['Tipo']){
+		//Hago la consulta
+		$rows = $conexionBD->prepare('SELECT COUNT(*) FROM propiedades WHERE ID_Tipo = '. $_GET['Tipo'] .'');
+		$rows->execute(array());
+		$num_total_registros = $rows->fetchALL();
+		//Calculo el total de páginas
+		$total_rows = $num_total_registros[0][0];
+		$total_paginas = ceil($total_rows / $tamaño);
+
+	}elseif($_GET['Categoría']){
+		if($_GET['Categoría'] == "Ambas"){
+			$Cat = 'Categoría = "Venta" OR Categoría = "Alquiler"';
+		}else{
+			$Cat = 'Categoría = "'. $_GET['Categoría'].'"';
+		}
+		//Hago la consulta
+		$rows = $conexionBD->prepare('SELECT COUNT(*) FROM propiedades WHERE '. $Cat .'');
+		$rows->execute(array());
+		$num_total_registros = $rows->fetchALL();
+		//Calculo el total de páginas
+		$total_rows = $num_total_registros[0][0];
+		$total_paginas = ceil($total_rows / $tamaño);
+
+	}
+}else{
+	$rows = $conexionBD->prepare("SELECT COUNT(*) FROM propiedades");
+	$rows->execute(array());
+	$num_total_registros = $rows->fetchALL();
+	//Calculo el total de páginas
+	$total_rows = $num_total_registros[0][0];
+	$total_paginas = ceil($total_rows / $tamaño);	
+}
+
 
 /*
 echo "Número de registros encontrados: " . $total_rows . "<br>";
@@ -32,9 +128,9 @@ echo "Mostrando la página " . $pagina . " de " . $total_paginas . "<p>";
 */
 $maximo = $tamaño*$pagina;
 if($pagina == 1){
-$minimo = ($tamaño*$pagina)/$tamaño; 
+$minimo = (($tamaño*$pagina)/$tamaño)-1; 
 }else{
-$minimo = ($tamaño*$pagina)/$pagina; 
+$minimo = (($tamaño*$pagina)/$pagina)-1; 
 }
 if (empty($_GET)) {
 	
@@ -77,7 +173,7 @@ if (empty($_GET)) {
 		} else {
 			$sentencia .= ' AND propiedades.Categoría = ' . "'" . $_GET['Categoría'] . "'";
 		}
-
+		$sentencia .= ' LIMIT '. $minimo .', '. $maximo .'';
 		$consulta = $conexionBD->prepare($sentencia);
 
 	}
@@ -213,7 +309,28 @@ if (empty($_GET)) {
 							echo $pagina . " ";
 						}else{
 							//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página
-							echo "<a href='propiedades.php?Tipo=".$_GET['Tipo']."&Localidad=".$_GET['Localidad']."&Categoría=".$_GET['Categoría']."&página=" . $i ."'>".$i."</a>";
+							if(isset($_GET['Tipo']) || isset($_GET['Localidad']) || isset($_GET['Categoría'])){
+							if($_GET['Tipo'] && $_GET['Localidad'] && $_GET['Categoría']){
+								echo "<a href='propiedades.php?Tipo=".$_GET['Tipo']."&Localidad=".$_GET['Localidad']."&Categoría=".$_GET['Categoría']."&página=" . $i ."'>".$i."</a>";
+							}elseif($_GET['Tipo'] && $_GET['Localidad']){
+								echo "<a href='propiedades.php?Tipo=".$_GET['Tipo']."&Localidad=".$_GET['Localidad']."&Categoría=Ambas&página=" . $i ."'>".$i."</a>";
+							}elseif($_GET['Tipo'] && $_GET['Categoría']){
+								echo "<a href='propiedades.php?Tipo=".$_GET['Tipo']."&Localidad=&Categoría=".$_GET['Categoría']."&página=" . $i ."'>".$i."</a>";
+							}elseif($_GET['Localidad'] && $_GET['Categoría']){
+								echo "<a href='propiedades.php?Tipo=&Localidad=".$_GET['Localidad']."&Categoría=".$_GET['Categoría']."&página=" . $i ."'>".$i."</a>";
+							}elseif($_GET['Localidad']){
+								echo "<a href='propiedades.php?Tipo=&Localidad=".$_GET['Localidad']."&Categoría=Ambas&página=" . $i ."'>".$i."</a>";
+							}elseif($_GET['Tipo']){
+								echo "<a href='propiedades.php?Tipo=".$_GET['Tipo']."&Localidad=&Categoría=Ambas&página=" . $i ."'>".$i."</a>";
+							}elseif($_GET['Categoría']){
+								echo "<a href='propiedades.php?Tipo=&Localidad=&Categoría=".$_GET['Categoría']."&página=" . $i ."'>".$i."</a>";
+							}
+			
+						}else{
+								echo "<a href='propiedades.php?Tipo=&Localidad=&Categoría=Ambas&página=" . $i ."'>".$i."</a>";
+							}
+							
+							
 						}
 					?>
 				</li>
